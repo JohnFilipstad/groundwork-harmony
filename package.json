@@ -1,0 +1,79 @@
+{
+  "name": "groundwork-harmony",
+  "version": "0.1.0",
+  "description": "Class-less CSS framework with tokens, a11y, RTL/LTR, and light/dark themes.",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "framework",
+    "design-system",
+    "tokens",
+    "accessibility",
+    "rtl",
+    "dark-mode"
+  ],
+  "homepage": "https://github.com/IbentaLab/groundwork_harmony",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IbentaLab/groundwork_harmony.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IbentaLab/groundwork_harmony/issues"
+  },
+  "type": "module",
+  "main": "dist/groundwork-harmony.min.css",
+  "exports": {
+    ".": "./dist/groundwork-harmony.min.css"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "lint": "npm run lint:css && npm run lint:html",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint:fix": "stylelint \"src/**/*.css\" --fix",
+    "lint:html": "html-validate \"examples/**/*.html\"",
+    "build:css": "postcss src/groundwork-harmony.css -o dist/groundwork-harmony.min.css",
+    "build:assets": "cpy \"src/fonts/**\" dist/fonts --parents",
+    "build": "npm run build:css && npm run build:assets",
+    "test": "npm run lint && npm run test:a11y",
+    "test:a11y": "playwright test -c playwright.config.mjs",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@evilmartians/lefthook": "^1.12.2",
+    "@playwright/test": "^1.46.0",
+    "autoprefixer": "^10.4.20",
+    "cpy-cli": "^5.0.0",
+    "cssnano": "^7.0.6",
+    "html-validate": "^9.0.0",
+    "lint-staged": "^15.2.10",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "prettier": "^3.3.3",
+    "stylelint": "^16.8.2",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-order": "^6.0.4"
+  },
+  "lint-staged": {
+    "**/*.css": [
+      "stylelint --fix"
+    ],
+    "examples/**/*.html": [
+      "html-validate --config .htmlvalidate.json"
+    ],
+    "**/*.{md,yml,yaml,json}": [
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Groundwork Harmony – Demo</title>
+  <link rel="stylesheet" href="../dist/groundwork-harmony.min.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <h1>Groundwork Harmony</h1>
+  <p>Class-less defaults with dark/light, RTL/LTR, and a11y.</p>
+  <nav aria-label="Primary">
+    <ul>
+      <li><a href="./index.html" aria-current="page">Home</a></li>
+      <li><a href="./typography.html">Typography</a></li>
+      <li><a href="./forms.html">Forms</a></li>
+      <li><a href="./tables.html">Tables</a></li>
+      <li><a href="./media.html">Media</a></li>
+      <li><a href="./content.html">Content</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section>
+    <h2>Buttons & Links</h2>
+    <p><a href="#">This is a link</a></p>
+    <p>
+      <button type="button">Primary action</button>
+      <button type="button" disabled>Disabled</button>
+    </p>
+  </section>
+
+  <section>
+    <h2>Dark / Light toggle (manual)</h2>
+    <p>
+      <button type="button" id="theme-toggle">Toggle theme</button>
+    </p>
+    <script>
+      const root = document.documentElement;
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      });
+    </script>
+  </section>
+</main>
+
+<footer>
+  <small>&copy; 2025 Groundwork Harmony</small>
+</footer>
+</body>
+</html>

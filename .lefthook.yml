@@ -1,0 +1,15 @@
+pre-commit:
+  commands:
+    lint-staged:
+      run: npx lint-staged
+
+pre-push:
+  commands:
+    # Run tests before pushing to ensure no breaking changes.
+    test:
+      run: npm test
+
+    # The build command is also good to have here to ensure the build is working
+    # before pushing.
+    build:
+      run: npm run build

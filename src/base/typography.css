@@ -1,0 +1,131 @@
+/**
+ * @category Base
+ * @description Typography normalization for headings, paragraphs, and text elements. Establishes a consistent type scale, improves readability, and handles text formatting elements.
+ * @order 3
+ */
+
+/* ===================================================================
+   Typography
+   Headings, paragraphs, and base text elements
+   =================================================================== */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings), "Groundwork Sans", sans-serif;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-s);
+  margin-block: var(--spacing-m) var(--spacing-s);
+
+  /* Prevent orphans and widows */
+  orphans: 3;
+  widows: 3;
+
+  /* Better text wrapping */
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: var(--font-size-xxxl);
+  margin-block: var(--spacing-l) var(--spacing-m);
+}
+
+h2 {
+  font-size: var(--font-size-xxl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-l);
+}
+
+h5 {
+  font-size: calc(var(--font-size-m) * 1.125);
+}
+
+h6 {
+  font-size: var(--font-size-m);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-l);
+}
+
+/* Paragraphs */
+p {
+  margin-block: var(--spacing-m);
+  line-height: var(--line-height-relaxed);
+  text-wrap: pretty;
+
+  /* Limit line length for readability */
+  max-width: 65ch;
+}
+
+/* Horizontal rule */
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  border: none;
+  border-top: var(--border-width-thin) solid var(--border-color-default);
+  margin-block: var(--spacing-l);
+  opacity: 0.6;
+}
+
+/* Text formatting */
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+small {
+  font-size: var(--font-size-s);
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+del,
+s {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-danger);
+  opacity: 0.7;
+}
+
+ins {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--color-success);
+}
+
+mark {
+  background-color: var(--color-yellow-lightest);
+  color: var(--color-text-base-on-light);
+  padding-inline: var(--spacing-xs);
+  border-radius: var(--border-radius-xs);
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  cursor: help;
+}

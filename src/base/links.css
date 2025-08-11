@@ -1,0 +1,40 @@
+/**
+ * @category Base
+ * @description Link and anchor tag normalization. Provides consistent link styling, hover states, focus management, and accessibility enhancements for all hyperlinks.
+ * @order 4
+ */
+
+/* ===================================================================
+   Links
+   Anchor tags and link states
+   =================================================================== */
+
+a {
+  background-color: transparent;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: var(--transition-colors);
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-xs);
+}
+
+a:visited {
+  color: color-mix(in oklab, var(--color-link) 70%, var(--color-text-base) 30%);
+}
+
+/* Remove underline from linked images */
+a:has(img) {
+  text-decoration: none;
+}

@@ -1,0 +1,47 @@
+/**
+ * @category Base
+ * @description Custom scrollbar styling for modern browsers. Creates consistent, themed scrollbars across Webkit browsers and Firefox with proper colors and sizing.
+ * @order 14
+ */
+
+/* ===================================================================
+   Scrollbar Styles
+   Custom scrollbar styling for Webkit and Firefox
+   =================================================================== */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color-surface-light);
+  border-radius: var(--border-radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: var(--border-radius-full);
+  border: 2px solid var(--background-color-surface-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-dark);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-muted) var(--background-color-surface-light);
+}
+
+/* Horizontal scrollbar specific */
+::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+/* Corner where scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: var(--background-color-surface-light);
+}

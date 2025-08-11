@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groundwork Harmony - Kitchen Sink Showcase</title>
+  <meta name="description" content="A comprehensive demonstration of all HTML elements styled with Groundwork Harmony normalization">
+
+  <link rel="stylesheet" href="src/fonts/fonts.css">
+  <!-- Groundwork Harmony Base Files -->
+  <link rel="stylesheet" href="src/tokens/groundwork-tokens.css">
+  <link rel="stylesheet" href="src/base/root.css">
+  <link rel="stylesheet" href="src/base/reset.css">
+  <link rel="stylesheet" href="src/base/typography.css">
+  <link rel="stylesheet" href="src/base/links.css">
+  <link rel="stylesheet" href="src/base/lists.css">
+  <link rel="stylesheet" href="src/base/quotes.css">
+  <link rel="stylesheet" href="src/base/code.css">
+  <link rel="stylesheet" href="src/base/embedded.css">
+  <link rel="stylesheet" href="src/base/tables.css">
+  <link rel="stylesheet" href="src/base/forms.css">
+  <link rel="stylesheet" href="src/base/interactive.css">
+  <link rel="stylesheet" href="src/base/semantic.css">
+  <link rel="stylesheet" href="src/base/accessibility.css">
+  <link rel="stylesheet" href="src/base/scrollbar.css">
+  <link rel="stylesheet" href="src/base/selection.css">
+  <link rel="stylesheet" href="src/base/motion.css">
+  <link rel="stylesheet" href="src/print/print.css">
+
+  <!-- Optional: Theme Toggle Styles -->
+  <style>
+    /* Layout helper for demo */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      padding: 0.5rem 1rem;
+      background: var(--color-primary, #8f2fe9);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    .demo-section {
+      border-top: 3px solid var(--color-primary, #8f2fe9);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .color-swatch {
+      height: 100px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Dark theme overrides for testing if tokens.css doesn't have them */
+    [data-theme="dark"] {
+      --background-color-body: #121212;
+      --background-color-surface: #1e1e1e;
+      --background-color-surface-light: #2c2c2c;
+      --background-color-surface-dark: #0a0a0a;
+      --color-text-base: rgba(255, 255, 255, 0.87);
+      --color-text-base-inverse: rgba(0, 0, 0, 0.87);
+      --color-link: #64b5f6;
+      --color-link-hover: #90caf9;
+      --border-color-default: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Visual feedback for theme */
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+
+  <!-- Theme Toggle Script (in head to avoid undefined function error) -->
+  <script>
+    // Theme Toggle Function
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Update button text
+      const button = document.querySelector('.theme-toggle');
+      if (button) {
+        button.textContent = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+      }
+
+      console.log('Theme switched to:', newTheme);
+    }
+
+    // Load saved theme on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      // Set initial button text
+      const button = document.querySelector('.theme-toggle');
+      if (button) {
+        button.textContent = savedTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+      }
+
+      console.log('Theme loaded:', savedTheme);
+    });
+  </script>
+</head>
+<body>
+<!-- Skip to main content link -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+<div class="container">
+  <header>
+    <h1>🎨 Groundwork Harmony Kitchen Sink</h1>
+    <p>A comprehensive showcase of all HTML elements styled with Groundwork Harmony. This page demonstrates typography, forms, tables, media, and interactive elements with no custom classes - pure semantic HTML enhanced by our normalization.</p>
+    <nav>
+      <ul>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#text-semantics">Text Semantics</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#quotes">Quotations</a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#links">Links</a></li>
+        <li><a href="#embedded">Embedded Content</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#interactive">Interactive</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article>
+      <!-- Typography Section -->
+      <section id="typography" class="demo-section">
+        <h2>Typography</h2>
+        <p>Harmonize provides a consistent typographic scale using design tokens. All headings use the <code>--font-family-headings</code> token with appropriate sizes and weights.</p>
+
+        <h1>Heading Level 1 - The Largest Display</h1>
+        <p>Primary page titles use <code>--font-size-xxl</code> with increased margin for visual hierarchy.</p>
+
+        <h2>Heading Level 2 - Major Sections</h2>
+        <p>Section headers use <code>--font-size-xl</code> for clear content division.</p>
+
+        <h3>Heading Level 3 - Subsections</h3>
+        <p>Subsection headers use <code>--font-size-l</code> for nested content organization.</p>
+
+        <h4>Heading Level 4 - Content Groups</h4>
+        <p>Smaller headings begin to approach body text size but maintain visual weight.</p>
+
+        <h5>Heading Level 5 - Minor Headings</h5>
+        <p>These use the base font size with different weight for subtle emphasis.</p>
+
+        <h6>Heading Level 6 - Smallest Headers</h6>
+        <p>The smallest heading uses uppercase transformation for distinction.</p>
+
+        <hr>
+
+        <h3>Paragraph Text</h3>
+        <p>This is a standard paragraph demonstrating the default line height and spacing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        <p>Paragraphs have a maximum width of 65 characters for optimal readability. This ensures that lines don't become too long on wide screens, which would make reading difficult. The <code>text-wrap: pretty</code> property improves text flow and prevents awkward breaks.</p>
+      </section>
+
+      <!-- Text Semantics Section -->
+      <section id="text-semantics" class="demo-section">
+        <h2>Text Semantics & Formatting</h2>
+
+        <h3>Inline Text Elements</h3>
+        <p>
+          Text can be <strong>strong (bold)</strong> or <b>simply bold</b>,
+          <em>emphasized (italic)</em> or <i>simply italic</i>,
+          <mark>highlighted with mark</mark>,
+          <small>made smaller</small>,
+          <del>deleted (strikethrough)</del>,
+          <ins>inserted (underlined)</ins>,
+          <s>struck through</s>,
+          or <u>underlined</u>.
+        </p>
+
+        <h3>Scientific Notation</h3>
+        <p>
+          Water formula: H<sub>2</sub>O<br>
+          Einstein's equation: E=mc<sup>2</sup><br>
+          The 21<sup>st</sup> century began in 2001.
+        </p>
+
+        <h3>Abbreviations & Definitions</h3>
+        <p>
+          The <abbr title="World Wide Web Consortium">W3C</abbr> maintains
+          <abbr title="Hypertext Markup Language">HTML</abbr> standards.
+          <abbr title="Cascading Style Sheets">CSS</abbr> is used for styling.
+          The <abbr title="Document Object Model">DOM</abbr> represents document structure.
+        </p>
+
+        <h3>Computer Output</h3>
+        <p>
+          Variables in math: <var>x</var> + <var>y</var> = <var>z</var><br>
+          Sample output: <samp>Error 404: File not found</samp><br>
+          Keyboard input: Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> for DevTools
+        </p>
+
+        <h3>Addresses & Contact</h3>
+        <address>
+          Groundwork Harmony Project<br>
+          123 Design System Lane<br>
+          Semantic City, HTML 12345<br>
+          Email: <a href="mailto:hello@harmonize.css">hello@harmonize.css</a>
+        </address>
+      </section>
+
+      <!-- Lists Section -->
+      <section id="lists" class="demo-section">
+        <h2>Lists</h2>
+
+        <div class="grid grid-2">
+          <div>
+            <h3>Unordered Lists</h3>
+            <ul>
+              <li>First level item one</li>
+              <li>First level item two
+                <ul>
+                  <li>Second level item one</li>
+                  <li>Second level item two
+                    <ul>
+                      <li>Third level item one</li>
+                      <li>Third level item two</li>
+                    </ul>
+                  </li>
+                  <li>Second level item three</li>
+                </ul>
+              </li>
+              <li>First level item three</li>
+              <li>First level item four</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Ordered Lists</h3>
+            <ol>
+              <li>First step in the process</li>
+              <li>Second step with substeps
+                <ol>
+                  <li>Substep A preparation</li>
+                  <li>Substep B execution
+                    <ol>
+                      <li>Detailed point 1</li>
+                      <li>Detailed point 2</li>
+                    </ol>
+                  </li>
+                  <li>Substep C completion</li>
+                </ol>
+              </li>
+              <li>Third step verification</li>
+              <li>Fourth step deployment</li>
+            </ol>
+          </div>
+        </div>
+
+        <h3>Definition Lists</h3>
+        <dl>
+          <dt>Groundwork Harmony</dt>
+          <dd>A modern normalization library that brings consistency to HTML elements across all browsers.</dd>
+          <dd>Built on the Groundwork design system with token-based architecture.</dd>
+
+          <dt>Design Tokens</dt>
+          <dd>Named entities that store visual design attributes such as colors, typography, spacing, and shadows.</dd>
+
+          <dt>Normalization</dt>
+          <dd>The process of making HTML elements render consistently across different browsers and platforms.</dd>
+
+          <dt>Semantic HTML</dt>
+          <dd>Using HTML elements according to their intended purpose to convey meaning and structure.</dd>
+        </dl>
+      </section>
+
+      <!-- Quotations Section -->
+      <section id="quotes" class="demo-section">
+        <h2>Quotations & Citations</h2>
+
+        <h3>Inline Quotes</h3>
+        <p>
+          As Tim Berners-Lee said, <q>The Web does not just connect machines, it connects people.</q>
+          Another famous quote: <q>Any sufficiently advanced technology is indistinguishable from magic.</q> by Arthur C. Clarke.
+        </p>
+
+        <h3>Block Quotations</h3>
+        <blockquote>
+          <p>Design is not just what it looks like and feels like. Design is how it works. The design of the Mac wasn't what it looked like, although that was part of it. Primarily, it was how it worked.</p>
+          <p>To design something really well, you have to get it. You have to really grok what it's all about. It takes a passionate commitment to really thoroughly understand something, chew it up, not just quickly swallow it.</p>
+        </blockquote>
+
+        <p>The above quote is from <cite>Steve Jobs: The Exclusive Biography</cite> by Walter Isaacson.</p>
+
+        <h3>Nested Blockquote</h3>
+        <blockquote>
+          <p>This is the outer quote discussing web standards.</p>
+          <blockquote>
+            <p>This is a nested quote providing additional context or a response to the outer quote.</p>
+          </blockquote>
+          <p>And we continue with the outer quote after the nested one.</p>
+        </blockquote>
+      </section>
+
+      <!-- Code Section -->
+      <section id="code" class="demo-section">
+        <h2>Code & Preformatted Text</h2>
+
+        <h3>Inline Code</h3>
+        <p>
+          Use <code>display: grid</code> for complex layouts,
+          <code>var(--color-primary)</code> for theme colors, and
+          <code>calc(100vh - 60px)</code> for dynamic heights.
+        </p>
+
+        <h3>Preformatted Code Block</h3>
+        <pre>/* Groundwork Harmony Token Usage Example */
+:root {
+  --color-primary: #8f2fe9;
+  --spacing-unit: 8px;
+  --font-size-base: 1.6rem;
+}
+
+.component {
+  padding: var(--spacing-unit);
+  color: var(--color-primary);
+  font-size: var(--font-size-base);
+  transition: all 0.3s ease;
+}</pre>
+
+        <h3>Code with Syntax (using code inside pre)</h3>
+        <pre><code>// JavaScript Example
+function harmonize(elements) {
+  const tokens = getComputedStyle(document.documentElement);
+
+  elements.forEach(element => {
+    element.style.setProperty('--primary', tokens.getPropertyValue('--color-primary'));
+    element.classList.add('harmonized');
+  });
+
+  return elements.length;
+}</code></pre>
+
+        <h3>ASCII Art Preformatted</h3>
+        <pre>
+    ╔══════════════════════════════╗
+    ║   Groundwork Harmony FRAMEWORK    ║
+    ╠══════════════════════════════╣
+    ║  ♦ Modern                    ║
+    ║  ♦ Modular                   ║
+    ║  ♦ Accessible                ║
+    ║  ♦ Token-based               ║
+    ╚══════════════════════════════╝
+          </pre>
+      </section>
+
+      <!-- Links Section -->
+      <section id="links" class="demo-section">
+        <h2>Links & Anchors</h2>
+
+        <h3>Different Link States</h3>
+        <p>
+          Here's a <a href="#links">standard internal link</a>,
+          an <a href="https://www.example.com">external link</a>,
+          a <a href="https://www.w3.org/TR/CSS/">visited link (W3C CSS)</a>,
+          and a <a href="mailto:contact@example.com">mailto link</a>.
+        </p>
+
+        <h3>Links with Various Protocols</h3>
+        <ul>
+          <li><a href="https://example.com">HTTPS Protocol</a></li>
+          <li><a href="http://example.com">HTTP Protocol</a></li>
+          <li><a href="ftp://example.com">FTP Protocol</a></li>
+          <li><a href="tel:+1234567890">Telephone Link</a></li>
+          <li><a href="sms:+1234567890">SMS Link</a></li>
+          <li><a href="#section">Anchor Link</a></li>
+          <li><a href="javascript:void(0)">JavaScript Link</a></li>
+        </ul>
+
+        <h3>Link with Image</h3>
+        <a href="#embedded">
+          <img src="https://placehold.co/200x100/8f2fe9/ffffff?text=Linked+Image" alt="This image is a link">
+        </a>
+      </section>
+
+      <!-- Embedded Content Section -->
+      <section id="embedded" class="demo-section">
+        <h2>Embedded Content</h2>
+
+        <h3>Images</h3>
+        <img src="https://placehold.co/800x400/8f2fe9/ffffff?text=Responsive+Image" alt="Full width responsive image">
+
+        <h3>Figure with Caption</h3>
+        <figure>
+          <img src="https://placehold.co/600x300/594af6/ffffff?text=Figure+Element" alt="Image within figure element">
+          <figcaption>
+            <strong>Figure 1:</strong> This caption describes the image above. Figures are perfect for images, diagrams, illustrations, code snippets, etc., that are referenced from the main content.
+          </figcaption>
+        </figure>
+
+        <h3>Picture Element (Responsive Images)</h3>
+        <picture>
+          <source media="(min-width: 1024px)" srcset="https://placehold.co/1200x400/00756a/ffffff?text=Desktop+View">
+          <source media="(min-width: 768px)" srcset="https://placehold.co/800x400/007894/ffffff?text=Tablet+View">
+          <img src="https://placehold.co/400x300/0678be/ffffff?text=Mobile+View" alt="Responsive image with art direction">
+        </picture>
+
+        <h3>Inline SVG</h3>
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="80" stroke="var(--color-primary)" stroke-width="4" fill="none"/>
+          <path d="M 60 100 L 85 125 L 140 70" stroke="var(--color-success)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <h3>Video Element</h3>
+        <video controls poster="https://placehold.co/800x450/337539/ffffff?text=Video+Poster">
+          <source src="movie.mp4" type="video/mp4">
+          <source src="movie.webm" type="video/webm">
+          <track kind="captions" src="captions.vtt" srclang="en" label="English">
+          Your browser doesn't support HTML5 video.
+        </video>
+
+        <h3>Audio Element</h3>
+        <audio controls>
+          <source src="audio.mp3" type="audio/mpeg">
+          <source src="audio.ogg" type="audio/ogg">
+          Your browser doesn't support HTML5 audio.
+        </audio>
+
+        <h3>IFrame Embed</h3>
+        <iframe
+          src="https://www.example.com"
+          title="Example iframe content"
+          loading="lazy">
+        </iframe>
+
+        <h3>Canvas Element</h3>
+        <canvas id="canvas" width="400" height="200">
+          Your browser doesn't support canvas.
+        </canvas>
+      </section>
+
+      <!-- Tables Section -->
+      <section id="tables" class="demo-section">
+        <h2>Tables</h2>
+
+        <h3>Simple Table</h3>
+        <table>
+          <caption>Groundwork Harmony Module Overview</caption>
+          <thead>
+          <tr>
+            <th>Module</th>
+            <th>File Size</th>
+            <th>Purpose</th>
+            <th>Load Order</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>root.css</td>
+            <td>2.1kb</td>
+            <td>Document setup</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>reset.css</td>
+            <td>1.8kb</td>
+            <td>Box model reset</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>typography.css</td>
+            <td>3.2kb</td>
+            <td>Text elements</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>forms.css</td>
+            <td>5.4kb</td>
+            <td>Form controls</td>
+            <td>10</td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="2"><strong>Total Size:</strong></td>
+            <td colspan="2"><strong>~35kb</strong> (uncompressed)</td>
+          </tr>
+          </tfoot>
+        </table>
+
+        <h3>Complex Table with Column Groups</h3>
+        <table>
+          <caption>Browser Support Matrix</caption>
+          <colgroup>
+            <col>
+            <col span="2" style="background-color: var(--background-color-surface-light);">
+            <col span="2">
+          </colgroup>
+          <thead>
+          <tr>
+            <th rowspan="2">Feature</th>
+            <th colspan="2">Desktop</th>
+            <th colspan="2">Mobile</th>
+          </tr>
+          <tr>
+            <th>Chrome</th>
+            <th>Firefox</th>
+            <th>Safari iOS</th>
+            <th>Chrome Android</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th>CSS Variables</th>
+            <td>✅ 49+</td>
+            <td>✅ 31+</td>
+            <td>✅ 9.1+</td>
+            <td>✅ 49+</td>
+          </tr>
+          <tr>
+            <th>Grid Layout</th>
+            <td>✅ 57+</td>
+            <td>✅ 52+</td>
+            <td>✅ 10.1+</td>
+            <td>✅ 57+</td>
+          </tr>
+          <tr>
+            <th>color-mix()</th>
+            <td>✅ 111+</td>
+            <td>✅ 113+</td>
+            <td>✅ 16.2+</td>
+            <td>✅ 111+</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Forms Section -->
+      <section id="forms" class="demo-section">
+        <h2>Forms & Inputs</h2>
+
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Text Input Types</legend>
+
+            <label for="text-input">Text Input</label>
+            <input type="text" id="text-input" name="text" placeholder="Enter some text" required>
+
+            <label for="email-input">Email Address</label>
+            <input type="email" id="email-input" name="email" placeholder="user@example.com" required>
+
+            <label for="password-input">Password</label>
+            <input type="password" id="password-input" name="password" placeholder="Enter password" minlength="8">
+
+            <label for="url-input">Website URL</label>
+            <input type="url" id="url-input" name="url" placeholder="https://example.com">
+
+            <label for="tel-input">Phone Number</label>
+            <input type="tel" id="tel-input" name="tel" placeholder="+1 (555) 123-4567" pattern="[+][0-9]{1} [(][0-9]{3}[)] [0-9]{3}-[0-9]{4}">
+
+            <label for="search-input">Search</label>
+            <input type="search" id="search-input" name="search" placeholder="Search...">
+
+            <label for="number-input">Number (1-100)</label>
+            <input type="number" id="number-input" name="number" min="1" max="100" step="5" value="50">
+
+            <label for="textarea-input">Message</label>
+            <textarea id="textarea-input" name="message" rows="5" placeholder="Enter your message here..." maxlength="500"></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Date & Time Inputs</legend>
+
+            <label for="date-input">Date</label>
+            <input type="date" id="date-input" name="date" min="2024-01-01" max="2025-12-31">
+
+            <label for="time-input">Time</label>
+            <input type="time" id="time-input" name="time">
+
+            <label for="datetime-input">Date & Time</label>
+            <input type="datetime-local" id="datetime-input" name="datetime">
+
+            <label for="month-input">Month</label>
+            <input type="month" id="month-input" name="month">
+
+            <label for="week-input">Week</label>
+            <input type="week" id="week-input" name="week">
+          </fieldset>
+
+          <fieldset>
+            <legend>Selection Controls</legend>
+
+            <label for="select-single">Single Select</label>
+            <select id="select-single" name="single-select">
+              <option value="">Choose an option...</option>
+              <optgroup label="Primary Colors">
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="yellow">Yellow</option>
+              </optgroup>
+              <optgroup label="Secondary Colors">
+                <option value="green">Green</option>
+                <option value="purple">Purple</option>
+                <option value="orange">Orange</option>
+              </optgroup>
+            </select>
+
+            <label for="select-multiple">Multiple Select (Ctrl/Cmd + Click)</label>
+            <select id="select-multiple" name="multi-select" multiple size="6">
+              <option value="html">HTML</option>
+              <option value="css" selected>CSS</option>
+              <option value="js">JavaScript</option>
+              <option value="ts">TypeScript</option>
+              <option value="react">React</option>
+              <option value="vue">Vue</option>
+            </select>
+
+            <label for="datalist-input">Datalist (with suggestions)</label>
+            <input list="frameworks" id="datalist-input" name="framework" placeholder="Type or select...">
+            <datalist id="frameworks">
+              <option value="Bootstrap">
+              <option value="Foundation">
+              <option value="Bulma">
+              <option value="Tailwind CSS">
+              <option value="Groundwork Harmony">
+            </datalist>
+          </fieldset>
+
+          <fieldset>
+            <legend>Checkboxes & Radio Buttons</legend>
+
+            <div>
+              <label>
+                <input type="checkbox" name="features" value="responsive" checked>
+                Responsive Design
+              </label>
+              <label>
+                <input type="checkbox" name="features" value="accessible">
+                Accessibility Support
+              </label>
+              <label>
+                <input type="checkbox" name="features" value="themes">
+                Dark Mode
+              </label>
+              <label>
+                <input type="checkbox" name="features" value="modular" disabled>
+                Modular (Disabled)
+              </label>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <label>
+                <input type="radio" name="license" value="mit" checked>
+                MIT License
+              </label>
+              <label>
+                <input type="radio" name="license" value="apache">
+                Apache 2.0
+              </label>
+              <label>
+                <input type="radio" name="license" value="gpl">
+                GPL v3
+              </label>
+              <label>
+                <input type="radio" name="license" value="proprietary" disabled>
+                Proprietary (Disabled)
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Special Input Types</legend>
+
+            <label for="range-input">Range Slider (0-100)</label>
+            <input type="range" id="range-input" name="range" min="0" max="100" value="75" step="5">
+            <output for="range-input">75</output>
+
+            <label for="color-input">Color Picker</label>
+            <input type="color" id="color-input" name="color" value="#8f2fe9">
+
+            <label for="file-input">Single File Upload</label>
+            <input type="file" id="file-input" name="file" accept="image/*,.pdf">
+
+            <label for="files-input">Multiple Files Upload</label>
+            <input type="file" id="files-input" name="files" multiple accept=".jpg,.jpeg,.png,.gif">
+
+            <label for="hidden-input">Hidden Input (not visible)</label>
+            <input type="hidden" id="hidden-input" name="hidden" value="secret-value">
+          </fieldset>
+
+          <fieldset>
+            <legend>Progress Indicators</legend>
+
+            <label for="progress">Upload Progress</label>
+            <progress id="progress" max="100" value="70">70%</progress>
+
+            <label for="meter-low">Meter (Low)</label>
+            <meter id="meter-low" min="0" max="100" low="25" high="75" optimum="85" value="20">20/100</meter>
+
+            <label for="meter-medium">Meter (Medium)</label>
+            <meter id="meter-medium" min="0" max="100" low="25" high="75" optimum="85" value="50">50/100</meter>
+
+            <label for="meter-high">Meter (High)</label>
+            <meter id="meter-high" min="0" max="100" low="25" high="75" optimum="85" value="90">90/100</meter>
+          </fieldset>
+
+          <fieldset>
+            <legend>Form Buttons</legend>
+
+            <button type="button">Standard Button</button>
+            <button type="submit">Submit Form</button>
+            <button type="reset">Reset Form</button>
+            <button disabled>Disabled Button</button>
+
+            <input type="button" value="Input Button">
+            <input type="submit" value="Input Submit">
+            <input type="reset" value="Input Reset">
+            <input type="button" value="Disabled" disabled>
+          </fieldset>
+
+          <fieldset disabled>
+            <legend>Disabled Fieldset</legend>
+            <p>All form controls within this fieldset are automatically disabled.</p>
+            <label for="disabled-text">Text Input</label>
+            <input type="text" id="disabled-text" placeholder="This is disabled">
+            <button>Also Disabled</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- Interactive Elements Section -->
+      <section id="interactive" class="demo-section">
+        <h2>Interactive Elements</h2>
+
+        <h3>Details & Summary (Disclosure Widget)</h3>
+        <details>
+          <summary>What is Groundwork Harmony?</summary>
+          <p>Groundwork Harmony is a modern normalization library that provides consistent styling for HTML elements across all browsers. It's built on a token-based design system and focuses on accessibility, performance, and modern CSS features.</p>
+          <p>Key features include:</p>
+          <ul>
+            <li>Modular architecture</li>
+            <li>Design tokens</li>
+            <li>Dark mode support</li>
+            <li>Print optimization</li>
+          </ul>
+        </details>
+
+        <details open>
+          <summary>Why is this details element open?</summary>
+          <p>This details element has the <code>open</code> attribute, making it expanded by default when the page loads. This is useful for important information you want immediately visible.</p>
+        </details>
+
+        <details>
+          <summary>Nested Details Elements</summary>
+          <p>You can even nest details elements for hierarchical information:</p>
+          <details>
+            <summary>Nested Level 1</summary>
+            <p>This is nested content.</p>
+            <details>
+              <summary>Nested Level 2</summary>
+              <p>Even deeper nesting is possible!</p>
+            </details>
+          </details>
+        </details>
+
+        <h3>Dialog Modal</h3>
+        <button onclick="document.getElementById('demo-dialog').showModal()">Open Modal Dialog</button>
+        <button onclick="document.getElementById('demo-dialog').show()">Open Non-Modal Dialog</button>
+
+        <dialog id="demo-dialog">
+          <h3>Dialog Example</h3>
+          <p>This is a native HTML5 dialog element. It can be modal (blocks interaction with the rest of the page) or non-modal.</p>
+          <p>The backdrop is automatically styled with blur and overlay.</p>
+          <form method="dialog">
+            <button type="submit">Close Dialog</button>
+            <button type="button" onclick="this.closest('dialog').close()">Cancel</button>
+          </form>
+        </dialog>
+
+        <h3>Template Element</h3>
+        <p>The template element below contains content that is not rendered. It's used for client-side templating:</p>
+        <template id="card-template">
+          <div class="card">
+            <h4>Template Content</h4>
+            <p>This content is inside a template and won't be visible on the page.</p>
+          </div>
+        </template>
+        <p><em>Note: Template content is hidden but can be cloned and inserted via JavaScript.</em></p>
+      </section>
+
+      <!-- Semantic HTML5 Section -->
+      <section id="semantic" class="demo-section">
+        <h2>Semantic HTML5 Elements</h2>
+        <p>This entire page demonstrates semantic HTML5 elements in action:</p>
+        <ul>
+          <li><strong>&lt;header&gt;</strong> - Contains the page title and navigation</li>
+          <li><strong>&lt;nav&gt;</strong> - Navigation links at the top</li>
+          <li><strong>&lt;main&gt;</strong> - The main content area</li>
+          <li><strong>&lt;article&gt;</strong> - This independent content piece</li>
+          <li><strong>&lt;section&gt;</strong> - Each demo section</li>
+          <li><strong>&lt;aside&gt;</strong> - Sidebar content (see below)</li>
+          <li><strong>&lt;footer&gt;</strong> - Page footer information</li>
+          <li><strong>&lt;figure&gt;</strong> - Images with captions</li>
+          <li><strong>&lt;figcaption&gt;</strong> - Captions for figures</li>
+          <li><strong>&lt;address&gt;</strong> - Contact information</li>
+        </ul>
+      </section>
+
+      <!-- Color System Demo -->
+      <section id="colors" class="demo-section">
+        <h2>Color System</h2>
+        <p>Harmonize uses semantic color tokens from the Groundwork design system:</p>
+
+        <div class="color-grid">
+          <div class="color-swatch" style="background: var(--color-primary)">Primary</div>
+          <div class="color-swatch" style="background: var(--color-secondary)">Secondary</div>
+          <div class="color-swatch" style="background: var(--color-accent)">Accent</div>
+          <div class="color-swatch" style="background: var(--color-success)">Success</div>
+          <div class="color-swatch" style="background: var(--color-warning)">Warning</div>
+          <div class="color-swatch" style="background: var(--color-danger)">Danger</div>
+          <div class="color-swatch" style="background: var(--color-info)">Info</div>
+          <div class="color-swatch" style="background: var(--color-muted); color: var(--color-text-base)">Muted</div>
+        </div>
+      </section>
+
+      <!-- Accessibility Features -->
+      <section id="accessibility" class="demo-section">
+        <h2>Accessibility Features</h2>
+
+        <h3>Screen Reader Only Content</h3>
+        <p>The following content is only visible to screen readers: <span class="sr-only">This text is hidden visually but accessible to screen readers.</span></p>
+
+        <h3>Skip Links</h3>
+        <p>This page includes a skip link at the very top (Tab to reveal it) that allows keyboard users to skip directly to the main content.</p>
+
+        <h3>Focus States</h3>
+        <p>Try tabbing through the page to see the focus states on interactive elements. All focusable elements have clear visual indicators.</p>
+
+        <h3>Reduced Motion</h3>
+        <p>If you have "prefers-reduced-motion" enabled in your system settings, all animations and transitions are automatically disabled.</p>
+
+        <h3>Touch Targets</h3>
+        <p>On touch devices, interactive elements have minimum touch target sizes of 44x44 pixels for better usability.</p>
+      </section>
+    </article>
+
+    <aside>
+      <h2>Sidebar Content</h2>
+      <p>This is an <code>&lt;aside&gt;</code> element, typically used for content that is tangentially related to the main content.</p>
+
+      <h3>Quick Stats</h3>
+      <ul>
+        <li>17 CSS modules</li>
+        <li>~35KB total size</li>
+        <li>Zero dependencies</li>
+        <li>MIT licensed</li>
+      </ul>
+
+      <h3>Related Links</h3>
+      <nav>
+        <ul>
+          <li><a href="#top">Back to Top</a></li>
+          <li><a href="https://github.com">GitHub Repository</a></li>
+          <li><a href="https://www.w3.org/">W3C Standards</a></li>
+          <li><a href="https://developer.mozilla.org/">MDN Web Docs</a></li>
+        </ul>
+      </nav>
+
+      <h3>Note</h3>
+      <p><small>This sidebar demonstrates the <code>&lt;aside&gt;</code> element styling with a primary border and subtle background.</small></p>
+    </aside>
+  </main>
+
+  <footer>
+    <hr>
+    <h2>Footer Information</h2>
+    <p>This <code>&lt;footer&gt;</code> element contains supplementary information about the document.</p>
+
+    <div class="grid grid-2">
+      <div>
+        <h3>About Harmonize</h3>
+        <p>A modern CSS normalization library that brings consistency and harmony to web elements. Built on the Groundwork design system with a focus on accessibility and modern CSS features.</p>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <address>
+          Groundwork Harmony Project<br>
+          <a href="mailto:hello@harmonize.css">hello@harmonize.css</a><br>
+          <a href="https://github.com/harmonize">GitHub</a> |
+          <a href="https://twitter.com/harmonize">Twitter</a> |
+          <a href="https://harmonize.css">Website</a>
+        </address>
+      </div>
+    </div>
+
+    <p><small>&copy; 2025 Groundwork Harmony. Released under the MIT License. Built with ❤️ for modern web development.</small></p>
+  </footer>
+</div>
+
+<!-- Additional Interactive Demo Scripts -->
+<script>
+  // Range input value display
+  const rangeInput = document.getElementById('range-input');
+  const rangeOutput = document.querySelector('output[for="range-input"]');
+  if (rangeInput && rangeOutput) {
+    rangeInput.addEventListener('input', (e) => {
+      rangeOutput.textContent = e.target.value;
+    });
+  }
+
+  // Canvas demo drawing
+  const canvas = document.getElementById('canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+
+    // Draw gradient background
+    const gradient = ctx.createLinearGradient(0, 0, 400, 0);
+    gradient.addColorStop(0, '#8f2fe9');
+    gradient.addColorStop(0.5, '#594af6');
+    gradient.addColorStop(1, '#0678be');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 400, 200);
+
+    // Draw text
+    ctx.font = 'bold 24px sans-serif';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Canvas Element Demo', 200, 100);
+  }
+
+  // Console message
+  console.log(
+    '%c✨ Groundwork Harmony Kitchen Sink',
+    'font-size: 20px; color: #8f2fe9; font-weight: bold;'
+  );
+  console.log('All elements are styled purely with Groundwork Harmony normalization - no custom classes needed!');
+</script>
+</body>
+</html>

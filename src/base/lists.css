@@ -1,0 +1,44 @@
+/**
+ * @category Base
+ * @description List element normalization for ordered, unordered, and definition lists. Establishes consistent spacing, nesting behavior, and marker styling.
+ * @order 5
+ */
+
+/* ===================================================================
+   Lists
+   Unordered, ordered, and definition lists
+   =================================================================== */
+
+ul, ol {
+  margin-block: var(--spacing-m);
+  padding-inline-start: var(--spacing-l);
+}
+
+/* Nested lists */
+ul ul, ul ol, ol ul, ol ol {
+  margin-block: var(--spacing-xs);
+}
+
+li {
+  margin-block: var(--spacing-xs);
+}
+
+/* Better marker alignment */
+li::marker {
+  color: var(--color-primary);
+}
+
+/* Definition lists */
+dl {
+  margin-block: var(--spacing-m);
+}
+
+dt {
+  font-weight: var(--font-weight-semibold);
+  margin-block-start: var(--spacing-s);
+}
+
+dd {
+  margin-inline-start: var(--spacing-l);
+  margin-block: var(--spacing-xs);
+}

@@ -1,0 +1,17 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "doctype-style": "error",
+    "no-obsolete-elements": "error",
+    "no-inline-style": "error",
+    "no-trailing-whitespace": "error",
+    "no-implicit-input-type": "error",
+    "wcag/h32": "error",
+    "wcag/label-implicit": "error",
+    "wcag/heading-level": "warn",
+    "prefer-native-element": "error",
+    "require-sri": "off",
+    "svg-focusable": "warn",
+    "void-style": "error"
+  }
+}

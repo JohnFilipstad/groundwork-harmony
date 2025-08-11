@@ -1,0 +1,54 @@
+/**
+ * @category Base
+ * @description HTML5 semantic element normalization. Ensures proper display and spacing for structural elements like main, article, section, nav, aside, header, and footer.
+ * @order 12
+ */
+
+/* ===================================================================
+   Semantic HTML5 Elements
+   Structural and semantic HTML5 elements
+   =================================================================== */
+
+main {
+  display: block;
+  /* Ensure main content is accessible */
+  min-height: 50vh;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure {
+  display: block;
+}
+
+header {
+  margin-block-end: var(--spacing-l);
+}
+
+footer {
+  margin-block-start: var(--spacing-l);
+}
+
+nav {
+  margin-block: var(--spacing-m);
+}
+
+article {
+  margin-block: var(--spacing-xl);
+}
+
+section {
+  margin-block: var(--spacing-l);
+}
+
+aside {
+  padding: var(--spacing-m);
+  margin-block: var(--spacing-m);
+  border-inline-start: var(--border-width-thick) solid var(--color-primary);
+  background-color: var(--background-color-surface-light);
+}

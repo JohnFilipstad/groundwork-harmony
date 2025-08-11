@@ -1,0 +1,62 @@
+/**
+ * @category Base
+ * @description Interactive HTML5 element normalization. Styles details/summary disclosure widgets, dialog modals, and other interactive elements with proper states and animations.
+ * @order 11
+ */
+
+/* ===================================================================
+   Interactive Elements
+   Details, summary, dialog, and other interactive HTML5 elements
+   =================================================================== */
+
+details {
+  display: block;
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-s);
+  margin-block: var(--spacing-m);
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+  font-family: var(--font-family-sans), "Groundwork Sans", system-ui, sans-serif;
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-s);
+  margin: calc(var(--spacing-s) * -1);
+  margin-bottom: var(--spacing-s);
+  border-radius: var(--border-radius-xs);
+  transition: var(--transition-colors);
+}
+
+summary:hover {
+  background-color: var(--background-color-surface-light);
+}
+
+summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary {
+  margin-bottom: var(--spacing-s);
+}
+
+dialog {
+  border: none;
+  border-radius: var(--border-radius-m);
+  padding: var(--spacing-l);
+  background-color: var(--background-color-body);
+  color: var(--color-text-base);
+  box-shadow: var(--box-shadow-floating);
+  max-width: min(90vw, var(--container-width-s));
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}

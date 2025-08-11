@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Forms – Groundwork Harmony</title>
+  <link rel="stylesheet" href="../dist/groundwork-harmony.min.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><h1>Forms</h1></header>
+<main id="main">
+  <form action="#" method="post">
+    <fieldset>
+      <legend>Account</legend>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required />
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="new-password" required />
+
+      <label for="role">Role</label>
+      <select id="role" name="role">
+        <option value="">Please choose</option>
+        <option>Author</option>
+        <option>Editor</option>
+        <option>Admin</option>
+      </select>
+
+      <fieldset>
+        <legend>Preferences</legend>
+        <label><input type="checkbox" name="news" /> Receive news</label>
+        <label><input type="radio" name="mode" value="light" /> Light</label>
+        <label><input type="radio" name="mode" value="dark" /> Dark</label>
+      </fieldset>
+
+      <label for="bio">Bio</label>
+      <textarea id="bio" name="bio" placeholder="Tell us something…" rows="4"></textarea>
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </fieldset>
+  </form>
+</main>
+</body>
+</html>
