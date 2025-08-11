@@ -132,7 +132,7 @@
   /* --- Font Families (Semantic) --- */
   --font-family-sans:  "Groundwork Sans", system-ui, sans-serif;
   --font-family-serif: "Groundwork Serif", ui-serif, serif;
-  --font-family-monospace: "Lucida Console", monaco, monospace;
+  --font-family-mono: "Lucida Console", monaco, monospace;
   --font-family-base: var(--font-family-serif);
   --font-family-headings: var(--font-family-sans);
   --font-family-site-name: var(--font-family-sans);
@@ -526,7 +526,7 @@ html {
 /* Headings */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-headings);
+  font-family: var(--font-family-headings), "Groundwork Sans", sans-serif;
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-s);
@@ -758,7 +758,7 @@ blockquote {
 }
 
 q {
-  quotes: """ """ "'" "'";
+  quotes: "“" "”" "‘" "’";
 }
 
 q::before {
@@ -785,7 +785,7 @@ cite {
    =================================================================== */
 
 pre {
-  font-family: var(--font-family-monospace);
+  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
   font-size: var(--font-size-s);
   line-height: var(--line-height-relaxed);
   background-color: var(--background-color-surface-light);
@@ -804,7 +804,7 @@ code,
 kbd,
 samp,
 var {
-  font-family: var(--font-family-monospace);
+  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
   font-size: 0.9em;
   background-color: var(--background-color-surface-light);
   padding: 0.125em 0.25em;
@@ -850,9 +850,8 @@ img, picture, video, canvas, svg, iframe, embed, object {
 
 img {
   border-style: none;
-  /* Improve rendering */
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
+  /* Use modern, standard values for image rendering */ /* For Firefox */
+  image-rendering: pixelated; /* The modern standard for a crisp, pixelated look */
 }
 
 /* Lazy loading performance */
@@ -1334,7 +1333,7 @@ meter {
   align-items: center;
   padding: var(--spacing-s) var(--spacing-l);
   min-height: 44px; /* WCAG minimum touch target */
-  font-family: var(--font-family-base-base);
+  font-family: var(--font-family-base), "Groundwork Serif", serif;
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
@@ -1516,7 +1515,7 @@ meter {
 
 /* High Contrast Mode Support */
 
-@media (prefers-contrast: high) {
+@media (prefers-contrast: more) {
   .tabs a {
     border-color: var(--color-text-base);
   }
