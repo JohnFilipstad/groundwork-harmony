@@ -10,7 +10,7 @@
    =================================================================== */
 
 /* Make media elements responsive by default */
-img, picture, video, canvas, svg, iframe, embed, object {
+picture, video, canvas, svg, iframe, embed, object {
   display: block;
   max-width: 100%;
   height: auto;
@@ -18,10 +18,12 @@ img, picture, video, canvas, svg, iframe, embed, object {
 
 img {
   border-style: none;
+  max-width: 100%;
+  height: auto;
+  margin-inline: var(--spacing-m) var(--spacing-xs);
 
   /* Use modern, standard values for image rendering */
-  image-rendering: crisp-edges; /* For Firefox */
-  image-rendering: pixelated; /* The modern standard for a crisp, pixelated look */
+  image-rendering: crisp-edges;
 }
 
 /* Lazy loading performance */

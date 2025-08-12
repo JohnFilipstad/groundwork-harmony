@@ -1,4 +1,23 @@
 /*
+Groundwork Harmony 🎶
+
+A class-less CSS base for the modern web. Supercharge and harmonize your HTML with modern, accessible defaults, and powerful customization.
+
+---
+
+🎤 Why Settle for Noise? Orchestrate with Harmony.
+
+Welcome to Groundwork Harmony—the CSS base designed for creators who want their web projects to look striking, modern, and accessible right out of the box. 
+Why drown your markup in utility classes when you can let your HTML sing with semantic elegance?
+
+Groundwork Harmony is more than a stylesheet—it's a philosophy. 
+I believe your code should be music: clean, harmonious, and effortless to scale. 
+Groundwork Harmony supercharges HTML elements with modern, accessible defaults. 
+Think of it as normalize.css in high gear, blending innovation with reliability so you can focus on content, not configuration.
+*/
+
+
+/*
  * Groundwork Harmony CSS
  * A minimal, modern CSS framework for web projects.
  *
@@ -654,7 +673,7 @@ p {
   text-wrap: pretty;
 
   /* Limit line length for readability */
-  max-width: 75ch;
+  max-width: 100ch;
 }
 
 /* Horizontal rule */
@@ -921,7 +940,7 @@ pre code {
 
 /* Make media elements responsive by default */
 
-img, picture, video, canvas, svg, iframe, embed, object {
+picture, video, canvas, svg, iframe, embed, object {
   display: block;
   max-width: 100%;
   height: auto;
@@ -929,10 +948,12 @@ img, picture, video, canvas, svg, iframe, embed, object {
 
 img {
   border-style: none;
+  max-width: 100%;
+  height: auto;
+  margin-inline: var(--spacing-m) var(--spacing-xs);
 
   /* Use modern, standard values for image rendering */
-  image-rendering: crisp-edges; /* For Firefox */
-  image-rendering: pixelated; /* The modern standard for a crisp, pixelated look */
+  image-rendering: crisp-edges;
 }
 
 /* Lazy loading performance */
@@ -1263,7 +1284,7 @@ textarea::placeholder {
 textarea {
   overflow: auto;
   resize: vertical;
-  min-height: calc(var(--spacing-m) * 6);
+  min-height: calc(var(--spacing-l) * 10);
   width: 100%;
 }
 

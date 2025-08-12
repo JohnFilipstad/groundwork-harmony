@@ -60,7 +60,7 @@ p {
   text-wrap: pretty;
 
   /* Limit line length for readability */
-  max-width: 75ch;
+  max-width: 100ch;
 }
 
 /* Horizontal rule */

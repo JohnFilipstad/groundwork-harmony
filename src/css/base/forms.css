@@ -199,7 +199,7 @@ textarea::placeholder {
 textarea {
   overflow: auto;
   resize: vertical;
-  min-height: calc(var(--spacing-m) * 6);
+  min-height: calc(var(--spacing-l) * 10);
   width: 100%;
 }
 
