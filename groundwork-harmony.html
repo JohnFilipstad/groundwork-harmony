@@ -8,24 +8,24 @@
 
   <link rel="stylesheet" href="src/fonts/fonts.css">
   <!-- Groundwork Harmony Base Files -->
-  <link rel="stylesheet" href="src/tokens/groundwork-tokens.css">
-  <link rel="stylesheet" href="src/base/root.css">
-  <link rel="stylesheet" href="src/base/reset.css">
-  <link rel="stylesheet" href="src/base/typography.css">
-  <link rel="stylesheet" href="src/base/links.css">
-  <link rel="stylesheet" href="src/base/lists.css">
-  <link rel="stylesheet" href="src/base/quotes.css">
-  <link rel="stylesheet" href="src/base/code.css">
-  <link rel="stylesheet" href="src/base/embedded.css">
-  <link rel="stylesheet" href="src/base/tables.css">
-  <link rel="stylesheet" href="src/base/forms.css">
-  <link rel="stylesheet" href="src/base/interactive.css">
-  <link rel="stylesheet" href="src/base/semantic.css">
-  <link rel="stylesheet" href="src/base/accessibility.css">
-  <link rel="stylesheet" href="src/base/scrollbar.css">
-  <link rel="stylesheet" href="src/base/selection.css">
-  <link rel="stylesheet" href="src/base/motion.css">
-  <link rel="stylesheet" href="src/print/print.css">
+  <link rel="stylesheet" href="src/css/tokens/groundwork-tokens.css">
+  <link rel="stylesheet" href="src/css/base/root.css">
+  <link rel="stylesheet" href="src/css/base/reset.css">
+  <link rel="stylesheet" href="src/css/base/typography.css">
+  <link rel="stylesheet" href="src/css/base/links.css">
+  <link rel="stylesheet" href="src/css/base/lists.css">
+  <link rel="stylesheet" href="src/css/base/quotes.css">
+  <link rel="stylesheet" href="src/css/base/code.css">
+  <link rel="stylesheet" href="src/css/base/embedded.css">
+  <link rel="stylesheet" href="src/css/base/tables.css">
+  <link rel="stylesheet" href="src/css/base/forms.css">
+  <link rel="stylesheet" href="src/css/base/interactive.css">
+  <link rel="stylesheet" href="src/css/base/semantic.css">
+  <link rel="stylesheet" href="src/css/base/accessibility.css">
+  <link rel="stylesheet" href="src/css/base/scrollbar.css">
+  <link rel="stylesheet" href="src/css/base/selection.css">
+  <link rel="stylesheet" href="src/css/base/motion.css">
+  <link rel="stylesheet" href="src/css/print/print.css">
 
   <!-- Optional: Theme Toggle Styles -->
   <style>
@@ -50,13 +50,8 @@
       top: 1rem;
       right: 1rem;
       z-index: 1000;
-      padding: 0.5rem 1rem;
-      background: var(--color-primary, #8f2fe9);
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
     }
+    
     .demo-section {
       border-top: 3px solid var(--color-primary, #8f2fe9);
       padding-top: 2rem;
@@ -97,39 +92,6 @@
     }
   </style>
 
-  <!-- Theme Toggle Script (in head to avoid undefined function error) -->
-  <script>
-    // Theme Toggle Function
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme') || 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-
-      // Update button text
-      const button = document.querySelector('.theme-toggle');
-      if (button) {
-        button.textContent = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-      }
-
-      console.log('Theme switched to:', newTheme);
-    }
-
-    // Load saved theme on page load
-    window.addEventListener('DOMContentLoaded', function() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-
-      // Set initial button text
-      const button = document.querySelector('.theme-toggle');
-      if (button) {
-        button.textContent = savedTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-      }
-
-      console.log('Theme loaded:', savedTheme);
-    });
-  </script>
 </head>
 <body>
 <!-- Skip to main content link -->
@@ -713,7 +675,7 @@ function harmonize(elements) {
             <label for="files-input">Multiple Files Upload</label>
             <input type="file" id="files-input" name="files" multiple accept=".jpg,.jpeg,.png,.gif">
 
-            <label for="hidden-input">Hidden Input (not visible)</label>
+            <label for="hidden">Hidden Input (not visible)</label>
             <input type="hidden" id="hidden-input" name="hidden" value="secret-value">
           </fieldset>
 
@@ -966,5 +928,6 @@ function harmonize(elements) {
   );
   console.log('All elements are styled purely with Groundwork Harmony normalization - no custom classes needed!');
 </script>
+<script src="src/js/theme-toggle.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,61 @@
+/**
+ * @category Base
+ * @description Table element normalization. Creates consistent, accessible tables with proper spacing, borders, hover states, and responsive considerations.
+ * @order 9
+ */
+
+/* ===================================================================
+   Tables
+   Table elements and responsive table styling
+   =================================================================== */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  max-width: var(--content-width-m);
+  margin-inline: auto;
+  margin-block: var(--spacing-m);
+  background-color: var(--background-color-body);
+}
+
+caption {
+  padding-block: var(--spacing-s);
+  font-weight: var(--font-weight-medium);
+  text-align: start;
+  caption-side: bottom;
+  color: var(--color-text-base-disabled);
+}
+
+thead {
+  background-color: var(--background-color-surface);
+  border-bottom: var(--border-width-m) solid var(--border-color-default);
+}
+
+tbody tr {
+  border-bottom: var(--border-width-thin) solid var(--border-color-default);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: var(--background-color-surface-light);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  text-align: start;
+  padding: var(--spacing-s) var(--spacing-m);
+}
+
+td {
+  padding: var(--spacing-s) var(--spacing-m);
+}
+
+tfoot {
+  background-color: var(--background-color-surface-light);
+  border-top: var(--border-width-m) solid var(--border-color-default);
+  font-weight: var(--font-weight-medium);
+}

@@ -1,0 +1,35 @@
+/**
+ * @category Base
+ * @description Quotation and citation element styling. Handles blockquotes, inline quotes, and citation formatting with proper typography and visual hierarchy.
+ * @order 6
+ */
+
+/* ===================================================================
+   Quotes & Citations
+   Blockquotes, inline quotes, and citations
+   =================================================================== */
+
+blockquote {
+  margin-inline: auto;
+  max-width: var(--content-width-m);
+  padding-inline-start: var(--spacing-l);
+  border-inline-start: var(--border-width-thick) solid var(--color-primary);
+  font-style: italic;
+  color: color-mix(in oklab, var(--color-text-base) 95%, transparent);
+}
+
+q {
+  quotes: "“" "”" "‘" "’";
+}
+
+q::before {
+  content: open-quote;
+}
+
+q::after {
+  content: close-quote;
+}
+
+cite {
+  font-style: italic;
+}

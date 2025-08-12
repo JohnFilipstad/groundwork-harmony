@@ -1,0 +1,73 @@
+/**
+ * @category Base
+ * @description Embedded content normalization for images, videos, audio, iframes, and other media. Ensures responsive behavior, proper aspect ratios, and consistent rendering across browsers.
+ * @order 8
+ */
+
+/* ===================================================================
+   Embedded Content
+   Images, videos, audio, iframes, and other media
+   =================================================================== */
+
+/* Make media elements responsive by default */
+img, picture, video, canvas, svg, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  border-style: none;
+
+  /* Use modern, standard values for image rendering */
+  image-rendering: crisp-edges; /* For Firefox */
+  image-rendering: pixelated; /* The modern standard for a crisp, pixelated look */
+}
+
+/* Lazy loading performance */
+img[loading="lazy"] {
+  background-color: var(--background-color-surface-light);
+}
+
+svg {
+  /* Allow SVG to scale properly */
+  fill: currentcolor;
+  vertical-align: middle;
+}
+
+svg:not([fill]) {
+  fill: currentcolor;
+}
+
+audio {
+  width: 100%;
+  max-width: var(--container-width-s);
+}
+
+video {
+  width: 100%;
+  max-width: var(--content-width-s);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-color: var(--background-color-surface-dark);
+}
+
+iframe {
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+figure {
+  margin-inline: auto;
+  max-width: var(--content-width-m);
+  margin-block: var(--spacing-l);
+}
+
+figcaption {
+  margin-block-start: var(--spacing-s);
+  font-size: var(--font-size-s);
+  color: var(--color-text-base-disabled);
+  text-align: center;
+}

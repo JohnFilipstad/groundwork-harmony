@@ -1,0 +1,179 @@
+/**
+ * @category Base
+ * @description Print media optimization. Adjusts styles for printed documents including proper page breaks, hidden non-essential elements, and print-friendly typography and colors.
+ * @order 17
+ */
+
+/* ===================================================================
+   Print Styles
+   Optimized styles for printed documents
+   =================================================================== */
+
+@media print {
+  /* Reset colors for print */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure good contrast */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  /* Links */
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  /* Show URLs after links (except for anchors) */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    overflow-wrap: break-word;
+  }
+
+  /* Show abbreviation definitions */
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /* Don't show URLs for internal links */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  /* Optimize images */
+  img {
+    max-width: 100% !important;
+    break-inside: avoid;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 24pt;
+  }
+
+  h2 {
+    font-size: 20pt;
+    break-after: avoid;
+  }
+
+  h3 {
+    font-size: 16pt;
+    break-after: avoid;
+  }
+
+  h4, h5, h6 {
+    font-size: 14pt;
+    break-after: avoid;
+  }
+
+  /* Keep headings with content */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid;
+    break-inside: avoid;
+  }
+
+  /* Paragraphs */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Borders for code blocks and quotes */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    break-inside: avoid;
+    padding: 0.5em;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    break-inside: avoid;
+  }
+
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+  }
+
+  /* Hide non-essential elements */
+  nav,
+  aside,
+  footer,
+  .no-print,
+  .skip-link,
+  video,
+  audio,
+  iframe,
+  dialog,
+  details:not([open]),
+  button,
+  input,
+  select,
+  textarea,
+  [role="navigation"],
+  [role="complementary"],
+  [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  /* Show summary for open details */
+  details[open] summary {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    break-inside: avoid;
+  }
+
+  /* Figures */
+  figure {
+    break-inside: avoid;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    break-before: always;
+  }
+
+  .page-break-after {
+    break-after: always;
+  }
+
+  .page-break-avoid {
+    break-inside: avoid;
+  }
+}

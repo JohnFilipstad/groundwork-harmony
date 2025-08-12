@@ -1,0 +1,343 @@
+/**
+ * @category Base
+ * @description Comprehensive form control normalization. Styles all input types, buttons, selects, and form elements with consistent appearance, states, and accessibility features.
+ * @order 10
+ */
+
+/* ===================================================================
+   Forms
+   Form controls, inputs, and interactive form elements
+   =================================================================== */
+
+form {
+  margin-block: var(--spacing-m);
+  margin-inline: auto;
+  max-width: var(--content-width-m);
+}
+
+fieldset {
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-m);
+  margin-block: var(--spacing-l);
+  min-width: 0; /* Fix fieldset width issues */
+}
+
+:where(div, fieldset):has(> label) {
+  display: grid;
+  gap: var(--spacing-xs); /* Using your token is better than a magic number */
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding-inline: var(--spacing-s);
+  white-space: normal;
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-sans) , "Groundwork Sans", system-ui, sans-serif;
+  font-size: var(--font-size-l)
+}
+
+label {
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-sans) , "Groundwork Sans", system-ui, sans-serif;
+  margin-block: var(--spacing-m) var(--spacing-s);
+  cursor: pointer;
+}
+
+/* Base form control styles */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: var(--line-height-normal);
+  margin: 0;
+  color: var(--color-text-base);
+}
+
+button,
+input,
+select,
+textarea {
+  background-color: var(--background-color-body);
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-s) var(--spacing-m);
+  transition: var(--transition-colors);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--background-color-disabled);
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+/* Button styles */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  appearance: auto;
+  appearance: auto;
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-primary);
+  color: var(--color-text-base-inverse);
+  border: none;
+  padding: var(--spacing-s) var(--spacing-l);
+  border-radius: var(--border-radius-s);
+  transition: var(--transition-transform), var(--transition-colors);
+  margin-block: var(--spacing-xs);
+  margin-inline: var(--spacing-xs);
+}
+
+button:hover:not(:disabled),
+[type="button"]:hover:not(:disabled),
+[type="reset"]:hover:not(:disabled),
+[type="submit"]:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow-elevated);
+}
+
+button:active:not(:disabled),
+[type="button"]:active:not(:disabled),
+[type="reset"]:active:not(:disabled),
+[type="submit"]:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--box-shadow-subtle);
+}
+
+/* Remove inner padding and border in Firefox */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/* Restore focus styles in Firefox */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* Text inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"] {
+  width: 100%;
+}
+
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="datetime-local"] {
+  /*  1. HIDE THE DEFAULT BROWSER ICON */
+  appearance: none;
+
+  /* 2. ADD YOUR OWN CUSTOM ICON AS A BACKGROUND IMAGE */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-s) center;
+}
+
+/*  3. HIDE THE ACTUAL WEBKIT INDICATOR */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator,
+input[type="week"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-base-disabled);
+  opacity: 1;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+  min-height: calc(var(--spacing-m) * 6);
+  width: 100%;
+}
+
+select {
+  cursor: pointer;
+  width: 100%;
+}
+
+select:not([multiple]) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-s) center;
+  background-size: 12px;
+  padding-right: calc(var(--spacing-l) + 12px);
+}
+
+optgroup {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Checkboxes and radios */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  width: 1.25em;
+  height: 1.25em;
+  margin-inline-end: var(--spacing-xs);
+  margin-block-end: calc(var(--spacing-xs) / 2);
+  vertical-align: middle;
+}
+
+label:has(input[type="radio"]) + label:has(input[type="radio"]),
+label:has(input[type="checkbox"]) + label:has(input[type="checkbox"]) {
+  margin-inline-start: 1em;
+}
+
+/* File inputs */
+[type="file"] {
+  cursor: pointer;
+  width: 100%;
+}
+
+[type="file"]::file-selector-button {
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-m);
+  margin-inline-end: var(--spacing-s);
+  background-color: var(--background-color-surface);
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+[type="file"]::file-selector-button:hover {
+  background-color: var(--background-color-surface-hover);
+}
+
+/* Range inputs */
+[type="range"] {
+  width: 100%;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+/* Color inputs */
+[type="color"] {
+  appearance: none;
+  width: var(--font-size-xxxl); 
+  height: var(--font-size-xxl);
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-full); /* Makes it a circle */
+  background-color: transparent; /* The browser fills this with the color */
+  cursor: pointer;
+  vertical-align: middle; /* Aligns it nicely with text */
+}
+
+/* Styles the actual color swatch inside the element */
+[type="color"]::-webkit-color-swatch {
+  border-radius: var(--border-radius-full);
+  border: none;
+}
+
+[type="color"]::-moz-color-swatch {
+  border-radius: var(--border-radius-full);
+  border: none;
+}
+
+/* Number input spinners */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/* Search inputs */
+[type="search"] {
+  appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration,
+[type="search"]::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* File upload button */
+::-webkit-file-upload-button {
+  appearance: auto;
+  appearance: auto;
+  font: inherit;
+}
+
+/* Progress and meter */
+progress {
+  vertical-align: baseline;
+  width: 100%;
+  height: var(--spacing-s);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--background-color-surface-light);
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--color-primary);
+}
+
+progress::-moz-progress-bar {
+  background-color: var(--color-primary);
+}
+
+meter {
+  width: 100%;
+  height: var(--spacing-s);
+}

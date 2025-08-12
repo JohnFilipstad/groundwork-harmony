@@ -1,0 +1,1976 @@
+/*
+ * Groundwork Harmony CSS
+ * A minimal, modern CSS framework for web projects.
+ *
+ * This file is the main entry point for the Groundwork Harmony CSS framework.
+ * It imports various stylesheets that define the core styles, base, and utilities.
+ *
+ * For more information, visit:
+ */
+
+/* 0) Design tokens (single source of truth) */
+
+/* 
+  📘 Groundwork Tokens Guidelines:
+  - Never override tokens directly.
+  - Use semantic tokens (e.g., --color-primary) in components.
+  - Only update design decisions through this file.
+  - Always check text contrast with --color-text-base or --color-text-base-inverse.
+*/
+
+:root {
+  /* ===================================================================
+     1. CORE & BRAND COLORS
+     - The raw color palette for brand identity.
+     =================================================================== */
+
+  /* Neutrals */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-grey: #7d7d7d; /* Use black text #000000DE for WCAG AA */
+
+  /* Base Colors */
+  --color-red: #cb180b; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-magenta: #c31377; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-orange: #fa9600; /* Use black text #000000DE for WCAG AA */
+  --color-amber: #f5b800; /* Use black text #000000DE for WCAG AA */
+  --color-yellow: #ffea29; /* Use black text #000000DE for WCAG AA */
+  --color-brown: #865e50; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-green: #337539; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-teal: #00756a; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-cyan: #007894; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-blue: #0678be; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-indigo: #594af6; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-purple: #8f2fe9; /* Use white text #FFFFFFDE for WCAG AA */
+
+  /* --- Variants --- */
+
+  --color-red-lightest: #fbe5e3; /* Use black text #000000DE for WCAG AA */
+  --color-red-lighter: #f5b5b1; /* Use black text #000000DE for WCAG AA */
+  --color-red-light: #eb7872; /* Use black text #000000DE for WCAG AA */
+  --color-red-dark: #a7150a; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-red-darker: #861208; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-red-darkest: #5c0d06; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-magenta-lightest: #fce3f1; /* Use black text #000000DE for WCAG AA */
+  --color-magenta-lighter: #f5b4db; /* Use black text #000000DE for WCAG AA */
+  --color-magenta-light: #ea74b8; /* Use black text #000000DE for WCAG AA */
+  --color-magenta-dark: #9f1062; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-magenta-darker: #7d0d4d; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-magenta-darkest: #5b0938; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-orange-lightest: #fff3e0; /* Use black text #000000DE for WCAG AA */
+  --color-orange-lighter: #ffd7a3; /* Use black text #000000DE for WCAG AA */
+  --color-orange-light: #f9b94a; /* Use black text #000000DE for WCAG AA */
+  --color-orange-dark: #c87600; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-orange-darker: #a45f00; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-orange-darkest: #733f00; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-amber-lightest: #fff7e0; /* Use black text #000000DE for WCAG AA */
+  --color-amber-lighter: #ffe4a3; /* Use black text #000000DE for WCAG AA */
+  --color-amber-light: #ffd24d; /* Use black text #000000DE for WCAG AA */
+  --color-amber-dark: #c99400; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-amber-darker: #9e7400; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-amber-darkest: #6e5100; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-yellow-lightest: #fffbe1; /* Use black text #000000DE for WCAG AA */
+  --color-yellow-lighter: #fff2a6; /* Use black text #000000DE for WCAG AA */
+  --color-yellow-light: #ffeb4a; /* Use black text #000000DE for WCAG AA */
+  --color-yellow-dark: #d9b900; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-yellow-darker: #b49700; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-yellow-darkest: #7a6400; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-brown-lightest: #f2eae6; /* Use black text #000000DE for WCAG AA */
+  --color-brown-lighter: #d4bfb6; /* Use black text #000000DE for WCAG AA */
+  --color-brown-light: #b8907e; /* Use black text #000000DE for WCAG AA */
+  --color-brown-dark: #6a4b3f; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-brown-darker: #543a31; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-brown-darkest: #3a2921; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-green-lightest: #e2f5e5; /* Use black text #000000DE for WCAG AA */
+  --color-green-lighter: #a7deb0; /* Use black text #000000DE for WCAG AA */
+  --color-green-light: #5bbe72; /* Use black text #000000DE for WCAG AA */
+  --color-green-dark: #29612e; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-green-darker: #1f4d24; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-green-darkest: #153919; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-teal-lightest: #ddf6f4; /* Use black text #000000DE for WCAG AA */
+  --color-teal-lighter: #a3e5e0; /* Use black text #000000DE for WCAG AA */
+  --color-teal-light: #52c6bc; /* Use black text #000000DE for WCAG AA */
+  --color-teal-dark: #006058; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-teal-darker: #004d46; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-teal-darkest: #003933; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-cyan-lightest: #e0f7fa; /* Use black text #000000DE for WCAG AA */
+  --color-cyan-lighter: #a3e4ec; /* Use black text #000000DE for WCAG AA */
+  --color-cyan-light: #0095a8; /* Use black text #000000DE for WCAG AA */
+  --color-cyan-dark: #005f74; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-cyan-darker: #004859; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-cyan-darkest: #003440; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-blue-lightest: #d9effb; /* Use black text #000000DE for WCAG AA */
+  --color-blue-lighter: #a3d6f2; /* Use black text #000000DE for WCAG AA */
+  --color-blue-light: #49ade0; /* Use black text #000000DE for WCAG AA */
+  --color-blue-dark: #04619c; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-blue-darker: #034d7d; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-blue-darkest: #02395d; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-indigo-lightest: #e6e5fd; /* Use black text #000000DE for WCAG AA */
+  --color-indigo-lighter: #b7b4fa; /* Use black text #000000DE for WCAG AA */
+  --color-indigo-light: #8379f8; /* Use black text #000000DE for WCAG AA */
+  --color-indigo-dark: #4437c4; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-indigo-darker: #342a9a; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-indigo-darkest: #221d6e; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-purple-lightest: #f0e5fc; /* Use black text #000000DE for WCAG AA */
+  --color-purple-lighter: #d0b4f8; /* Use black text #000000DE for WCAG AA */
+  --color-purple-light: #af7ef3; /* Use black text #000000DE for WCAG AA */
+  --color-purple-dark: #7323c0; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-purple-darker: #5a1996; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-purple-darkest: #40126d; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-grey-lightest: #f2f2f2; /* Use black text #000000DE for WCAG AA */
+  --color-grey-lighter: #d9d9d9; /* Use black text #000000DE for WCAG AA */
+  --color-grey-light: #b3b3b3; /* Use black text #000000DE for WCAG AA */
+  --color-grey-dark: #4a4a4a; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-grey-darker: #3a3a3a; /* Use white text #FFFFFFDE for WCAG AA */
+  --color-grey-darkest: #2a2a2a; /* Use white text #FFFFFFDE for WCAG AA */
+
+  /* ===================================================================
+     2. TYPOGRAPHY
+     - Font families, modular scale, and base sizes.
+     =================================================================== */
+
+  /* --- Font Families (Semantic) --- */
+  --font-family-sans:  "Groundwork Sans", system-ui, sans-serif;
+  --font-family-serif: "Groundwork Serif", ui-serif, serif;
+  --font-family-mono: "Lucida Console", monaco, monospace;
+  --font-family-base: var(--font-family-serif);
+  --font-family-headings: var(--font-family-sans);
+  --font-family-site-name: var(--font-family-sans);
+
+  /* --- Font Sizing (Semantic T-shirt Scale) --- */
+  --font-size-base: 1.6rem;
+  --scale-type: var(--scale-perfect-fourth); /* Default scale ratio */
+  --font-size-m: var(--scale-base); /* 1.6rem - base */
+  --font-size-s: calc(var(--font-size-m) / var(--scale-type)); /* 1.2rem */
+  --font-size-xs: calc(var(--font-size-s) / var(--scale-type)); /* 0.9rem */
+  --font-size-l: calc(var(--font-size-m) * var(--scale-type)); /* 2.1rem */
+  --font-size-xl: calc(var(--font-size-l) * var(--scale-type)); /* 2.8rem */
+  --font-size-xxl: calc(var(--font-size-xl) * var(--scale-type)); /* 3.8rem */
+  --font-size-xxxl: calc(var(--font-size-xxl) * var(--scale-type)); /* 5rem */
+
+  /* --- Font Weights (Semantic) --- */
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+
+  /* --- Line Heights (Semantic) --- */
+  --line-height-none: 1;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* --- Letter Spacing (Semantic T-shirt Scale) --- */
+  --letter-spacing-xs: -0.1em;
+  --letter-spacing-s: -0.05em;
+  --letter-spacing-m: 0;
+  --letter-spacing-l: 0.05em;
+  --letter-spacing-xl: 0.1em;
+
+  /* --- Modular Scale Ratios (for reference) --- */
+  --scale-base: 1.6rem;
+  --scale-minor-second: 1.067;
+  --scale-major-second: 1.125;
+  --scale-minor-third: 1.2;
+  --scale-major-third: 1.25;
+  --scale-perfect-fourth: 1.333;
+  --scale-augmented-fourth: 1.414;
+  --scale-perfect-fifth: 1.5;
+  --scale-golden-section: 1.618;
+  --scale-major-sixth: 1.667;
+  --scale-minor-seventh: 1.778;
+  --scale-major-seventh: 1.875;
+  --scale-octave: 2;
+
+  /* ===================================================================
+     3. SPACING & SIZING
+     - Consistent spacing units for margins, padding, and gaps.
+     =================================================================== */
+
+  /* --- Spacing (Semantic T-shirt Scale) --- */
+  --spacing-0: 0;
+  --spacing-xs: 0.4rem;
+  --spacing-s: 0.8rem;
+  --spacing-m: 1.6rem; /* base */
+  --spacing-l: 2.4rem;
+  --spacing-xl: 3.2rem;
+  --spacing-xxl: 4rem;
+  --spacing-xxxl: 6.4rem;
+  --spacing-auto: auto;
+
+  /* --- Icon Sizing (Semantic T-shirt Scale) --- */
+  --icon-size-xs: 1.2rem;
+  --icon-size-s: 1.6rem;
+  --icon-size-m: 2.4rem;
+  --icon-size-l: 3.2rem;
+  --icon-size-xl: 4.8rem;
+  --icon-size-xxl: 6.4rem;
+  --icon-size-xxxl: 9.6rem;
+
+  /* ===================================================================
+     4. LAYOUT
+     - Container widths, grid, and z-index scale.
+     =================================================================== */
+
+  /* --- Breakpoints (Reference Only) --- */
+
+  /* Used for JS, SDC props, documentation, and StyleDiscovery labels. */
+
+  /* ⚠️ Cannot be used directly in @media queries. */
+  --breakpoint-bpm: 768px; /* Breakpoint Medium — tablets and up */
+  --breakpoint-bpl: 1024px; /* Breakpoint Large — desktops and up */
+  --breakpoint-bpxl: 1280px; /* Breakpoint Extra Large — large desktops and up */
+
+  /* --- Grid (Semantic) --- */
+  --grid-columns: 12;
+  --grid-gutter: var(--spacing-m);
+  --grid-gutter-s: var(--spacing-s);
+  --grid-gutter-m: var(--spacing-m);
+  --grid-gutter-l: var(--spacing-l);
+
+  /* --- Container Widths (Semantic T-shirt Scale) --- */
+  --container-max-width: 1320px;
+
+  /* For self-contained components like modals, cards, etc. */
+  --content-width-s: 56rem;
+  --content-width-m: 80rem;
+  --content-width-l: 102.4rem;
+
+  /* --- Z-Index Scale (Already semantic) --- */
+  --z-index-behind: -1;
+  --z-index-normal: 0;
+  --z-index-base: 1;
+  --z-index-elevated: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+  --z-index-modal: 1080;
+  --z-index-toast: 10000;
+
+  /* ===================================================================
+     5. BORDERS & RADII
+     - Border radii and widths for rounding corners.
+     =================================================================== */
+
+  /* --- Border Radius (Semantic T-shirt Scale) --- */
+  --border-radius-0: 0;
+  --border-radius-xs: 0.2rem;
+  --border-radius-s: 0.4rem;
+  --border-radius-m: 0.8rem; /* base */
+  --border-radius-l: 1.2rem;
+  --border-radius-xl: 1.6rem;
+  --border-radius-xxl: 2.4rem;
+  --border-radius-xxxl: 3.2rem;
+  --border-radius-full: 9999px;
+
+  /* --- Border Widths (Semantic) --- */
+  --border-width-0: 0;
+  --border-width-thin: 1px;
+  --border-width-m: 2px;
+  --border-width-thick: 4px;
+  --border-width-extra-thick: 8px;
+
+  /* ===================================================================
+     6. SHADOWS
+     - Box shadows for elevation and depth.
+     =================================================================== */
+
+  /* --- Box Shadows (Semantic T-shirt Scale) --- */
+  --box-shadow-none: none;
+  --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.1);
+  --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.1), 0 1px 3px rgb(0 0 0 / 0.06);
+  --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.12), 0 2px 4px rgb(0 0 0 / 0.08); /* base */
+  --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.15), 0 6px 12px rgb(0 0 0 / 0.12);
+  --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(0 0 0 / 0.15);
+  --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.22), 0 18px 36px rgb(0 0 0 / 0.18);
+  --box-shadow-inner: inset 0 1px 2px rgb(from var(--color-black) r g b / 0.06);
+
+  /* --- Semantic Shadow Purposes --- */
+  --box-shadow-focus: 0 0 0 3px rgb(from var(--color-primary) r g b / 0.5);
+  --box-shadow-subtle: var(--box-shadow-xs);
+  --box-shadow-elevated: var(--box-shadow-m);
+  --box-shadow-floating: var(--box-shadow-l);
+
+  /* ===================================================================
+     7. TRANSITIONS & ANIMATIONS
+     - Durations and timing functions for motion.
+     =================================================================== */
+
+  /* --- Transition Durations (Semantic) --- */
+  --transition-duration-instant: 0s;
+  --transition-duration-fast: 150ms;
+  --transition-duration-normal: 250ms;
+  --transition-duration-slow: 400ms;
+  --transition-duration-slower: 600ms;
+
+  /* --- Transition Timing Functions (Semantic) --- */
+  --transition-timing-linear: linear;
+  --transition-timing-ease: ease;
+  --transition-timing-ease-in: ease-in;
+  --transition-timing-ease-out: ease-out;
+  --transition-timing-ease-in-out: ease-in-out;
+  --transition-timing-custom: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Complete Transitions (Semantic) --- */
+  --transition-fast: all var(--transition-duration-fast) var(--transition-timing-ease);
+  --transition-normal: all var(--transition-duration-normal) var(--transition-timing-ease);
+  --transition-slow: all var(--transition-duration-slow) var(--transition-timing-ease);
+
+  /* --- Property-Specific Transitions (Semantic) --- */
+  --transition-colors:
+    color var(--transition-duration-normal) var(--transition-timing-ease),
+    background-color var(--transition-duration-normal) var(--transition-timing-ease),
+    border-color var(--transition-duration-normal) var(--transition-timing-ease);
+  --transition-transform: transform var(--transition-duration-normal) var(--transition-timing-ease);
+  --transition-opacity: opacity var(--transition-duration-normal) var(--transition-timing-ease);
+
+  /* ===================================================================
+     8. COLOR SYSTEM (CSS Property Semantic)
+     =================================================================== */
+
+  /* --- Base Semantic Colors --- */
+  --color-primary: var(--color-purple);
+  --color-secondary: var(--color-indigo);
+  --color-accent: var(--color-amber);
+  --color-info: var(--color-blue);
+  --color-notice: var(--color-teal);
+  --color-success: var(--color-green);
+  --color-danger: var(--color-red);
+  --color-warning: var(--color-orange);
+  --color-muted: var(--color-grey);
+
+  /* --- Light Semantic Colors --- */
+  --color-primary-light: color-mix(in oklab, var(--color-primary) 75%, var(--color-white) 25%);
+  --color-secondary-light: color-mix(in oklab, var(--color-secondary) 75%, var(--color-white) 25%);
+  --color-accent-light: color-mix(in oklab, var(--color-accent) 75%, var(--color-white) 25%);
+  --color-info-light: var(--color-blue-light);
+  --color-notice-light: var(--color-teal-light);
+  --color-success-light: var(--color-green-light);
+  --color-danger-light: var(--color-red-light);
+  --color-warning-light: var(--color-orange-light);
+  --color-muted-light: var(--color-grey-light);
+
+  /* --- Dark Semantic Colors --- */
+  --color-primary-dark: color-mix(in oklab, var(--color-primary) 75%, var(--color-black) 25%);
+  --color-secondary-dark: color-mix(in oklab, var(--color-secondary) 75%, var(--color-black) 25%);
+  --color-accent-dark: color-mix(in oklab, var(--color-accent) 75%, var(--color-black) 25%);
+  --color-info-dark: var(--color-blue-dark);
+  --color-notice-dark: var(--color-teal-dark);
+  --color-success-dark: var(--color-green-dark);
+  --color-danger-dark: var(--color-red-dark);
+  --color-warning-dark: var(--color-orange-dark);
+  --color-muted-dark: var(--color-grey-dark);
+
+  /* Text Colors depending on background */
+  --color-primary-text: var(--color-text-base-on-dark);
+  --color-secondary-text: var(--color-text-base-on-dark);
+  --color-accent-text: var(--color-text-base-on-dark);
+  --color-text-base-on-dark: rgb(255 255 255 / 0.87);
+  --color-text-base-on-light: rgb(0 0 0 / 0.87);
+  --background-color-header: var(--color-primary);
+  --background-color-footer: var(--color-secondary)
+
+/* ===================================================================
+   9. THEME DEFINITIONS
+   - Defines theme-specific variables for light and dark modes.
+   =================================================================== */
+
+  /* --- LIGHT THEME (DEFAULT) --- */;
+  --background-color-body: #fff;
+  --background-color-surface-dark: #b1b1b1;
+  --background-color-surface: #cbcbcb;
+  --background-color-surface-light: #e5e5e5;
+  --background-color-surface-hover: #969696;
+  --background-color-surface-inverse: #232323;
+  --background-color-disabled: rgb(0 0 0 / 0.12);
+  --color-text-base: rgb(0 0 0 / 0.87);
+  --color-text-base-inverse: rgb(255 255 255 / 0.87);
+  --color-text-base-disabled: rgb(0 0 0 / 0.38);
+  --color-link: var(--color-notice-dark);
+  --color-link-hover: var(--color-success-dark);
+  --border-color-default: rgb(0 0 0 / 0.12);
+  --border-color-focus: rgb(from var(--color-primary) r g b / 0.5);
+}
+
+/* --- DARK THEME (OS Preference or data-theme="dark") --- */
+
+@media (prefers-color-scheme: dark) {
+  /* noinspection DuplicatedCode */
+  :root:not([data-theme="light"]) {
+    --background-color-body: #121212;
+    --background-color-surface-dark: #1e1e1e;
+    --background-color-surface: #232323;
+    --background-color-surface-light: #2c2c2c;
+    --background-color-surface-hover: #272727;
+    --background-color-surface-inverse: #cbcbcb;
+    --background-color-disabled: rgb(255 255 255 / 0.12);
+    --color-text-base: rgb(255 255 255 / 0.87);
+    --color-text-base-inverse: rgb(0 0 0 / 0.87);
+    --color-text-base-disabled: rgb(255 255 255 / 0.38);
+    --color-link: var(--color-accent-light);
+    --color-link-hover: var(--color-success-light);
+    --border-color-default: rgb(255 255 255 / 0.25);
+    --border-color-focus: rgb(from var(--color-primary-light) r g b / 0.7);
+    --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.45), 0 1px 1px rgb(255 255 255 / 0.1);
+    --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.38), 0 1px 3px rgb(255 255 255 / 0.08);
+    --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.33), 0 2px 4px rgb(255 255 255 / 0.1);
+    --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.28), 0 6px 12px rgb(255 255 255 / 0.08);
+    --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(255 255 255 / 0.06);
+    --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.15), 0 18px 36px rgb(255 255 255 / 0.06);
+    --box-shadow-inner: inset 0 1px 2px rgb(255 255 255 / 0.06);
+  }
+}
+
+/* noinspection DuplicatedCode */
+
+:root[data-theme="dark"] {
+  --background-color-body: #121212;
+  --background-color-surface-dark: #1e1e1e;
+  --background-color-surface: #232323;
+  --background-color-surface-light: #2c2c2c;
+  --background-color-surface-hover: #272727;
+  --background-color-surface-inverse: #cbcbcb;
+  --background-color-disabled: rgb(255 255 255 / 0.12);
+  --color-text-base: rgb(255 255 255 / 0.87);
+  --color-text-base-inverse: rgb(0 0 0 / 0.87);
+  --color-text-base-disabled: rgb(255 255 255 / 0.38);
+  --color-link: var(--color-notice-light);
+  --color-link-hover: var(--color-success-light);
+  --border-color-default: rgb(255 255 255 / 0.25);
+  --border-color-focus: rgb(from var(--color-primary-light) r g b / 0.7);
+  --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.45), 0 1px 1px rgb(255 255 255 / 0.1);
+  --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.38), 0 1px 3px rgb(255 255 255 / 0.08);
+  --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.33), 0 2px 4px rgb(255 255 255 / 0.1);
+  --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.28), 0 6px 12px rgb(255 255 255 / 0.08);
+  --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(255 255 255 / 0.06);
+  --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.15), 0 18px 36px rgb(255 255 255 / 0.06);
+  --box-shadow-inner: inset 0 1px 2px rgb(255 255 255 / 0.06);
+}
+
+/* 1) Global environment + hints */
+
+/**
+ * @category Base
+ * @description Document root and HTML element setup. Establishes base font sizing, text rendering, scroll behavior, and responsive foundations for the entire document.
+ * @order 1
+ */
+
+/* ===================================================================
+   Document Root & HTML Setup
+   Base document-level settings and HTML element normalization
+   =================================================================== */
+
+html {
+  /* Improve text rendering */
+  line-height: var(--line-height-normal);
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+
+  /* Modern font smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+
+  /* Variable font defaults */
+  font-optical-sizing: auto;      /* enable opsz on Serif font */
+  font-synthesis-weight: none;    /* avoid faux bold */
+  font-synthesis-style: none;     /* avoid faux italic */
+
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+
+  /* Modern scroll behavior */
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--spacing-xl);
+
+  /* Better focus handling */
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
+
+  /* Set base font size for rem calculations */
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+/* Respect user motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/**
+ * @category Base
+ * @description Universal box model reset and body defaults. Harmonizes spacing, establishes consistent box-sizing, and sets up the body element with design system foundations.
+ * @order 2
+ */
+
+/* ===================================================================
+   Box Model Reset & Universal Styles
+   Modern box-sizing and base resets
+   =================================================================== */
+
+/* Modern box-sizing reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+
+  /* Prevent margin collapse issues */
+  margin: 0;
+  padding: 0;
+
+  /* Inherit font properties */
+  font: inherit;
+}
+
+/* Body defaults */
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base), "Groundwork Sans", system-ui, sans-serif;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-base);
+  background-color: var(--background-color-body);
+
+  /* Improve text selection */
+  font-feature-settings: "kern" 1, "liga" 1;
+
+  /* Prevent iOS bounce effect */
+  overscroll-behavior: none;
+
+  /* Min height for single page apps */
+  min-height: 100vh;
+
+}
+
+/* Dynamic viewport height */
+
+body {
+  min-height: 100dvh;
+}
+
+/* Template element */
+
+template {
+  display: none;
+}
+
+/* Hidden attribute */
+
+[hidden] {
+  display: none !important;
+}
+
+/* Disabled attribute */
+
+[disabled] {
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+/* 2) Core type & flow */
+
+/**
+ * @category Base
+ * @description Typography normalization for headings, paragraphs, and text elements. Establishes a consistent type scale, improves readability, and handles text formatting elements.
+ * @order 3
+ */
+
+/* ===================================================================
+   Typography
+   Headings, paragraphs, and base text elements
+   =================================================================== */
+
+/* Headings */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings), "Groundwork Sans", sans-serif;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-s);
+  margin-block: var(--spacing-m) var(--spacing-s);
+
+  /* Prevent orphans and widows */
+  orphans: 3;
+  widows: 3;
+
+  /* Better text wrapping */
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: var(--font-size-xxxl);
+  margin-block: var(--spacing-l) var(--spacing-m);
+}
+
+h2 {
+  font-size: var(--font-size-xxl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-l);
+}
+
+h5 {
+  font-size: calc(var(--font-size-m) * 1.125);
+}
+
+h6 {
+  font-size: var(--font-size-m);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-l);
+}
+
+/* Paragraphs */
+
+p {
+  margin-block: var(--spacing-m);
+  line-height: var(--line-height-relaxed);
+  text-wrap: pretty;
+
+  /* Limit line length for readability */
+  max-width: 75ch;
+}
+
+/* Horizontal rule */
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  border: none;
+  border-top: var(--border-width-thin) solid var(--border-color-default);
+  margin-block: var(--spacing-l);
+  opacity: 0.6;
+}
+
+/* Text formatting */
+
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+small {
+  font-size: var(--font-size-s);
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+del,
+s {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-danger);
+  opacity: 0.7;
+}
+
+ins {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--color-success);
+}
+
+mark {
+  background-color: var(--color-yellow-lightest);
+  color: var(--color-text-base-on-light);
+  padding-inline: var(--spacing-xs);
+  border-radius: var(--border-radius-xs);
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  cursor: help;
+}
+
+/**
+ * @category Base
+ * @description List element normalization for ordered, unordered, and definition lists. Establishes consistent spacing, nesting behavior, and marker styling.
+ * @order 5
+ */
+
+/* ===================================================================
+   Lists
+   Unordered, ordered, and definition lists
+   =================================================================== */
+
+ul, ol {
+  margin-block: var(--spacing-m);
+  padding-inline-start: var(--spacing-l);
+}
+
+/* Nested lists */
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-block: var(--spacing-xs);
+}
+
+li {
+  margin-block: var(--spacing-xs);
+}
+
+/* Better marker alignment */
+
+li::marker {
+  color: var(--color-primary);
+}
+
+/* Definition lists */
+
+dl {
+  margin-block: var(--spacing-m);
+}
+
+dt {
+  font-weight: var(--font-weight-semibold);
+  margin-block-start: var(--spacing-s);
+}
+
+dd {
+  margin-inline-start: var(--spacing-l);
+  margin-block: var(--spacing-xs);
+}
+
+/**
+ * @category Base
+ * @description Link and anchor tag normalization. Provides consistent link styling, hover states, focus management, and accessibility enhancements for all hyperlinks.
+ * @order 4
+ */
+
+/* ===================================================================
+   Links
+   Anchor tags and link states
+   =================================================================== */
+
+a {
+  background-color: transparent;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: var(--transition-colors);
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-xs);
+}
+
+a:visited {
+  color: color-mix(in oklab, var(--color-link) 70%, var(--color-text-base) 30%);
+}
+
+/* Remove underline from linked images */
+
+a:has(img) {
+  text-decoration: none;
+}
+
+/**
+ * @category Base
+ * @description Quotation and citation element styling. Handles blockquotes, inline quotes, and citation formatting with proper typography and visual hierarchy.
+ * @order 6
+ */
+
+/* ===================================================================
+   Quotes & Citations
+   Blockquotes, inline quotes, and citations
+   =================================================================== */
+
+blockquote {
+  margin-inline: auto;
+  max-width: var(--content-width-m);
+  padding-inline-start: var(--spacing-l);
+  border-inline-start: var(--border-width-thick) solid var(--color-primary);
+  font-style: italic;
+  color: color-mix(in oklab, var(--color-text-base) 95%, transparent);
+}
+
+q {
+  quotes: "“" "”" "‘" "’";
+}
+
+q::before {
+  content: open-quote;
+}
+
+q::after {
+  content: close-quote;
+}
+
+cite {
+  font-style: italic;
+}
+
+/**
+ * @category Base
+ * @description Code and preformatted text normalization. Styles code blocks, inline code, keyboard input, and sample output with consistent monospace typography and visual distinction.
+ * @order 7
+ */
+
+/* ===================================================================
+   Code & Preformatted Text
+   Code blocks, inline code, and keyboard inputs
+   =================================================================== */
+
+pre {
+  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-relaxed);
+  background-color: var(--background-color-surface-light);
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-m);
+  overflow-x: auto;
+  -moz-tab-size: 2;
+    -o-tab-size: 2;
+       tab-size: 2;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  margin-block: var(--spacing-m);
+}
+
+code,
+kbd,
+samp,
+var {
+  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
+  font-size: 0.9em;
+  background-color: var(--background-color-surface-light);
+  padding: 0.125em 0.25em;
+  border-radius: var(--border-radius-xs);
+
+  /* Prevent breaking */
+  white-space: nowrap;
+}
+
+kbd {
+  border: var(--border-width-thin) solid var(--border-color-default);
+  box-shadow: var(--box-shadow-xs);
+}
+
+/* Code inside pre should not have additional styling */
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  white-space: inherit;
+}
+
+/**
+ * @category Base
+ * @description Embedded content normalization for images, videos, audio, iframes, and other media. Ensures responsive behavior, proper aspect ratios, and consistent rendering across browsers.
+ * @order 8
+ */
+
+/* ===================================================================
+   Embedded Content
+   Images, videos, audio, iframes, and other media
+   =================================================================== */
+
+/* Make media elements responsive by default */
+
+img, picture, video, canvas, svg, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  border-style: none;
+
+  /* Use modern, standard values for image rendering */
+  image-rendering: crisp-edges; /* For Firefox */
+  image-rendering: pixelated; /* The modern standard for a crisp, pixelated look */
+}
+
+/* Lazy loading performance */
+
+img[loading="lazy"] {
+  background-color: var(--background-color-surface-light);
+}
+
+svg {
+  /* Allow SVG to scale properly */
+  fill: currentcolor;
+  vertical-align: middle;
+}
+
+svg:not([fill]) {
+  fill: currentcolor;
+}
+
+audio {
+  width: 100%;
+  max-width: var(--container-width-s);
+}
+
+video {
+  width: 100%;
+  max-width: var(--content-width-s);
+  aspect-ratio: 16 / 9;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: var(--background-color-surface-dark);
+}
+
+iframe {
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+figure {
+  margin-inline: auto;
+  max-width: var(--content-width-m);
+  margin-block: var(--spacing-l);
+}
+
+figcaption {
+  margin-block-start: var(--spacing-s);
+  font-size: var(--font-size-s);
+  color: var(--color-text-base-disabled);
+  text-align: center;
+}
+
+/**
+ * @category Base
+ * @description Table element normalization. Creates consistent, accessible tables with proper spacing, borders, hover states, and responsive considerations.
+ * @order 9
+ */
+
+/* ===================================================================
+   Tables
+   Table elements and responsive table styling
+   =================================================================== */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  max-width: var(--content-width-m);
+  margin-inline: auto;
+  margin-block: var(--spacing-m);
+  background-color: var(--background-color-body);
+}
+
+caption {
+  padding-block: var(--spacing-s);
+  font-weight: var(--font-weight-medium);
+  text-align: start;
+  caption-side: bottom;
+  color: var(--color-text-base-disabled);
+}
+
+thead {
+  background-color: var(--background-color-surface);
+  border-bottom: var(--border-width-m) solid var(--border-color-default);
+}
+
+tbody tr {
+  border-bottom: var(--border-width-thin) solid var(--border-color-default);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: var(--background-color-surface-light);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  text-align: start;
+  padding: var(--spacing-s) var(--spacing-m);
+}
+
+td {
+  padding: var(--spacing-s) var(--spacing-m);
+}
+
+tfoot {
+  background-color: var(--background-color-surface-light);
+  border-top: var(--border-width-m) solid var(--border-color-default);
+  font-weight: var(--font-weight-medium);
+}
+
+/**
+ * @category Base
+ * @description Comprehensive form control normalization. Styles all input types, buttons, selects, and form elements with consistent appearance, states, and accessibility features.
+ * @order 10
+ */
+
+/* ===================================================================
+   Forms
+   Form controls, inputs, and interactive form elements
+   =================================================================== */
+
+form {
+  margin-block: var(--spacing-m);
+  margin-inline: auto;
+  max-width: var(--content-width-m);
+}
+
+fieldset {
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-m);
+  margin-block: var(--spacing-l);
+  min-width: 0; /* Fix fieldset width issues */
+}
+
+:where(div, fieldset):has(> label) {
+  display: grid;
+  gap: var(--spacing-xs); /* Using your token is better than a magic number */
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding-inline: var(--spacing-s);
+  white-space: normal;
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-sans) , "Groundwork Sans", system-ui, sans-serif;
+  font-size: var(--font-size-l)
+}
+
+label {
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-sans) , "Groundwork Sans", system-ui, sans-serif;
+  margin-block: var(--spacing-m) var(--spacing-s);
+  cursor: pointer;
+}
+
+/* Base form control styles */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: var(--line-height-normal);
+  margin: 0;
+  color: var(--color-text-base);
+}
+
+button,
+input,
+select,
+textarea {
+  background-color: var(--background-color-body);
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-s) var(--spacing-m);
+  transition: var(--transition-colors);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--background-color-disabled);
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+/* Button styles */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: auto;
+     -moz-appearance: auto;
+          appearance: auto;
+  appearance: auto;
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-primary);
+  color: var(--color-text-base-inverse);
+  border: none;
+  padding: var(--spacing-s) var(--spacing-l);
+  border-radius: var(--border-radius-s);
+  transition: var(--transition-transform), var(--transition-colors);
+  margin-block: var(--spacing-xs);
+  margin-inline: var(--spacing-xs);
+}
+
+button:hover:not(:disabled),
+[type="button"]:hover:not(:disabled),
+[type="reset"]:hover:not(:disabled),
+[type="submit"]:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow-elevated);
+}
+
+button:active:not(:disabled),
+[type="button"]:active:not(:disabled),
+[type="reset"]:active:not(:disabled),
+[type="submit"]:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--box-shadow-subtle);
+}
+
+/* Remove inner padding and border in Firefox */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/* Restore focus styles in Firefox */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* Text inputs */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"] {
+  width: 100%;
+}
+
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="datetime-local"] {
+  /*  1. HIDE THE DEFAULT BROWSER ICON */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+
+  /* 2. ADD YOUR OWN CUSTOM ICON AS A BACKGROUND IMAGE */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-s) center;
+}
+
+/*  3. HIDE THE ACTUAL WEBKIT INDICATOR */
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator,
+input[type="week"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: var(--color-text-base-disabled);
+  opacity: 1;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-base-disabled);
+  opacity: 1;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+  min-height: calc(var(--spacing-m) * 6);
+  width: 100%;
+}
+
+select {
+  cursor: pointer;
+  width: 100%;
+}
+
+select:not([multiple]) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-s) center;
+  background-size: 12px;
+  padding-right: calc(var(--spacing-l) + 12px);
+}
+
+optgroup {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Checkboxes and radios */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  width: 1.25em;
+  height: 1.25em;
+  margin-inline-end: var(--spacing-xs);
+  margin-block-end: calc(var(--spacing-xs) / 2);
+  vertical-align: middle;
+}
+
+label:has(input[type="radio"]) + label:has(input[type="radio"]),
+label:has(input[type="checkbox"]) + label:has(input[type="checkbox"]) {
+  margin-inline-start: 1em;
+}
+
+/* File inputs */
+
+[type="file"] {
+  cursor: pointer;
+  width: 100%;
+}
+
+[type="file"]::file-selector-button {
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-m);
+  margin-inline-end: var(--spacing-s);
+  background-color: var(--background-color-surface);
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+[type="file"]::file-selector-button:hover {
+  background-color: var(--background-color-surface-hover);
+}
+
+/* Range inputs */
+
+[type="range"] {
+  width: 100%;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+/* Color inputs */
+
+[type="color"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: var(--font-size-xxxl); 
+  height: var(--font-size-xxl);
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-full); /* Makes it a circle */
+  background-color: transparent; /* The browser fills this with the color */
+  cursor: pointer;
+  vertical-align: middle; /* Aligns it nicely with text */
+}
+
+/* Styles the actual color swatch inside the element */
+
+[type="color"]::-webkit-color-swatch {
+  border-radius: var(--border-radius-full);
+  border: none;
+}
+
+[type="color"]::-moz-color-swatch {
+  border-radius: var(--border-radius-full);
+  border: none;
+}
+
+/* Number input spinners */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/* Search inputs */
+
+[type="search"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration,
+[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+/* File upload button */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: auto;
+          appearance: auto;
+  appearance: auto;
+  font: inherit;
+}
+
+/* Progress and meter */
+
+progress {
+  vertical-align: baseline;
+  width: 100%;
+  height: var(--spacing-s);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--background-color-surface-light);
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--color-primary);
+}
+
+progress::-moz-progress-bar {
+  background-color: var(--color-primary);
+}
+
+meter {
+  width: 100%;
+  height: var(--spacing-s);
+}
+
+/**
+ * @category Base
+ * @description HTML5 semantic element normalization. Ensures proper display and spacing for structural elements like main, article, section, nav, aside, header, and footer.
+ * @order 12
+ */
+
+/* ===================================================================
+   Semantic HTML5 Elements
+   Structural and semantic HTML5 elements
+   =================================================================== */
+
+main {
+  min-height: 50vh;
+  width: 100%;
+  margin-inline: auto;
+
+  /* Set the default horizontal padding */
+  padding-inline: var(--spacing-m);
+
+  /* Create the fluid container width */
+  max-width: clamp(
+    320px,                                  /* The hard minimum width */
+    calc(100% - (2 * var(--spacing-m))),    /* The fluid, preferred width */
+    var(--container-max-width)              /* The hard maximum width */
+  );
+}
+
+/* Specific override for larger screens remains the same */
+
+@media (width >= 1200px) {
+  main {
+    padding-inline: var(--spacing-l);
+  }
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure {
+  display: block;
+}
+
+header {
+  margin-block-end: var(--spacing-l);
+}
+
+footer {
+  margin-block-start: var(--spacing-l);
+}
+
+nav {
+  margin-block: var(--spacing-m);
+}
+
+article {
+  margin-block: var(--spacing-xl);
+}
+
+section {
+  margin-block: var(--spacing-l);
+}
+
+aside {
+  padding: var(--spacing-m);
+  margin-block: var(--spacing-m);
+  border-inline-start: var(--border-width-thick) solid var(--color-primary);
+  background-color: var(--background-color-surface-light);
+}
+
+/**
+ * @category Base
+ * @description Interactive HTML5 element normalization. Styles details/summary disclosure widgets, dialog modals, and other interactive elements with proper states and animations.
+ * @order 11
+ */
+
+/* ===================================================================
+   Interactive Elements
+   Details, summary, dialog, and other interactive HTML5 elements
+   =================================================================== */
+
+details {
+  display: block;
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-s);
+  margin-block: var(--spacing-m);
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+  font-family: var(--font-family-sans), "Groundwork Sans", system-ui, sans-serif;
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-s);
+  margin: calc(var(--spacing-s) * -1);
+  border-radius: var(--border-radius-xs);
+  transition: var(--transition-colors);
+}
+
+summary:hover {
+  background-color: var(--background-color-surface-light);
+}
+
+summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+dialog {
+  border: none;
+  border-radius: var(--border-radius-m);
+  padding: var(--spacing-l);
+  background-color: var(--background-color-body);
+  color: var(--color-text-base);
+  box-shadow: var(--box-shadow-floating);
+  max-width: min(90vw, var(--container-width-s));
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/**
+ * @category Base
+ * @description Text selection styling. Customizes the appearance of selected text with theme-aware colors that maintain readability and visual consistency.
+ * @order 15
+ */
+
+/* ===================================================================
+   Selection Styles
+   Custom text selection colors
+   =================================================================== */
+
+::-moz-selection {
+  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+  color: var(--color-text-base);
+  text-shadow: none;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+  color: var(--color-text-base);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+  color: var(--color-text-base);
+  text-shadow: none;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+  color: var(--color-text-base);
+  text-shadow: none;
+}
+
+/* Input and textarea selection */
+
+input::-moz-selection, textarea::-moz-selection {
+  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+
+input::selection,
+textarea::selection {
+  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+
+input::-moz-selection, textarea::-moz-selection {
+  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+
+input::selection,
+textarea::selection {
+  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+
+/**
+ * @category Base
+ * @description Custom scrollbar styling for modern browsers. Creates consistent, themed scrollbars across Webkit browsers and Firefox with proper colors and sizing.
+ * @order 14
+ */
+
+/* ===================================================================
+   Scrollbar Styles
+   Custom scrollbar styling for Webkit and Firefox
+   =================================================================== */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color-surface-light);
+  border-radius: var(--border-radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: var(--border-radius-full);
+  border: 2px solid var(--background-color-surface-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-dark);
+}
+
+/* Firefox */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-muted) var(--background-color-surface-light);
+}
+
+/* Horizontal scrollbar specific */
+
+::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+/* Corner where scrollbars meet */
+
+::-webkit-scrollbar-corner {
+  background: var(--background-color-surface-light);
+}
+
+/**
+ * @category Base
+ * @description Motion and animation preferences for accessibility. Respects user's reduced motion settings to prevent unwanted animations and transitions that could cause discomfort.
+ * @order 16
+ */
+
+/* ===================================================================
+   Motion Preferences
+   Respect user's motion preferences for accessibility
+   =================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable smooth scroll */
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Remove transitions from commonly animated elements */
+  details,
+  dialog,
+  button,
+  a {
+    transition: none !important;
+  }
+}
+
+/**
+ * @category Base
+ * @description Accessibility enhancements and utilities. Provides focus management, skip links, screen reader helpers, and touch-friendly interactive targets for improved usability.
+ * @order 13
+ */
+
+/* ===================================================================
+   Accessibility
+   Focus states, skip links, and screen reader utilities
+   =================================================================== */
+
+/* Focus visible for keyboard navigation */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-xs);
+}
+
+/* Remove focus for mouse users */
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Skip links */
+
+.skip-link {
+  position: absolute;
+  top: var(--spacing-s);
+  left: var(--spacing-s);
+  background-color: var(--color-primary);
+  color: var(--color-text-base-inverse);
+  padding: var(--spacing-s) var(--spacing-m);
+  border-radius: var(--border-radius-s);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  z-index: var(--z-index-toast);
+}
+
+.skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Screen reader only content */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Visually hidden but maintains layout */
+
+.visually-hidden {
+  visibility: hidden;
+}
+
+/* Ensure interactive elements are large enough for touch */
+
+@media (pointer: coarse) {
+  button,
+  a,
+  input[type="checkbox"],
+  input[type="radio"],
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* 6) Print */
+
+/**
+ * @category Base
+ * @description Print media optimization. Adjusts styles for printed documents including proper page breaks, hidden non-essential elements, and print-friendly typography and colors.
+ * @order 17
+ */
+
+/* ===================================================================
+   Print Styles
+   Optimized styles for printed documents
+   =================================================================== */
+
+@media print {
+  /* Reset colors for print */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure good contrast */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  /* Links */
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  /* Show URLs after links (except for anchors) */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    overflow-wrap: break-word;
+  }
+
+  /* Show abbreviation definitions */
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /* Don't show URLs for internal links */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  /* Optimize images */
+  img {
+    max-width: 100% !important;
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 24pt;
+  }
+
+  h2 {
+    font-size: 20pt;
+    -moz-column-break-after: avoid;
+         break-after: avoid;
+  }
+
+  h3 {
+    font-size: 16pt;
+    -moz-column-break-after: avoid;
+         break-after: avoid;
+  }
+
+  h4, h5, h6 {
+    font-size: 14pt;
+    -moz-column-break-after: avoid;
+         break-after: avoid;
+  }
+
+  /* Keep headings with content */
+  h1, h2, h3, h4, h5, h6 {
+    -moz-column-break-after: avoid;
+         break-after: avoid;
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+
+  /* Paragraphs */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Borders for code blocks and quotes */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+    padding: 0.5em;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+  }
+
+  /* Hide non-essential elements */
+  nav,
+  aside,
+  footer,
+  .no-print,
+  .skip-link,
+  video,
+  audio,
+  iframe,
+  dialog,
+  details:not([open]),
+  button,
+  input,
+  select,
+  textarea,
+  [role="navigation"],
+  [role="complementary"],
+  [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  /* Show summary for open details */
+  details[open] summary {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+
+  /* Figures */
+  figure {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    -moz-column-break-before: always;
+         break-before: always;
+  }
+
+  .page-break-after {
+    -moz-column-break-after: always;
+         break-after: always;
+  }
+
+  .page-break-avoid {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+}
