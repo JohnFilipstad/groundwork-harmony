@@ -10,10 +10,10 @@
    =================================================================== */
 
 pre {
-  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
+  font-family: var(--font-family-mono),monospace;
   font-size: var(--font-size-s);
   line-height: var(--line-height-relaxed);
-  background-color: var(--background-color-surface-light);
+  background-color: var(--color-surface-light);
   border-radius: var(--border-radius-s);
   padding: var(--spacing-m);
   overflow-x: auto;
@@ -27,9 +27,9 @@ code,
 kbd,
 samp,
 var {
-  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
+  font-family: var(--font-family-mono), monospace;
   font-size: 0.9em;
-  background-color: var(--background-color-surface-light);
+  background-color: var(--color-surface-light);
   padding: 0.125em 0.25em;
   border-radius: var(--border-radius-xs);
 

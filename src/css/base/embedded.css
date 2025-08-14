@@ -28,22 +28,22 @@ img {
 
 /* Lazy loading performance */
 img[loading="lazy"] {
-  background-color: var(--background-color-surface-light);
+  background-color: var(--color-surface-light);
 }
 
 svg {
   /* Allow SVG to scale properly */
-  fill: currentcolor;
+  fill: currentColor;
   vertical-align: middle;
 }
 
 svg:not([fill]) {
-  fill: currentcolor;
+  fill: currentColor;
 }
 
 audio {
   width: 100%;
-  max-width: var(--container-width-s);
+  max-width: var(--content-width-s);
 }
 
 video {
@@ -51,7 +51,7 @@ video {
   max-width: var(--content-width-s);
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background-color: var(--background-color-surface-dark);
+  background-color: var(--color-surface-dark);
 }
 
 iframe {
@@ -70,6 +70,5 @@ figure {
 figcaption {
   margin-block-start: var(--spacing-s);
   font-size: var(--font-size-s);
-  color: var(--color-text-base-disabled);
   text-align: center;
 }

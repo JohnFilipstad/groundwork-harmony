@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-headings), "Groundwork Sans", sans-serif;
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-s);
+  letter-spacing: var(--letter-spacing-xl);
   margin-block: var(--spacing-m) var(--spacing-s);
 
   /* Prevent orphans and widows */
@@ -44,7 +44,8 @@ h4 {
 }
 
 h5 {
-  font-size: calc(var(--font-size-m) * 1.125);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-semibold); /* Heavier weight for distinction */
 }
 
 h6 {
@@ -78,6 +79,10 @@ hr {
 b,
 strong {
   font-weight: var(--font-weight-bold);
+}
+
+em {
+  font-style: italic;
 }
 
 small {
@@ -115,8 +120,8 @@ ins {
 }
 
 mark {
-  background-color: var(--color-yellow-lightest);
-  color: var(--color-text-base-on-light);
+  background-color: var(--color-accent-300);
+  color: var(--color-accent-300-text);
   padding-inline: var(--spacing-xs);
   border-radius: var(--border-radius-xs);
 }

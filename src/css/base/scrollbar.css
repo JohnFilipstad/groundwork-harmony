@@ -1,47 +1,55 @@
 /**
  * @category Base
- * @description Custom scrollbar styling for modern browsers. Creates consistent, themed scrollbars across Webkit browsers and Firefox with proper colors and sizing.
- * @order 14
+ * @description Themed scrollbars using --color-surface-* and --color-focus-ring variables.
+ * Supports Webkit (Chrome/Safari) and Firefox with dark/light mode.
  */
 
-/* ===================================================================
-   Scrollbar Styles
-   Custom scrollbar styling for Webkit and Firefox
-   =================================================================== */
-
-/* Webkit browsers (Chrome, Safari, Edge) */
+/* ==================== WEBKIT SCROLLBARS ==================== */
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background-color-surface-light);
+  background: var(--color-surface);
   border-radius: var(--border-radius-full);
+  background-clip: padding-box; /* Prevents repaint flicker */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-muted);
+  background: var(--color-primary);
   border-radius: var(--border-radius-full);
-  border: 2px solid var(--background-color-surface-light);
+  border: 2px solid var(--color-surface-light);
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted-dark);
+  background: var(--color-focus-ring); /* Uses your 50% lightness primary */
 }
 
-/* Firefox */
+::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--color-primary-h) var(--color-primary-s) 40%); /* 10% darker than focus-ring */
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-surface-light);
+}
+
+/* ==================== FIREFOX SCROLLBARS ==================== */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-muted) var(--background-color-surface-light);
+  scrollbar-color: 
+    var(--color-surface-inverse)  /* Thumb */
+    var(--color-surface-light);   /* Track */
 }
 
-/* Horizontal scrollbar specific */
-::-webkit-scrollbar:horizontal {
-  height: 12px;
-}
+/* ==================== DARK MODE OVERRIDES ==================== */
+:root[data-theme="dark"] {
+  ::-webkit-scrollbar-thumb {
+    border-color: var(--color-surface-dark); /* Darker border for contrast */
+  }
 
-/* Corner where scrollbars meet */
-::-webkit-scrollbar-corner {
-  background: var(--background-color-surface-light);
+  scrollbar-color: 
+    var(--color-surface-inverse)
+    var(--color-surface-dark); /* Darker track in dark mode */
 }

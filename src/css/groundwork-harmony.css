@@ -1,19 +1,24 @@
 /*
 Groundwork Harmony 🎶
 
-A class-less CSS base for the modern web. Supercharge and harmonize your HTML with modern, accessible defaults, and powerful customization.
-
+A class-less CSS base for the modern web. Supercharge and harmonize your HTML
+with modern, accessible defaults, and powerful customization.
 ---
-
 🎤 Why Settle for Noise? Orchestrate with Harmony.
 
-Welcome to Groundwork Harmony—the CSS base designed for creators who want their web projects to look striking, modern, and accessible right out of the box. 
-Why drown your markup in utility classes when you can let your HTML sing with semantic elegance?
+Welcome to Groundwork Harmony—the CSS base designed for creators who want their
+web projects to look striking, modern, and accessible right out of the box. 
+Why drown your markup in utility classes when you can let your HTML sing with
+semantic elegance?
 
 Groundwork Harmony is more than a stylesheet—it's a philosophy. 
 I believe your code should be music: clean, harmonious, and effortless to scale. 
 Groundwork Harmony supercharges HTML elements with modern, accessible defaults. 
-Think of it as normalize.css in high gear, blending innovation with reliability so you can focus on content, not configuration.
+Think of it as normalize.css in high gear, blending innovation with reliability
+so you can focus on content, not configuration.
+
+Version: v.${packageJson.version}
+(c) 2025 John Filipstad
 */
 
 

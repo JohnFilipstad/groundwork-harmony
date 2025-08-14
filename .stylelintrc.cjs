@@ -13,6 +13,12 @@ module.exports = {
     'alpha-value-notation': 'number',      // Use numbers for alpha values (e.g., 0.5)
     'property-no-unknown': true,
     'order/properties-order': [],
-    'no-descending-specificity': null
+    'no-descending-specificity': null,
+    'value-keyword-case': [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ]
   }
 };

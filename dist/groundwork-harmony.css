@@ -1,1235 +1,1346 @@
-/*
-Groundwork Harmony 🎶
-
-A class-less CSS base for the modern web. Supercharge and harmonize your HTML with modern, accessible defaults, and powerful customization.
-
----
-
-🎤 Why Settle for Noise? Orchestrate with Harmony.
-
-Welcome to Groundwork Harmony—the CSS base designed for creators who want their web projects to look striking, modern, and accessible right out of the box. 
-Why drown your markup in utility classes when you can let your HTML sing with semantic elegance?
-
-Groundwork Harmony is more than a stylesheet—it's a philosophy. 
-I believe your code should be music: clean, harmonious, and effortless to scale. 
-Groundwork Harmony supercharges HTML elements with modern, accessible defaults. 
-Think of it as normalize.css in high gear, blending innovation with reliability so you can focus on content, not configuration.
-*/
-
-
-/*
- * Groundwork Harmony CSS
- * A minimal, modern CSS framework for web projects.
- *
- * This file is the main entry point for the Groundwork Harmony CSS framework.
- * It imports various stylesheets that define the core styles, base, and utilities.
- *
- * For more information, visit:
+/*!
+ * Groundwork Harmony 🎶
+ * 
+ *   A class-less CSS base for the modern web. Supercharge and harmonize your HTML
+ *   with modern, accessible defaults, and powerful customization.
+ *   ---
+ *   🎤 Why Settle for Noise? Orchestrate with Harmony.
+ * 
+ *   Welcome to Groundwork Harmony—the CSS base designed for creators who want their
+ *   web projects to look striking, modern, and accessible right out of the box.
+ *   Why drown your markup in utility classes when you can let your HTML sing with
+ *   semantic elegance?
+ * 
+ *   Groundwork Harmony is more than a stylesheet—it’s a philosophy.
+ *   I believe your code should be music: clean, harmonious, and effortless to scale.
+ *   Groundwork Harmony supercharges HTML elements with modern, accessible defaults.
+ *   Think of it as normalize.css in high gear, blending innovation with reliability
+ *   so you can focus on content, not configuration.
+ * 
+ *   Version: v.0.9.0
+ *   (c) 2025 John Filipstad
  */
 
-/* 0) Design tokens (single source of truth) */
 
-/* 
-  📘 Groundwork Tokens Guidelines:
-  - Never override tokens directly.
-  - Use semantic tokens (e.g., --color-primary) in components.
-  - Only update design decisions through this file.
-  - Always check text contrast with --color-text-base or --color-text-base-inverse.
-*/
-
-:root {
-  /* ===================================================================
-     1. CORE & BRAND COLORS
-     - The raw color palette for brand identity.
-     =================================================================== */
-
-  /* Neutrals */
-  --color-white: #fff;
-  --color-black: #000;
-  --color-grey: #7d7d7d; /* Use black text #000000DE for WCAG AA */
-
-  /* Base Colors */
-  --color-red: #cb180b; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta: #c31377; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange: #fa9600; /* Use black text #000000DE for WCAG AA */
-  --color-amber: #f5b800; /* Use black text #000000DE for WCAG AA */
-  --color-yellow: #ffea29; /* Use black text #000000DE for WCAG AA */
-  --color-brown: #865e50; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green: #337539; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal: #00756a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan: #007894; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue: #0678be; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo: #594af6; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple: #8f2fe9; /* Use white text #FFFFFFDE for WCAG AA */
-
-  /* --- Variants --- */
-
-  --color-red-lightest: #fbe5e3; /* Use black text #000000DE for WCAG AA */
-  --color-red-lighter: #f5b5b1; /* Use black text #000000DE for WCAG AA */
-  --color-red-light: #eb7872; /* Use black text #000000DE for WCAG AA */
-  --color-red-dark: #a7150a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-red-darker: #861208; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-red-darkest: #5c0d06; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta-lightest: #fce3f1; /* Use black text #000000DE for WCAG AA */
-  --color-magenta-lighter: #f5b4db; /* Use black text #000000DE for WCAG AA */
-  --color-magenta-light: #ea74b8; /* Use black text #000000DE for WCAG AA */
-  --color-magenta-dark: #9f1062; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta-darker: #7d0d4d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta-darkest: #5b0938; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange-lightest: #fff3e0; /* Use black text #000000DE for WCAG AA */
-  --color-orange-lighter: #ffd7a3; /* Use black text #000000DE for WCAG AA */
-  --color-orange-light: #f9b94a; /* Use black text #000000DE for WCAG AA */
-  --color-orange-dark: #c87600; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange-darker: #a45f00; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange-darkest: #733f00; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-amber-lightest: #fff7e0; /* Use black text #000000DE for WCAG AA */
-  --color-amber-lighter: #ffe4a3; /* Use black text #000000DE for WCAG AA */
-  --color-amber-light: #ffd24d; /* Use black text #000000DE for WCAG AA */
-  --color-amber-dark: #c99400; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-amber-darker: #9e7400; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-amber-darkest: #6e5100; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-yellow-lightest: #fffbe1; /* Use black text #000000DE for WCAG AA */
-  --color-yellow-lighter: #fff2a6; /* Use black text #000000DE for WCAG AA */
-  --color-yellow-light: #ffeb4a; /* Use black text #000000DE for WCAG AA */
-  --color-yellow-dark: #d9b900; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-yellow-darker: #b49700; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-yellow-darkest: #7a6400; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-brown-lightest: #f2eae6; /* Use black text #000000DE for WCAG AA */
-  --color-brown-lighter: #d4bfb6; /* Use black text #000000DE for WCAG AA */
-  --color-brown-light: #b8907e; /* Use black text #000000DE for WCAG AA */
-  --color-brown-dark: #6a4b3f; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-brown-darker: #543a31; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-brown-darkest: #3a2921; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green-lightest: #e2f5e5; /* Use black text #000000DE for WCAG AA */
-  --color-green-lighter: #a7deb0; /* Use black text #000000DE for WCAG AA */
-  --color-green-light: #5bbe72; /* Use black text #000000DE for WCAG AA */
-  --color-green-dark: #29612e; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green-darker: #1f4d24; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green-darkest: #153919; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal-lightest: #ddf6f4; /* Use black text #000000DE for WCAG AA */
-  --color-teal-lighter: #a3e5e0; /* Use black text #000000DE for WCAG AA */
-  --color-teal-light: #52c6bc; /* Use black text #000000DE for WCAG AA */
-  --color-teal-dark: #006058; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal-darker: #004d46; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal-darkest: #003933; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan-lightest: #e0f7fa; /* Use black text #000000DE for WCAG AA */
-  --color-cyan-lighter: #a3e4ec; /* Use black text #000000DE for WCAG AA */
-  --color-cyan-light: #0095a8; /* Use black text #000000DE for WCAG AA */
-  --color-cyan-dark: #005f74; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan-darker: #004859; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan-darkest: #003440; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue-lightest: #d9effb; /* Use black text #000000DE for WCAG AA */
-  --color-blue-lighter: #a3d6f2; /* Use black text #000000DE for WCAG AA */
-  --color-blue-light: #49ade0; /* Use black text #000000DE for WCAG AA */
-  --color-blue-dark: #04619c; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue-darker: #034d7d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue-darkest: #02395d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo-lightest: #e6e5fd; /* Use black text #000000DE for WCAG AA */
-  --color-indigo-lighter: #b7b4fa; /* Use black text #000000DE for WCAG AA */
-  --color-indigo-light: #8379f8; /* Use black text #000000DE for WCAG AA */
-  --color-indigo-dark: #4437c4; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo-darker: #342a9a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo-darkest: #221d6e; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple-lightest: #f0e5fc; /* Use black text #000000DE for WCAG AA */
-  --color-purple-lighter: #d0b4f8; /* Use black text #000000DE for WCAG AA */
-  --color-purple-light: #af7ef3; /* Use black text #000000DE for WCAG AA */
-  --color-purple-dark: #7323c0; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple-darker: #5a1996; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple-darkest: #40126d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-grey-lightest: #f2f2f2; /* Use black text #000000DE for WCAG AA */
-  --color-grey-lighter: #d9d9d9; /* Use black text #000000DE for WCAG AA */
-  --color-grey-light: #b3b3b3; /* Use black text #000000DE for WCAG AA */
-  --color-grey-dark: #4a4a4a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-grey-darker: #3a3a3a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-grey-darkest: #2a2a2a; /* Use white text #FFFFFFDE for WCAG AA */
-
-  /* ===================================================================
-     2. TYPOGRAPHY
-     - Font families, modular scale, and base sizes.
-     =================================================================== */
-
-  /* --- Font Families (Semantic) --- */
-  --font-family-sans:  "Groundwork Sans", system-ui, sans-serif;
-  --font-family-serif: "Groundwork Serif", ui-serif, serif;
-  --font-family-mono: "Lucida Console", monaco, monospace;
-  --font-family-base: var(--font-family-serif);
-  --font-family-headings: var(--font-family-sans);
-  --font-family-site-name: var(--font-family-sans);
-
-  /* --- Font Sizing (Semantic T-shirt Scale) --- */
-  --font-size-base: 1.6rem;
-  --scale-type: var(--scale-perfect-fourth); /* Default scale ratio */
-  --font-size-m: var(--scale-base); /* 1.6rem - base */
-  --font-size-s: calc(var(--font-size-m) / var(--scale-type)); /* 1.2rem */
-  --font-size-xs: calc(var(--font-size-s) / var(--scale-type)); /* 0.9rem */
-  --font-size-l: calc(var(--font-size-m) * var(--scale-type)); /* 2.1rem */
-  --font-size-xl: calc(var(--font-size-l) * var(--scale-type)); /* 2.8rem */
-  --font-size-xxl: calc(var(--font-size-xl) * var(--scale-type)); /* 3.8rem */
-  --font-size-xxxl: calc(var(--font-size-xxl) * var(--scale-type)); /* 5rem */
-
-  /* --- Font Weights (Semantic) --- */
-  --font-weight-thin: 100;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extra-bold: 800;
-  --font-weight-black: 900;
-
-  /* --- Line Heights (Semantic) --- */
-  --line-height-none: 1;
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.625;
-  --line-height-loose: 2;
-
-  /* --- Letter Spacing (Semantic T-shirt Scale) --- */
-  --letter-spacing-xs: -0.1em;
-  --letter-spacing-s: -0.05em;
-  --letter-spacing-m: 0;
-  --letter-spacing-l: 0.05em;
-  --letter-spacing-xl: 0.1em;
-
-  /* --- Modular Scale Ratios (for reference) --- */
-  --scale-base: 1.6rem;
-  --scale-minor-second: 1.067;
-  --scale-major-second: 1.125;
-  --scale-minor-third: 1.2;
-  --scale-major-third: 1.25;
-  --scale-perfect-fourth: 1.333;
-  --scale-augmented-fourth: 1.414;
-  --scale-perfect-fifth: 1.5;
-  --scale-golden-section: 1.618;
-  --scale-major-sixth: 1.667;
-  --scale-minor-seventh: 1.778;
-  --scale-major-seventh: 1.875;
-  --scale-octave: 2;
-
-  /* ===================================================================
-     3. SPACING & SIZING
-     - Consistent spacing units for margins, padding, and gaps.
-     =================================================================== */
-
-  /* --- Spacing (Semantic T-shirt Scale) --- */
-  --spacing-0: 0;
-  --spacing-xs: 0.4rem;
-  --spacing-s: 0.8rem;
-  --spacing-m: 1.6rem; /* base */
-  --spacing-l: 2.4rem;
-  --spacing-xl: 3.2rem;
-  --spacing-xxl: 4rem;
-  --spacing-xxxl: 6.4rem;
-  --spacing-auto: auto;
-
-  /* --- Icon Sizing (Semantic T-shirt Scale) --- */
-  --icon-size-xs: 1.2rem;
-  --icon-size-s: 1.6rem;
-  --icon-size-m: 2.4rem;
-  --icon-size-l: 3.2rem;
-  --icon-size-xl: 4.8rem;
-  --icon-size-xxl: 6.4rem;
-  --icon-size-xxxl: 9.6rem;
-
-  /* ===================================================================
-     4. LAYOUT
-     - Container widths, grid, and z-index scale.
-     =================================================================== */
-
-  /* --- Breakpoints (Reference Only) --- */
-
-  /* Used for JS, SDC props, documentation, and StyleDiscovery labels. */
-
-  /* ⚠️ Cannot be used directly in @media queries. */
-  --breakpoint-bpm: 768px; /* Breakpoint Medium — tablets and up */
-  --breakpoint-bpl: 1024px; /* Breakpoint Large — desktops and up */
-  --breakpoint-bpxl: 1280px; /* Breakpoint Extra Large — large desktops and up */
-
-  /* --- Grid (Semantic) --- */
-  --grid-columns: 12;
-  --grid-gutter: var(--spacing-m);
-  --grid-gutter-s: var(--spacing-s);
-  --grid-gutter-m: var(--spacing-m);
-  --grid-gutter-l: var(--spacing-l);
-
-  /* --- Container Widths (Semantic T-shirt Scale) --- */
-  --container-max-width: 1320px;
-
-  /* For self-contained components like modals, cards, etc. */
-  --content-width-s: 56rem;
-  --content-width-m: 80rem;
-  --content-width-l: 102.4rem;
-
-  /* --- Z-Index Scale (Already semantic) --- */
-  --z-index-behind: -1;
-  --z-index-normal: 0;
-  --z-index-base: 1;
-  --z-index-elevated: 10;
-  --z-index-dropdown: 1000;
-  --z-index-sticky: 1020;
-  --z-index-popover: 1060;
-  --z-index-tooltip: 1070;
-  --z-index-modal: 1080;
-  --z-index-toast: 10000;
-
-  /* ===================================================================
-     5. BORDERS & RADII
-     - Border radii and widths for rounding corners.
-     =================================================================== */
-
-  /* --- Border Radius (Semantic T-shirt Scale) --- */
-  --border-radius-0: 0;
-  --border-radius-xs: 0.2rem;
-  --border-radius-s: 0.4rem;
-  --border-radius-m: 0.8rem; /* base */
-  --border-radius-l: 1.2rem;
-  --border-radius-xl: 1.6rem;
-  --border-radius-xxl: 2.4rem;
-  --border-radius-xxxl: 3.2rem;
-  --border-radius-full: 9999px;
-
-  /* --- Border Widths (Semantic) --- */
-  --border-width-0: 0;
-  --border-width-thin: 1px;
-  --border-width-m: 2px;
-  --border-width-thick: 4px;
-  --border-width-extra-thick: 8px;
-
-  /* ===================================================================
-     6. SHADOWS
-     - Box shadows for elevation and depth.
-     =================================================================== */
-
-  /* --- Box Shadows (Semantic T-shirt Scale) --- */
-  --box-shadow-none: none;
-  --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.1);
-  --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.1), 0 1px 3px rgb(0 0 0 / 0.06);
-  --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.12), 0 2px 4px rgb(0 0 0 / 0.08); /* base */
-  --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.15), 0 6px 12px rgb(0 0 0 / 0.12);
-  --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(0 0 0 / 0.15);
-  --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.22), 0 18px 36px rgb(0 0 0 / 0.18);
-  --box-shadow-inner: inset 0 1px 2px rgb(from var(--color-black) r g b / 0.06);
-
-  /* --- Semantic Shadow Purposes --- */
-  --box-shadow-focus: 0 0 0 3px rgb(from var(--color-primary) r g b / 0.5);
-  --box-shadow-subtle: var(--box-shadow-xs);
-  --box-shadow-elevated: var(--box-shadow-m);
-  --box-shadow-floating: var(--box-shadow-l);
-
-  /* ===================================================================
-     7. TRANSITIONS & ANIMATIONS
-     - Durations and timing functions for motion.
-     =================================================================== */
-
-  /* --- Transition Durations (Semantic) --- */
-  --transition-duration-instant: 0s;
-  --transition-duration-fast: 150ms;
-  --transition-duration-normal: 250ms;
-  --transition-duration-slow: 400ms;
-  --transition-duration-slower: 600ms;
-
-  /* --- Transition Timing Functions (Semantic) --- */
-  --transition-timing-linear: linear;
-  --transition-timing-ease: ease;
-  --transition-timing-ease-in: ease-in;
-  --transition-timing-ease-out: ease-out;
-  --transition-timing-ease-in-out: ease-in-out;
-  --transition-timing-custom: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* --- Complete Transitions (Semantic) --- */
-  --transition-fast: all var(--transition-duration-fast) var(--transition-timing-ease);
-  --transition-normal: all var(--transition-duration-normal) var(--transition-timing-ease);
-  --transition-slow: all var(--transition-duration-slow) var(--transition-timing-ease);
-
-  /* --- Property-Specific Transitions (Semantic) --- */
-  --transition-colors:
-    color var(--transition-duration-normal) var(--transition-timing-ease),
-    background-color var(--transition-duration-normal) var(--transition-timing-ease),
-    border-color var(--transition-duration-normal) var(--transition-timing-ease);
-  --transition-transform: transform var(--transition-duration-normal) var(--transition-timing-ease);
-  --transition-opacity: opacity var(--transition-duration-normal) var(--transition-timing-ease);
-
-  /* ===================================================================
-     8. COLOR SYSTEM (CSS Property Semantic)
-     =================================================================== */
-
-  /* --- Base Semantic Colors --- */
-  --color-primary: var(--color-purple);
-  --color-secondary: var(--color-indigo);
-  --color-accent: var(--color-amber);
-  --color-info: var(--color-blue);
-  --color-notice: var(--color-teal);
-  --color-success: var(--color-green);
-  --color-danger: var(--color-red);
-  --color-warning: var(--color-orange);
-  --color-muted: var(--color-grey);
-
-  /* --- Light Semantic Colors --- */
-  --color-primary-light: color-mix(in oklab, var(--color-primary) 75%, var(--color-white) 25%);
-  --color-secondary-light: color-mix(in oklab, var(--color-secondary) 75%, var(--color-white) 25%);
-  --color-accent-light: color-mix(in oklab, var(--color-accent) 75%, var(--color-white) 25%);
-  --color-info-light: var(--color-blue-light);
-  --color-notice-light: var(--color-teal-light);
-  --color-success-light: var(--color-green-light);
-  --color-danger-light: var(--color-red-light);
-  --color-warning-light: var(--color-orange-light);
-  --color-muted-light: var(--color-grey-light);
-
-  /* --- Dark Semantic Colors --- */
-  --color-primary-dark: color-mix(in oklab, var(--color-primary) 75%, var(--color-black) 25%);
-  --color-secondary-dark: color-mix(in oklab, var(--color-secondary) 75%, var(--color-black) 25%);
-  --color-accent-dark: color-mix(in oklab, var(--color-accent) 75%, var(--color-black) 25%);
-  --color-info-dark: var(--color-blue-dark);
-  --color-notice-dark: var(--color-teal-dark);
-  --color-success-dark: var(--color-green-dark);
-  --color-danger-dark: var(--color-red-dark);
-  --color-warning-dark: var(--color-orange-dark);
-  --color-muted-dark: var(--color-grey-dark);
-
-  /* Text Colors depending on background */
-  --color-primary-text: var(--color-text-base-on-dark);
-  --color-secondary-text: var(--color-text-base-on-dark);
-  --color-accent-text: var(--color-text-base-on-dark);
-  --color-text-base-on-dark: rgb(255 255 255 / 0.87);
-  --color-text-base-on-light: rgb(0 0 0 / 0.87);
-  --background-color-header: var(--color-primary);
-  --background-color-footer: var(--color-secondary)
-
-/* ===================================================================
-   9. THEME DEFINITIONS
-   - Defines theme-specific variables for light and dark modes.
-   =================================================================== */
-
-  /* --- LIGHT THEME (DEFAULT) --- */;
-  --background-color-body: #fff;
-  --background-color-surface-dark: #b1b1b1;
-  --background-color-surface: #cbcbcb;
-  --background-color-surface-light: #e5e5e5;
-  --background-color-surface-hover: #969696;
-  --background-color-surface-inverse: #232323;
-  --background-color-disabled: rgb(0 0 0 / 0.12);
-  --color-text-base: rgb(0 0 0 / 0.87);
-  --color-text-base-inverse: rgb(255 255 255 / 0.87);
-  --color-text-base-disabled: rgb(0 0 0 / 0.38);
-  --color-link: var(--color-notice-dark);
-  --color-link-hover: var(--color-success-dark);
-  --border-color-default: rgb(0 0 0 / 0.12);
-  --border-color-focus: rgb(from var(--color-primary) r g b / 0.5);
+:root{
+  --color-white:#fff;
+  --color-white-text:var(--color-text-on-light);
+  --color-black:#000;
+  --color-black-text:var(--color-text-on-dark);
+  --color-grey:var(--color-grey-600);
+  --color-grey-text:var(--color-grey-600-text);
+  --color-grey-100:#e8e8e8;
+  --color-grey-200:#ccc;
+  --color-grey-300:#b0b0b0;
+  --color-grey-400:#969696;
+  --color-grey-500:#7d7d7d;
+  --color-grey-600:#595959;
+  --color-grey-700:#424242;
+  --color-grey-800:#2c2c2c;
+  --color-grey-900:#181818;
+  --color-grey-100-text:var(--color-text-on-light);
+  --color-grey-200-text:var(--color-text-on-light);
+  --color-grey-300-text:var(--color-text-on-light);
+  --color-grey-400-text:var(--color-text-on-light);
+  --color-grey-500-text:var(--color-text-on-light);
+  --color-grey-600-text:var(--color-text-on-dark);
+  --color-grey-700-text:var(--color-text-on-dark);
+  --color-grey-800-text:var(--color-text-on-dark);
+  --color-grey-900-text:var(--color-text-on-dark);
+  --color-red:var(--color-red-600);
+  --color-red-text:var(--color-red-600-text);
+  --color-red-100:#ff967c;
+  --color-red-200:#f77a5d;
+  --color-red-300:#e85c40;
+  --color-red-400:#da4027;
+  --color-red-500:#bb3721;
+  --color-red-600:#9c2817;
+  --color-red-700:#7e1a0d;
+  --color-red-800:#650e01;
+  --color-red-900:#421204;
+  --color-red-100-text:var(--color-text-on-light);
+  --color-red-200-text:var(--color-text-on-light);
+  --color-red-300-text:var(--color-text-on-light);
+  --color-red-400-text:var(--color-text-on-light);
+  --color-red-500-text:var(--color-text-on-dark);
+  --color-red-600-text:var(--color-text-on-dark);
+  --color-red-700-text:var(--color-text-on-dark);
+  --color-red-800-text:var(--color-text-on-dark);
+  --color-red-900-text:var(--color-text-on-dark);
+  --color-magenta:var(--color-magenta-600);
+  --color-magenta-text:var(--color-magenta-600-text);
+  --color-magenta-100:#f897bf;
+  --color-magenta-200:#eb7aab;
+  --color-magenta-300:#dd5c98;
+  --color-magenta-400:#d03f87;
+  --color-magenta-500:#b23674;
+  --color-magenta-600:#95285f;
+  --color-magenta-700:#78194a;
+  --color-magenta-800:#600d39;
+  --color-magenta-900:#3e1227;
+  --color-magenta-100-text:var(--color-text-on-light);
+  --color-magenta-200-text:var(--color-text-on-light);
+  --color-magenta-300-text:var(--color-text-on-light);
+  --color-magenta-400-text:var(--color-text-on-light);
+  --color-magenta-500-text:var(--color-text-on-dark);
+  --color-magenta-600-text:var(--color-text-on-dark);
+  --color-magenta-700-text:var(--color-text-on-dark);
+  --color-magenta-800-text:var(--color-text-on-dark);
+  --color-magenta-900-text:var(--color-text-on-dark);
+  --color-orange:var(--color-orange-600);
+  --color-orange-text:var(--color-orange-600-text);
+  --color-orange-100:#ffdc9f;
+  --color-orange-200:#ffd08f;
+  --color-orange-300:#ffbe58;
+  --color-orange-400:#ffab39;
+  --color-orange-500:#ef9b3a;
+  --color-orange-600:#d28833;
+  --color-orange-700:#b6752c;
+  --color-orange-800:#9d6626;
+  --color-orange-900:#865620;
+  --color-orange-100-text:var(--color-text-on-light);
+  --color-orange-200-text:var(--color-text-on-light);
+  --color-orange-300-text:var(--color-text-on-light);
+  --color-orange-400-text:var(--color-text-on-light);
+  --color-orange-500-text:var(--color-text-on-light);
+  --color-orange-600-text:var(--color-text-on-light);
+  --color-orange-700-text:var(--color-text-on-light);
+  --color-orange-800-text:var(--color-text-on-dark);
+  --color-orange-900-text:var(--color-text-on-dark);
+  --color-amber:var(--color-amber-600);
+  --color-amber-text:var(--color-amber-600-text);
+  --color-amber-100:#ffe28f;
+  --color-amber-200:#ffd67e;
+  --color-amber-300:#ffc839;
+  --color-amber-400:#fabd1a;
+  --color-amber-500:#efba43;
+  --color-amber-600:#d4a53d;
+  --color-amber-700:#ba9037;
+  --color-amber-800:#a37f31;
+  --color-amber-900:#8d6e2c;
+  --color-amber-100-text:var(--color-text-on-light);
+  --color-amber-200-text:var(--color-text-on-light);
+  --color-amber-300-text:var(--color-text-on-light);
+  --color-amber-400-text:var(--color-text-on-light);
+  --color-amber-500-text:var(--color-text-on-light);
+  --color-amber-600-text:var(--color-text-on-light);
+  --color-amber-700-text:var(--color-text-on-light);
+  --color-amber-800-text:var(--color-text-on-light);
+  --color-amber-900-text:var(--color-text-on-dark);
+  --color-yellow:var(--color-yellow-600);
+  --color-yellow-text:var(--color-yellow-600-text);
+  --color-yellow-100:#fee972;
+  --color-yellow-200:#efde85;
+  --color-yellow-300:#e6d358;
+  --color-yellow-400:#dac855;
+  --color-yellow-500:#fbe88a;
+  --color-yellow-600:#e5d258;
+  --color-yellow-700:#cdbc52;
+  --color-yellow-800:#b8a94d;
+  --color-yellow-900:#a49647;
+  --color-yellow-100-text:var(--color-text-on-light);
+  --color-yellow-200-text:var(--color-text-on-light);
+  --color-yellow-300-text:var(--color-text-on-light);
+  --color-yellow-400-text:var(--color-text-on-light);
+  --color-yellow-500-text:var(--color-text-on-light);
+  --color-yellow-600-text:var(--color-text-on-light);
+  --color-yellow-700-text:var(--color-text-on-light);
+  --color-yellow-800-text:var(--color-text-on-light);
+  --color-yellow-900-text:var(--color-text-on-light);
+  --color-brown:var(--color-brown-600);
+  --color-brown-text:var(--color-brown-600-text);
+  --color-brown-100:#ccafa6;
+  --color-brown-200:#b9998e;
+  --color-brown-300:#a68377;
+  --color-brown-400:#967063;
+  --color-brown-500:#816055;
+  --color-brown-600:#6a4e44;
+  --color-brown-700:#543c34;
+  --color-brown-800:#422d26;
+  --color-brown-900:#2c201c;
+  --color-brown-100-text:var(--color-text-on-light);
+  --color-brown-200-text:var(--color-text-on-light);
+  --color-brown-300-text:var(--color-text-on-light);
+  --color-brown-400-text:var(--color-text-on-light);
+  --color-brown-500-text:var(--color-text-on-dark);
+  --color-brown-600-text:var(--color-text-on-dark);
+  --color-brown-700-text:var(--color-text-on-dark);
+  --color-brown-800-text:var(--color-text-on-dark);
+  --color-brown-900-text:var(--color-text-on-dark);
+  --color-green:var(--color-green-600);
+  --color-green-text:var(--color-green-600-text);
+  --color-green-100:#99bf97;
+  --color-green-200:#7eab7d;
+  --color-green-300:#639764;
+  --color-green-400:#4c864e;
+  --color-green-500:#417343;
+  --color-green-600:#325e34;
+  --color-green-700:#244a26;
+  --color-green-800:#18391b;
+  --color-green-900:#152716;
+  --color-green-100-text:var(--color-text-on-light);
+  --color-green-200-text:var(--color-text-on-light);
+  --color-green-300-text:var(--color-text-on-light);
+  --color-green-400-text:var(--color-text-on-light);
+  --color-green-500-text:var(--color-text-on-dark);
+  --color-green-600-text:var(--color-text-on-dark);
+  --color-green-700-text:var(--color-text-on-dark);
+  --color-green-800-text:var(--color-text-on-dark);
+  --color-green-900-text:var(--color-text-on-dark);
+  --color-teal:var(--color-teal-600);
+  --color-teal-text:var(--color-teal-600-text);
+  --color-teal-100:#8dbfb7;
+  --color-teal-200:#6faba2;
+  --color-teal-300:#50978d;
+  --color-teal-400:#33867b;
+  --color-teal-500:#2c736a;
+  --color-teal-600:#1f5e56;
+  --color-teal-700:#124a43;
+  --color-teal-800:#073933;
+  --color-teal-900:#0f2724;
+  --color-teal-100-text:var(--color-text-on-light);
+  --color-teal-200-text:var(--color-text-on-light);
+  --color-teal-300-text:var(--color-text-on-light);
+  --color-teal-400-text:var(--color-text-on-light);
+  --color-teal-500-text:var(--color-text-on-dark);
+  --color-teal-600-text:var(--color-text-on-dark);
+  --color-teal-700-text:var(--color-text-on-dark);
+  --color-teal-800-text:var(--color-text-on-dark);
+  --color-teal-900-text:var(--color-text-on-dark);
+  --color-cyan:var(--color-cyan-600);
+  --color-cyan-text:var(--color-cyan-600-text);
+  --color-cyan-100:#96c3d5;
+  --color-cyan-200:#78afc4;
+  --color-cyan-300:#599ab2;
+  --color-cyan-400:#3989a3;
+  --color-cyan-500:#32768c;
+  --color-cyan-600:#256175;
+  --color-cyan-700:#184e5e;
+  --color-cyan-800:#0d3d4b;
+  --color-cyan-900:#032d39;
+  --color-cyan-100-text:var(--color-text-on-light);
+  --color-cyan-200-text:var(--color-text-on-light);
+  --color-cyan-300-text:var(--color-text-on-light);
+  --color-cyan-400-text:var(--color-text-on-light);
+  --color-cyan-500-text:var(--color-text-on-dark);
+  --color-cyan-600-text:var(--color-text-on-dark);
+  --color-cyan-700-text:var(--color-text-on-dark);
+  --color-cyan-800-text:var(--color-text-on-dark);
+  --color-cyan-900-text:var(--color-text-on-dark);
+  --color-blue:var(--color-blue-600);
+  --color-blue-text:var(--color-blue-600-text);
+  --color-blue-100:#a2c5f3;
+  --color-blue-200:#84b0e5;
+  --color-blue-300:#649bd7;
+  --color-blue-400:#4389ca;
+  --color-blue-500:#3c77af;
+  --color-blue-600:#2e6393;
+  --color-blue-700:#204f79;
+  --color-blue-800:#143f63;
+  --color-blue-900:#082f4d;
+  --color-blue-100-text:var(--color-text-on-light);
+  --color-blue-200-text:var(--color-text-on-light);
+  --color-blue-300-text:var(--color-text-on-light);
+  --color-blue-400-text:var(--color-text-on-light);
+  --color-blue-500-text:var(--color-text-on-dark);
+  --color-blue-600-text:var(--color-text-on-dark);
+  --color-blue-700-text:var(--color-text-on-dark);
+  --color-blue-800-text:var(--color-text-on-dark);
+  --color-blue-900-text:var(--color-text-on-dark);
+  --color-indigo:var(--color-indigo-600);
+  --color-indigo-text:var(--color-indigo-600-text);
+  --color-indigo-100:#c0a4ff;
+  --color-indigo-200:#a88cff;
+  --color-indigo-300:#8f74ff;
+  --color-indigo-400:#765ffd;
+  --color-indigo-500:#6651d9;
+  --color-indigo-600:#5141b6;
+  --color-indigo-700:#3e3195;
+  --color-indigo-800:#2d237a;
+  --color-indigo-900:#241b4d;
+  --color-indigo-100-text:var(--color-text-on-light);
+  --color-indigo-200-text:var(--color-text-on-light);
+  --color-indigo-300-text:var(--color-text-on-light);
+  --color-indigo-400-text:var(--color-text-on-light);
+  --color-indigo-500-text:var(--color-text-on-dark);
+  --color-indigo-600-text:var(--color-text-on-dark);
+  --color-indigo-700-text:var(--color-text-on-dark);
+  --color-indigo-800-text:var(--color-text-on-dark);
+  --color-indigo-900-text:var(--color-text-on-dark);
+  --color-purple:var(--color-purple-600);
+  --color-purple-text:var(--color-purple-600-text);
+  --color-purple-100:#d99cff;
+  --color-purple-200:#c781ff;
+  --color-purple-300:#b465f9;
+  --color-purple-400:#a24cf1;
+  --color-purple-500:#8b41ce;
+  --color-purple-600:#7232ae;
+  --color-purple-700:#5b248e;
+  --color-purple-800:#471773;
+  --color-purple-900:#311649;
+  --color-purple-100-text:var(--color-text-on-light);
+  --color-purple-200-text:var(--color-text-on-light);
+  --color-purple-300-text:var(--color-text-on-light);
+  --color-purple-400-text:var(--color-text-on-light);
+  --color-purple-500-text:var(--color-text-on-dark);
+  --color-purple-600-text:var(--color-text-on-dark);
+  --color-purple-700-text:var(--color-text-on-dark);
+  --color-purple-800-text:var(--color-text-on-dark);
+  --color-purple-900-text:var(--color-text-on-dark);
 }
 
-/* --- DARK THEME (OS Preference or data-theme="dark") --- */
 
-@media (prefers-color-scheme: dark) {
-  /* noinspection DuplicatedCode */
-  :root:not([data-theme="light"]) {
-    --background-color-body: #121212;
-    --background-color-surface-dark: #1e1e1e;
-    --background-color-surface: #232323;
-    --background-color-surface-light: #2c2c2c;
-    --background-color-surface-hover: #272727;
-    --background-color-surface-inverse: #cbcbcb;
-    --background-color-disabled: rgb(255 255 255 / 0.12);
-    --color-text-base: rgb(255 255 255 / 0.87);
-    --color-text-base-inverse: rgb(0 0 0 / 0.87);
-    --color-text-base-disabled: rgb(255 255 255 / 0.38);
-    --color-link: var(--color-accent-light);
-    --color-link-hover: var(--color-success-light);
-    --border-color-default: rgb(255 255 255 / 0.25);
-    --border-color-focus: rgb(from var(--color-primary-light) r g b / 0.7);
-    --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.45), 0 1px 1px rgb(255 255 255 / 0.1);
-    --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.38), 0 1px 3px rgb(255 255 255 / 0.08);
-    --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.33), 0 2px 4px rgb(255 255 255 / 0.1);
-    --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.28), 0 6px 12px rgb(255 255 255 / 0.08);
-    --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(255 255 255 / 0.06);
-    --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.15), 0 18px 36px rgb(255 255 255 / 0.06);
-    --box-shadow-inner: inset 0 1px 2px rgb(255 255 255 / 0.06);
+:root{
+  --color-primary-h:271;
+  --color-primary-s:81%;
+  --color-primary-l-100:81%;
+  --color-primary-l-200:75%;
+  --color-primary-l-300:69%;
+  --color-primary-l-400:62%;
+  --color-primary-l-500:53%;
+  --color-primary-l-600:44%;
+  --color-primary-l-700:35%;
+  --color-primary-l-800:27%;
+  --color-primary-l-900:19%;
+  --color-primary-100:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-100));
+  --color-primary-200:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-200));
+  --color-primary-300:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-300));
+  --color-primary-400:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-400));
+  --color-primary-500:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-500));
+  --color-primary-600:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-600));
+  --color-primary-700:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-700));
+  --color-primary-800:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-800));
+  --color-primary-900:hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l-900));
+  --color-primary-100-text:var(--color-text-on-light);
+  --color-primary-200-text:var(--color-text-on-light);
+  --color-primary-300-text:var(--color-text-on-light);
+  --color-primary-400-text:var(--color-text-on-light);
+  --color-primary-500-text:var(--color-text-on-dark);
+  --color-primary-600-text:var(--color-text-on-dark);
+  --color-primary-700-text:var(--color-text-on-dark);
+  --color-primary-800-text:var(--color-text-on-dark);
+  --color-primary-900-text:var(--color-text-on-dark);
+  --color-primary-text:var(--color-primary-600-text);
+  --color-secondary-h:245;
+  --color-secondary-s:91%;
+  --color-secondary-l-100:82%;
+  --color-secondary-l-200:77%;
+  --color-secondary-l-300:73%;
+  --color-secondary-l-400:68%;
+  --color-secondary-l-500:58%;
+  --color-secondary-l-600:48%;
+  --color-secondary-l-700:39%;
+  --color-secondary-l-800:31%;
+  --color-secondary-l-900:20%;
+  --color-secondary-100:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-100));
+  --color-secondary-200:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-200));
+  --color-secondary-300:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-300));
+  --color-secondary-400:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-400));
+  --color-secondary-500:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-500));
+  --color-secondary-600:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-600));
+  --color-secondary-700:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-700));
+  --color-secondary-800:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-800));
+  --color-secondary-900:hsl(var(--color-secondary-h) var(--color-secondary-s) var(--color-secondary-l-900));
+  --color-secondary-100-text:var(--color-text-on-light);
+  --color-secondary-200-text:var(--color-text-on-light);
+  --color-secondary-300-text:var(--color-text-on-light);
+  --color-secondary-400-text:var(--color-text-on-light);
+  --color-secondary-500-text:var(--color-text-on-dark);
+  --color-secondary-600-text:var(--color-text-on-dark);
+  --color-secondary-700-text:var(--color-text-on-dark);
+  --color-secondary-800-text:var(--color-text-on-dark);
+  --color-secondary-900-text:var(--color-text-on-dark);
+  --color-secondary-text:var(--color-secondary-600-text);
+  --color-accent-h:45;
+  --color-accent-s:100%;
+  --color-accent-l-100:78%;
+  --color-accent-l-200:75%;
+  --color-accent-l-300:61%;
+  --color-accent-l-400:54%;
+  --color-accent-l-500:60%;
+  --color-accent-l-600:54%;
+  --color-accent-l-700:47%;
+  --color-accent-l-800:42%;
+  --color-accent-l-900:36%;
+  --color-accent-100:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-100));
+  --color-accent-200:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-200));
+  --color-accent-300:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-300));
+  --color-accent-400:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-400));
+  --color-accent-500:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-500));
+  --color-accent-600:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-600));
+  --color-accent-700:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-700));
+  --color-accent-800:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-800));
+  --color-accent-900:hsl(var(--color-accent-h) var(--color-accent-s) var(--color-accent-l-900));
+  --color-accent-100-text:var(--color-text-on-light);
+  --color-accent-200-text:var(--color-text-on-light);
+  --color-accent-300-text:var(--color-text-on-light);
+  --color-accent-400-text:var(--color-text-on-light);
+  --color-accent-500-text:var(--color-text-on-light);
+  --color-accent-600-text:var(--color-text-on-light);
+  --color-accent-700-text:var(--color-text-on-light);
+  --color-accent-800-text:var(--color-text-on-light);
+  --color-accent-900-text:var(--color-text-on-dark);
+  --color-accent-text:var(--color-accent-600-text);
+}
+
+
+:root{
+  --color-primary:var(--color-primary-600);
+  --color-secondary:var(--color-secondary-600);
+  --color-accent:var(--color-accent-600);
+  --color-success:var(--color-green-600);
+  --color-danger:var(--color-red-600);
+  --color-warning:var(--color-yellow-500);
+  --color-info:var(--color-cyan-600);
+  --color-muted:var(--color-grey-600);
+  --color-text-on-dark:hsl(0deg 0% 100% / 0.87);
+  --color-text-on-light:hsl(0deg 0% 10% / 0.87);
+  --color-success-text:var(--color-green-600-text);
+  --color-danger-text:var(--color-red-600-text);
+  --color-warning-text:var(--color-yellow-500-text);
+  --color-info-text:var(--color-cyan-600-text);
+  --color-muted-text:var(--color-grey-600-text);
+  --font-family-sans:"Groundwork Sans", system-ui, sans-serif;
+  --font-family-serif:"Groundwork Serif", ui-serif, serif;
+  --font-family-mono:"Lucida Console", monaco, monospace;
+  --font-family-base:var(--font-family-serif);
+  --font-family-headings:var(--font-family-sans);
+  --scale-minor-second:1.067;
+  --scale-major-second:1.125;
+  --scale-minor-third:1.2;
+  --scale-major-third:1.25;
+  --scale-perfect-fourth:1.333;
+  --scale-augmented-fourth:1.414;
+  --scale-perfect-fifth:1.5;
+  --scale-golden-section:1.618;
+  --scale-major-sixth:1.667;
+  --scale-minor-seventh:1.778;
+  --scale-major-seventh:1.875;
+  --scale-octave:2;
+  --font-size-scale-base:1.6rem;
+  --scale-type:var(--scale-perfect-fourth);
+  --font-size-m:var(--font-size-scale-base);
+  --font-size-s:calc(var(--font-size-m) / var(--scale-type));
+  --font-size-xs:calc(var(--font-size-s) / var(--scale-type));
+  --font-size-l:calc(var(--font-size-m) * var(--scale-type));
+  --font-size-xl:calc(var(--font-size-l) * var(--scale-type));
+  --font-size-xxl:calc(var(--font-size-xl) * var(--scale-type));
+  --font-size-xxxl:calc(var(--font-size-xxl) * var(--scale-type));
+  --font-weight-light:300;
+  --font-weight-normal:400;
+  --font-weight-medium:500;
+  --font-weight-semibold:600;
+  --font-weight-bold:700;
+  --font-weight-black:900;
+  --letter-spacing-xs:-0.05em;
+  --letter-spacing-s:-0.025em;
+  --letter-spacing-m:0;
+  --letter-spacing-l:0.025em;
+  --letter-spacing-xl:0.05em;
+  --letter-spacing-xxl:0.075em;
+  --letter-spacing-xxxl:0.1em;
+  --line-height-tight:1.2;
+  --line-height-normal:1.5;
+  --line-height-relaxed:1.625;
+  --spacing-0:0;
+  --spacing-xs:0.4rem;
+  --spacing-s:0.8rem;
+  --spacing-m:1.6rem;
+  --spacing-l:2.4rem;
+  --spacing-xl:3.2rem;
+  --spacing-xxl:4.8rem;
+  --spacing-xxxl:6.4rem;
+  --icon-size-s:1.6rem;
+  --icon-size-m:2.4rem;
+  --icon-size-l:3.2rem;
+  --border-radius-xs:0.2rem;
+  --border-radius-s:0.4rem;
+  --border-radius-m:0.8rem;
+  --border-radius-l:1.2rem;
+  --border-radius-full:9999px;
+  --border-width-thin:1px;
+  --border-width-m:2px;
+  --border-width-thick:4px;
+  --content-width-s:64rem;
+  --content-width-m:80rem;
+  --container-max-width:132rem;
+  --z-index-dropdown:1000;
+  --z-index-modal:1080;
+  --z-index-toast:1100;
+  --transition-duration-normal:250ms;
+  --transition-timing-ease:ease;
+  --transition-normal:all var(--transition-duration-normal) var(--transition-timing-ease);
+  --transition-transform:transform var(--transition-duration-normal) var(--transition-timing-ease);
+  --transition-colors:color var(--transition-duration-normal) var(--transition-timing-ease), background-color var(--transition-duration-normal) var(--transition-timing-ease), border-color var(--transition-duration-normal) var(--transition-timing-ease);
+  --color-focus-ring:hsl(var(--color-primary-h) var(--color-primary-s) 50%);
+  --box-shadow-subtle:var(--box-shadow-xs);
+  --box-shadow-elevated:var(--box-shadow-m);
+  --box-shadow-floating:var(--box-shadow-l);
+  --color-body:hsl(0deg 0% 98%);
+  --color-text:var(--color-text-on-light);
+  --color-text-inverse:var(
+    --color-text-on-dark
+  );
+
+  --color-text-disabled:hsl(
+    0deg 0% 0% / 0.38
+  );
+
+  --border-color-default:hsl(0deg 0% 80%);
+  --color-disabled:hsl(0deg 0% 90%);
+  --color-surface-base:hsl(0deg 0% 100%);
+  --color-surface:var(--color-surface-base);
+  --color-surface-light:hsl(
+    0deg 0% 98%
+  );
+
+  --color-surface-dark:hsl(0deg 0% 95%);
+  --color-surface-hover:hsl(0deg 0% 92%);
+  --color-surface-inverse:hsl(0deg 0% 12%);
+  --color-link:var(--color-primary-600);
+  --color-link-hover:var(--color-primary-700);
+  --color-link-visited:var(--color-secondary-500);
+  --color-shadow-base:hsl(var(--color-primary-h) 20% 40%);
+  --box-shadow-xs:0 1px 2px hsl(var(--color-shadow-base) / 0.08);
+  --box-shadow-s:0 1px 3px hsl(var(--color-shadow-base) / 0.12), 0 1px 2px hsl(var(--color-shadow-base) / 0.08);
+  --box-shadow-m:0 4px 6px hsl(var(--color-shadow-base) / 0.1), 0 2px 4px hsl(var(--color-shadow-base) / 0.08);
+  --box-shadow-l:0 10px 15px hsl(var(--color-shadow-base) / 0.1), 0 4px 6px hsl(var(--color-shadow-base) / 0.09);
+  --box-shadow-xl:0 20px 25px hsl(var(--color-shadow-base) / 0.12), 0 8px 10px hsl(var(--color-shadow-base) / 0.1);
+  --box-shadow-focus:0 0 0 3px hsl(var(--color-primary-h) 80% 60% / 0.4);
+  --color-surface-primary-tint:color-mix(
+    in oklch,
+    var(--color-primary) 15%,
+    var(--color-body)
+  );
+  --color-surface-secondary-tint:color-mix(
+    in oklch,
+    var(--color-secondary) 15%,
+    var(--color-body)
+  );
+  --color-surface-accent-tint:color-mix(
+    in oklch,
+    var(--color-accent) 15%,
+    var(--color-body)
+  );
+  --color-surface-danger-tint:color-mix(
+    in oklch,
+    var(--color-danger) 15%,
+    var(--color-body)
+  );
+  --color-surface-success-tint:color-mix(
+    in oklch,
+    var(--color-success) 15%,
+    var(--color-body)
+  );
+  --color-surface-info-tint:color-mix(
+    in oklch,
+    var(--color-info) 15%,
+    var(--color-body)
+  );
+  --color-surface-warning-tint:color-mix(
+    in oklch,
+    var(--color-warning) 15%,
+    var(--color-body)
+  );
+}
+
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --color-body:hsl(0deg 0% 8%);
+    --color-text:var(--color-text-on-dark);
+    --color-text-inverse:var(
+      --color-text-on-light
+    );
+
+    --color-text-disabled:hsl(0deg 0% 100% / 0.38);
+    --border-color-default:hsl(0deg 0% 25%);
+    --color-disabled:hsl(0deg 0% 20%);
+    --color-surface-base:hsl(0deg 0% 12%);
+    --color-surface:var(--color-surface-base);
+    --color-surface-light:hsl(0deg 0% 18%);
+    --color-surface-dark:hsl(0deg 0% 10%);
+    --color-surface-hover:hsl(0deg 0% 20%);
+    --color-surface-inverse:hsl(0deg 0% 95%);
+    --color-link:var(--color-primary-300);
+    --color-link-hover:var(--color-primary-300);
+    --color-link-visited:var(--color-secondary-300);
+    --color-shadow-base:hsl(var(--color-primary-h) 20% 5%);
+    --box-shadow-xs:0 1px 2px hsl(var(--color-shadow-base) / 0.3);
+    --box-shadow-s:0 1px 3px hsl(var(--color-shadow-base) / 0.3), 0 1px 2px hsl(var(--color-shadow-base) / 0.2);
+    --box-shadow-m:0 4px 6px hsl(var(--color-shadow-base) / 0.25), 0 2px 4px hsl(var(--color-shadow-base) / 0.2);
+    --box-shadow-l:0 10px 15px hsl(var(--color-shadow-base) / 0.25), 0 4px 6px hsl(var(--color-shadow-base) / 0.22);
+    --box-shadow-xl:0 20px 25px hsl(var(--color-shadow-base) / 0.25), 0 8px 10px hsl(var(--color-shadow-base) / 0.22);
+    --box-shadow-focus:0 0 0 3px hsl(var(--color-primary-h) 60% 50% / 0.6);
+    --color-surface-primary-tint:color-mix(
+      in oklch,
+      var(--color-primary) 10%,
+      var(--color-body)
+    );
+    --color-surface-secondary-tint:color-mix(
+      in oklch,
+      var(--color-secondary) 10%,
+      var(--color-body)
+    );
+    --color-surface-accent-tint:color-mix(
+      in oklch,
+      var(--color-accent) 10%,
+      var(--color-body)
+    );
+    --color-surface-danger-tint:color-mix(
+      in oklch,
+      var(--color-danger) 10%,
+      var(--color-body)
+    );
+    --color-surface-success-tint:color-mix(
+      in oklch,
+      var(--color-success) 10%,
+      var(--color-body)
+    );
+    --color-surface-info-tint:color-mix(
+      in oklch,
+      var(--color-info) 10%,
+      var(--color-body)
+    );
+    --color-surface-warning-tint:color-mix(
+      in oklch,
+      var(--color-warning) 10%,
+      var(--color-body)
+    );
   }
 }
 
-/* noinspection DuplicatedCode */
 
-:root[data-theme="dark"] {
-  --background-color-body: #121212;
-  --background-color-surface-dark: #1e1e1e;
-  --background-color-surface: #232323;
-  --background-color-surface-light: #2c2c2c;
-  --background-color-surface-hover: #272727;
-  --background-color-surface-inverse: #cbcbcb;
-  --background-color-disabled: rgb(255 255 255 / 0.12);
-  --color-text-base: rgb(255 255 255 / 0.87);
-  --color-text-base-inverse: rgb(0 0 0 / 0.87);
-  --color-text-base-disabled: rgb(255 255 255 / 0.38);
-  --color-link: var(--color-notice-light);
-  --color-link-hover: var(--color-success-light);
-  --border-color-default: rgb(255 255 255 / 0.25);
-  --border-color-focus: rgb(from var(--color-primary-light) r g b / 0.7);
-  --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.45), 0 1px 1px rgb(255 255 255 / 0.1);
-  --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.38), 0 1px 3px rgb(255 255 255 / 0.08);
-  --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.33), 0 2px 4px rgb(255 255 255 / 0.1);
-  --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.28), 0 6px 12px rgb(255 255 255 / 0.08);
-  --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(255 255 255 / 0.06);
-  --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.15), 0 18px 36px rgb(255 255 255 / 0.06);
-  --box-shadow-inner: inset 0 1px 2px rgb(255 255 255 / 0.06);
+:root[data-theme="dark"]{
+  --color-body:hsl(0deg 0% 8%);
+  --color-text:var(--color-text-on-dark);
+  --color-text-inverse:var(--color-text-on-light);
+  --color-text-disabled:hsl(0deg 0% 100% / 0.38);
+  --border-color-default:hsl(0deg 0% 25%);
+  --color-disabled:hsl(0deg 0% 20%);
+  --color-surface-base:hsl(0deg 0% 12%);
+  --color-surface:var(--color-surface-base);
+  --color-surface-light:hsl(0deg 0% 18%);
+  --color-surface-dark:hsl(0deg 0% 10%);
+  --color-surface-hover:hsl(0deg 0% 20%);
+  --color-surface-inverse:hsl(0deg 0% 95%);
+  --color-link:var(--color-primary-300);
+  --color-link-hover:var(--color-primary-300);
+  --color-link-visited:var(--color-secondary-300);
+  --color-shadow-base:hsl(var(--color-primary-h) 20% 5%);
+  --box-shadow-xs:0 1px 2px hsl(var(--color-shadow-base) / 0.3);
+  --box-shadow-s:0 1px 3px hsl(var(--color-shadow-base) / 0.3), 0 1px 2px hsl(var(--color-shadow-base) / 0.2);
+  --box-shadow-m:0 4px 6px hsl(var(--color-shadow-base) / 0.25), 0 2px 4px hsl(var(--color-shadow-base) / 0.2);
+  --box-shadow-l:0 10px 15px hsl(var(--color-shadow-base) / 0.25), 0 4px 6px hsl(var(--color-shadow-base) / 0.22);
+  --box-shadow-xl:0 20px 25px hsl(var(--color-shadow-base) / 0.25), 0 8px 10px hsl(var(--color-shadow-base) / 0.22);
+  --box-shadow-focus:0 0 0 3px hsl(var(--color-primary-h) 60% 50% / 0.6);
+  --color-surface-primary-tint:color-mix(
+    in oklch,
+    var(--color-primary) 10%,
+    var(--color-body)
+  );
+  --color-surface-secondary-tint:color-mix(
+    in oklch,
+    var(--color-secondary) 10%,
+    var(--color-body)
+  );
+  --color-surface-accent-tint:color-mix(
+    in oklch,
+    var(--color-accent) 10%,
+    var(--color-body)
+  );
+  --color-surface-danger-tint:color-mix(
+    in oklch,
+    var(--color-danger) 10%,
+    var(--color-body)
+  );
+  --color-surface-success-tint:color-mix(
+    in oklch,
+    var(--color-success) 10%,
+    var(--color-body)
+  );
+  --color-surface-info-tint:color-mix(
+    in oklch,
+    var(--color-info) 10%,
+    var(--color-body)
+  );
+  --color-surface-warning-tint:color-mix(
+    in oklch,
+    var(--color-warning) 10%,
+    var(--color-body)
+  );
 }
 
-/* 1) Global environment + hints */
 
-/**
- * @category Base
- * @description Document root and HTML element setup. Establishes base font sizing, text rendering, scroll behavior, and responsive foundations for the entire document.
- * @order 1
- */
-
-/* ===================================================================
-   Document Root & HTML Setup
-   Base document-level settings and HTML element normalization
-   =================================================================== */
-
-html {
-  /* Improve text rendering */
-  line-height: var(--line-height-normal);
-  -webkit-text-size-adjust: 100%;
-     -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-
-  /* Modern font smoothing */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
-
-  /* Variable font defaults */
-  font-optical-sizing: auto;      /* enable opsz on Serif font */
-  font-synthesis-weight: none;    /* avoid faux bold */
-  font-synthesis-style: none;     /* avoid faux italic */
-
-  /* Prevent horizontal scroll */
-  overflow-x: hidden;
-
-  /* Modern scroll behavior */
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--spacing-xl);
-
-  /* Better focus handling */
-  -moz-tab-size: 4;
-    -o-tab-size: 4;
-       tab-size: 4;
-
-  /* Set base font size for rem calculations */
-  font-size: 62.5%; /* 1rem = 10px */
+html{
+  line-height:var(--line-height-normal);
+  -webkit-text-size-adjust:100%;
+     -moz-text-size-adjust:100%;
+          text-size-adjust:100%;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-optical-sizing:auto;
+  font-synthesis-weight:none;
+  font-synthesis-style:none;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  scroll-padding-top:var(--spacing-xl);
+  -moz-tab-size:4;
+    -o-tab-size:4;
+       tab-size:4;
+  font-size:62.5%;
 }
 
-/* Respect user motion preferences */
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+@media (prefers-reduced-motion: reduce){
+  html{
+    scroll-behavior:auto;
   }
 
   *,
   *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
   }
 }
 
-/**
- * @category Base
- * @description Universal box model reset and body defaults. Harmonizes spacing, establishes consistent box-sizing, and sets up the body element with design system foundations.
- * @order 2
- */
-
-/* ===================================================================
-   Box Model Reset & Universal Styles
-   Modern box-sizing and base resets
-   =================================================================== */
-
-/* Modern box-sizing reset */
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-
-  /* Prevent margin collapse issues */
-  margin: 0;
-  padding: 0;
-
-  /* Inherit font properties */
-  font: inherit;
+*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font:inherit;
 }
 
-/* Body defaults */
 
-body {
-  margin: 0;
-  font-family: var(--font-family-base), "Groundwork Sans", system-ui, sans-serif;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-base);
-  background-color: var(--background-color-body);
-
-  /* Improve text selection */
-  font-feature-settings: "kern" 1, "liga" 1;
-
-  /* Prevent iOS bounce effect */
-  overscroll-behavior: none;
-
-  /* Min height for single page apps */
-  min-height: 100vh;
-
+body{
+  margin:0;
+  font-family:var(--font-family-base), "Groundwork Serif", ui-serif, serif;
+  font-size:var(--font-size-m);
+  font-weight:var(--font-weight-normal);
+  line-height:var(--line-height-normal);
+  letter-spacing:var(--letter-spacing-l);
+  color:var(--color-text);
+  background-color:var(--color-body);
+  font-feature-settings:"kern" 1, "liga" 1;
+  overscroll-behavior:none;
+  min-height:100vh;
+  min-height:100dvh;
 }
 
-/* Dynamic viewport height */
 
-body {
-  min-height: 100dvh;
+template{
+  display:none;
 }
 
-/* Template element */
 
-template {
-  display: none;
+[hidden]{
+  display:none !important;
 }
 
-/* Hidden attribute */
 
-[hidden] {
-  display: none !important;
+[disabled]{
+  cursor:not-allowed !important;
+  opacity:0.6 !important;
 }
 
-/* Disabled attribute */
 
-[disabled] {
-  cursor: not-allowed !important;
-  opacity: 0.6 !important;
+h1, h2, h3, h4, h5, h6{
+  font-family:var(--font-family-headings), "Groundwork Sans", sans-serif;
+  font-weight:var(--font-weight-bold);
+  line-height:var(--line-height-tight);
+  letter-spacing:var(--letter-spacing-xl);
+  margin-block:var(--spacing-m) var(--spacing-s);
+  orphans:3;
+  widows:3;
+  text-wrap:balance;
+  overflow-wrap:break-word;
 }
 
-/* 2) Core type & flow */
 
-/**
- * @category Base
- * @description Typography normalization for headings, paragraphs, and text elements. Establishes a consistent type scale, improves readability, and handles text formatting elements.
- * @order 3
- */
-
-/* ===================================================================
-   Typography
-   Headings, paragraphs, and base text elements
-   =================================================================== */
-
-/* Headings */
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-headings), "Groundwork Sans", sans-serif;
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-s);
-  margin-block: var(--spacing-m) var(--spacing-s);
-
-  /* Prevent orphans and widows */
-  orphans: 3;
-  widows: 3;
-
-  /* Better text wrapping */
-  text-wrap: balance;
-  overflow-wrap: break-word;
+h1{
+  font-size:var(--font-size-xxxl);
+  margin-block:var(--spacing-l) var(--spacing-m);
 }
 
-h1 {
-  font-size: var(--font-size-xxxl);
-  margin-block: var(--spacing-l) var(--spacing-m);
+
+h2{
+  font-size:var(--font-size-xxl);
 }
 
-h2 {
-  font-size: var(--font-size-xxl);
+
+h3{
+  font-size:var(--font-size-xl);
 }
 
-h3 {
-  font-size: var(--font-size-xl);
+
+h4{
+  font-size:var(--font-size-l);
 }
 
-h4 {
-  font-size: var(--font-size-l);
+
+h5{
+  font-size:var(--font-size-m);
+  font-weight:var(--font-weight-semibold);
 }
 
-h5 {
-  font-size: calc(var(--font-size-m) * 1.125);
+
+h6{
+  font-size:var(--font-size-m);
+  text-transform:uppercase;
+  letter-spacing:var(--letter-spacing-l);
 }
 
-h6 {
-  font-size: var(--font-size-m);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-l);
+
+p{
+  margin-block:var(--spacing-m);
+  line-height:var(--line-height-relaxed);
+  text-wrap:pretty;
+  max-width:100ch;
 }
 
-/* Paragraphs */
 
-p {
-  margin-block: var(--spacing-m);
-  line-height: var(--line-height-relaxed);
-  text-wrap: pretty;
-
-  /* Limit line length for readability */
-  max-width: 100ch;
+hr{
+  box-sizing:content-box;
+  height:0;
+  overflow:visible;
+  border:none;
+  border-top:var(--border-width-thin) solid var(--border-color-default);
+  margin-block:var(--spacing-l);
+  opacity:0.6;
 }
 
-/* Horizontal rule */
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-  border: none;
-  border-top: var(--border-width-thin) solid var(--border-color-default);
-  margin-block: var(--spacing-l);
-  opacity: 0.6;
-}
-
-/* Text formatting */
 
 b,
-strong {
-  font-weight: var(--font-weight-bold);
+strong{
+  font-weight:var(--font-weight-bold);
 }
 
-small {
-  font-size: var(--font-size-s);
+
+em{
+  font-style:italic;
 }
+
+
+small{
+  font-size:var(--font-size-s);
+}
+
 
 sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+sup{
+  font-size:75%;
+  line-height:0;
+  position:relative;
+  vertical-align:baseline;
 }
 
-sub {
-  bottom: -0.25em;
+
+sub{
+  bottom:-0.25em;
 }
 
-sup {
-  top: -0.5em;
+
+sup{
+  top:-0.5em;
 }
+
 
 del,
-s {
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  text-decoration-color: var(--color-danger);
-  opacity: 0.7;
+s{
+  text-decoration:line-through;
+  text-decoration-thickness:2px;
+  text-decoration-color:var(--color-danger);
+  opacity:0.7;
 }
 
-ins {
-  text-decoration: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: var(--color-success);
+
+ins{
+  text-decoration:underline;
+  text-decoration-style:wavy;
+  text-decoration-color:var(--color-success);
 }
 
-mark {
-  background-color: var(--color-yellow-lightest);
-  color: var(--color-text-base-on-light);
-  padding-inline: var(--spacing-xs);
-  border-radius: var(--border-radius-xs);
+
+mark{
+  background-color:var(--color-accent-300);
+  color:var(--color-accent-300-text);
+  padding-inline:var(--spacing-xs);
+  border-radius:var(--border-radius-xs);
 }
 
-abbr[title] {
-  border-bottom: none;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  cursor: help;
+
+abbr[title]{
+  border-bottom:none;
+  text-decoration:underline;
+  text-decoration-style:dotted;
+  text-decoration-thickness:1px;
+  text-underline-offset:0.2em;
+  cursor:help;
 }
 
-/**
- * @category Base
- * @description List element normalization for ordered, unordered, and definition lists. Establishes consistent spacing, nesting behavior, and marker styling.
- * @order 5
- */
 
-/* ===================================================================
-   Lists
-   Unordered, ordered, and definition lists
-   =================================================================== */
-
-ul, ol {
-  margin-block: var(--spacing-m);
-  padding-inline-start: var(--spacing-l);
+ul, ol{
+  margin-block:var(--spacing-m);
+  padding-inline-start:var(--spacing-l);
 }
 
-/* Nested lists */
 
-ul ul, ul ol, ol ul, ol ol {
-  margin-block: var(--spacing-xs);
+ul ul, ul ol, ol ul, ol ol{
+  margin-block:var(--spacing-xs);
 }
 
-li {
-  margin-block: var(--spacing-xs);
+
+li{
+  margin-block:var(--spacing-xs);
 }
 
-/* Better marker alignment */
 
-li::marker {
-  color: var(--color-primary);
+li::marker{
+  color:var(--color-primary);
 }
 
-/* Definition lists */
 
-dl {
-  margin-block: var(--spacing-m);
+dl{
+  margin-block:var(--spacing-m);
 }
 
-dt {
-  font-weight: var(--font-weight-semibold);
-  margin-block-start: var(--spacing-s);
+
+dt{
+  font-weight:var(--font-weight-semibold);
+  margin-block-start:var(--spacing-s);
 }
 
-dd {
-  margin-inline-start: var(--spacing-l);
-  margin-block: var(--spacing-xs);
+
+dd{
+  margin-inline-start:var(--spacing-l);
+  margin-block:var(--spacing-xs);
 }
 
-/**
- * @category Base
- * @description Link and anchor tag normalization. Provides consistent link styling, hover states, focus management, and accessibility enhancements for all hyperlinks.
- * @order 4
- */
 
-/* ===================================================================
-   Links
-   Anchor tags and link states
-   =================================================================== */
-
-a {
-  background-color: transparent;
-  color: var(--color-link);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  transition: var(--transition-colors);
-  cursor: pointer;
+a{
+  background-color:transparent;
+  color:var(--color-link);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:0.2em;
+  transition:var(--transition-colors);
+  cursor:pointer;
 }
 
-a:hover {
-  color: var(--color-link-hover);
-  text-decoration-thickness: 2px;
+
+a:hover{
+  color:var(--color-link-hover);
+  text-decoration-thickness:2px;
 }
 
-a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: var(--border-radius-xs);
+
+a:focus-visible{
+  outline:2px solid var(--color-primary);
+  outline-offset:2px;
+  border-radius:var(--border-radius-xs);
 }
 
-a:visited {
-  color: color-mix(in oklab, var(--color-link) 70%, var(--color-text-base) 30%);
+
+a:visited{
+  color:var(--color-link-visited);
 }
 
-/* Remove underline from linked images */
 
-a:has(img) {
-  text-decoration: none;
+a:has(img){
+  text-decoration:none;
 }
 
-/**
- * @category Base
- * @description Quotation and citation element styling. Handles blockquotes, inline quotes, and citation formatting with proper typography and visual hierarchy.
- * @order 6
- */
 
-/* ===================================================================
-   Quotes & Citations
-   Blockquotes, inline quotes, and citations
-   =================================================================== */
-
-blockquote {
-  margin-inline: auto;
-  max-width: var(--content-width-m);
-  padding-inline-start: var(--spacing-l);
-  border-inline-start: var(--border-width-thick) solid var(--color-primary);
-  font-style: italic;
-  color: color-mix(in oklab, var(--color-text-base) 95%, transparent);
+blockquote{
+  margin-inline:auto;
+  max-width:var(--content-width-m);
+  padding-inline-start:var(--spacing-l);
+  border-inline-start:var(--border-width-thick) solid var(--color-secondary);
+  font-style:italic;
+  color:color-mix(in oklab, var(--color-text) 95%, transparent);
 }
 
-q {
-  quotes: "“" "”" "‘" "’";
+
+q{
+  quotes:"“" "”" "‘" "’";
 }
 
-q::before {
-  content: open-quote;
+
+q::before{
+  content:open-quote;
 }
 
-q::after {
-  content: close-quote;
+
+q::after{
+  content:close-quote;
 }
 
-cite {
-  font-style: italic;
+
+cite{
+  font-style:italic;
 }
 
-/**
- * @category Base
- * @description Code and preformatted text normalization. Styles code blocks, inline code, keyboard input, and sample output with consistent monospace typography and visual distinction.
- * @order 7
- */
 
-/* ===================================================================
-   Code & Preformatted Text
-   Code blocks, inline code, and keyboard inputs
-   =================================================================== */
-
-pre {
-  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
-  font-size: var(--font-size-s);
-  line-height: var(--line-height-relaxed);
-  background-color: var(--background-color-surface-light);
-  border-radius: var(--border-radius-s);
-  padding: var(--spacing-m);
-  overflow-x: auto;
-  -moz-tab-size: 2;
-    -o-tab-size: 2;
-       tab-size: 2;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  margin-block: var(--spacing-m);
+pre{
+  font-family:var(--font-family-mono),monospace;
+  font-size:var(--font-size-s);
+  line-height:var(--line-height-relaxed);
+  background-color:var(--color-surface-light);
+  border-radius:var(--border-radius-s);
+  padding:var(--spacing-m);
+  overflow-x:auto;
+  -moz-tab-size:2;
+    -o-tab-size:2;
+       tab-size:2;
+  white-space:pre-wrap;
+  overflow-wrap:break-word;
+  margin-block:var(--spacing-m);
 }
+
 
 code,
 kbd,
 samp,
-var {
-  font-family: var(--font-family-mono), "Groundwork Mono", monospace;
-  font-size: 0.9em;
-  background-color: var(--background-color-surface-light);
-  padding: 0.125em 0.25em;
-  border-radius: var(--border-radius-xs);
-
-  /* Prevent breaking */
-  white-space: nowrap;
+var{
+  font-family:var(--font-family-mono), monospace;
+  font-size:0.9em;
+  background-color:var(--color-surface-light);
+  padding:0.125em 0.25em;
+  border-radius:var(--border-radius-xs);
+  white-space:nowrap;
 }
 
-kbd {
-  border: var(--border-width-thin) solid var(--border-color-default);
-  box-shadow: var(--box-shadow-xs);
+
+kbd{
+  border:var(--border-width-thin) solid var(--border-color-default);
+  box-shadow:var(--box-shadow-xs);
 }
 
-/* Code inside pre should not have additional styling */
 
-pre code {
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  font-size: inherit;
-  white-space: inherit;
+pre code{
+  background-color:transparent;
+  padding:0;
+  border-radius:0;
+  font-size:inherit;
+  white-space:inherit;
 }
 
-/**
- * @category Base
- * @description Embedded content normalization for images, videos, audio, iframes, and other media. Ensures responsive behavior, proper aspect ratios, and consistent rendering across browsers.
- * @order 8
- */
 
-/* ===================================================================
-   Embedded Content
-   Images, videos, audio, iframes, and other media
-   =================================================================== */
-
-/* Make media elements responsive by default */
-
-picture, video, canvas, svg, iframe, embed, object {
-  display: block;
-  max-width: 100%;
-  height: auto;
+picture, video, canvas, svg, iframe, embed, object{
+  display:block;
+  max-width:100%;
+  height:auto;
 }
 
-img {
-  border-style: none;
-  max-width: 100%;
-  height: auto;
-  margin-inline: var(--spacing-m) var(--spacing-xs);
 
-  /* Use modern, standard values for image rendering */
-  image-rendering: crisp-edges;
+img{
+  border-style:none;
+  max-width:100%;
+  height:auto;
+  margin-inline:var(--spacing-m) var(--spacing-xs);
+  image-rendering:crisp-edges;
 }
 
-/* Lazy loading performance */
 
-img[loading="lazy"] {
-  background-color: var(--background-color-surface-light);
+img[loading="lazy"]{
+  background-color:var(--color-surface-light);
 }
 
-svg {
-  /* Allow SVG to scale properly */
-  fill: currentcolor;
-  vertical-align: middle;
+
+svg{
+  fill:currentColor;
+  vertical-align:middle;
 }
 
-svg:not([fill]) {
-  fill: currentcolor;
+
+svg:not([fill]){
+  fill:currentColor;
 }
 
-audio {
-  width: 100%;
-  max-width: var(--container-width-s);
+
+audio{
+  width:100%;
+  max-width:var(--content-width-s);
 }
 
-video {
-  width: 100%;
-  max-width: var(--content-width-s);
-  aspect-ratio: 16 / 9;
-  -o-object-fit: cover;
-     object-fit: cover;
-  background-color: var(--background-color-surface-dark);
+
+video{
+  width:100%;
+  max-width:var(--content-width-s);
+  aspect-ratio:16 / 9;
+  -o-object-fit:cover;
+     object-fit:cover;
+  background-color:var(--color-surface-dark);
 }
 
-iframe {
-  border: var(--border-width-thin) solid var(--border-color-default);
-  border-radius: var(--border-radius-s);
-  width: 100%;
-  aspect-ratio: 16 / 9;
+
+iframe{
+  border:var(--border-width-thin) solid var(--border-color-default);
+  border-radius:var(--border-radius-s);
+  width:100%;
+  aspect-ratio:16 / 9;
 }
 
-figure {
-  margin-inline: auto;
-  max-width: var(--content-width-m);
-  margin-block: var(--spacing-l);
+
+figure{
+  margin-inline:auto;
+  max-width:var(--content-width-m);
+  margin-block:var(--spacing-l);
 }
 
-figcaption {
-  margin-block-start: var(--spacing-s);
-  font-size: var(--font-size-s);
-  color: var(--color-text-base-disabled);
-  text-align: center;
+
+figcaption{
+  margin-block-start:var(--spacing-s);
+  font-size:var(--font-size-s);
+  text-align:center;
 }
 
-/**
- * @category Base
- * @description Table element normalization. Creates consistent, accessible tables with proper spacing, borders, hover states, and responsive considerations.
- * @order 9
- */
 
-/* ===================================================================
-   Tables
-   Table elements and responsive table styling
-   =================================================================== */
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  max-width: var(--content-width-m);
-  margin-inline: auto;
-  margin-block: var(--spacing-m);
-  background-color: var(--background-color-body);
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+  width:100%;
+  max-width:var(--content-width-m);
+  margin-inline:auto;
+  margin-block:var(--spacing-m);
+  background-color:var(--color-surface);
+  border:var(--border-width-thin) solid var(--border-color-default);
+  border-radius:var(--border-radius-m);
+  overflow:hidden;
 }
 
-caption {
-  padding-block: var(--spacing-s);
-  font-weight: var(--font-weight-medium);
-  text-align: start;
-  caption-side: bottom;
-  color: var(--color-text-base-disabled);
+
+caption{
+  padding-block:var(--spacing-s);
+  font-weight:var(--font-weight-medium);
+  text-align:start;
+  caption-side:bottom;
 }
 
-thead {
-  background-color: var(--background-color-surface);
-  border-bottom: var(--border-width-m) solid var(--border-color-default);
+
+thead{
+  background-color:var(--color-surface-light);
+  border-bottom:var(--border-width-m) solid var(--border-color-default);
 }
 
-tbody tr {
-  border-bottom: var(--border-width-thin) solid var(--border-color-default);
+
+tbody tr{
+  border-bottom:var(--border-width-thin) solid var(--border-color-default);
+  transition:var(--transition-colors);
 }
 
-tbody tr:last-child {
-  border-bottom: none;
+
+tbody tr:last-child{
+  border-bottom:none;
 }
 
-tbody tr:hover {
-  background-color: var(--background-color-surface-light);
+
+tbody tr:hover{
+  background-color:var(--color-surface-hover);
 }
 
-th {
-  font-weight: var(--font-weight-semibold);
-  text-align: start;
-  padding: var(--spacing-s) var(--spacing-m);
+
+th{
+  font-weight:var(--font-weight-semibold);
+  text-align:start;
+  padding:var(--spacing-s) var(--spacing-m);
 }
 
-td {
-  padding: var(--spacing-s) var(--spacing-m);
+
+td{
+  padding:var(--spacing-s) var(--spacing-m);
+  vertical-align:top;
 }
 
-tfoot {
-  background-color: var(--background-color-surface-light);
-  border-top: var(--border-width-m) solid var(--border-color-default);
-  font-weight: var(--font-weight-medium);
+
+tfoot{
+  background-color:var(--color-surface-dark);
+  border-top:var(--border-width-m) solid var(--border-color-default);
+  font-weight:var(--font-weight-medium);
 }
 
-/**
- * @category Base
- * @description Comprehensive form control normalization. Styles all input types, buttons, selects, and form elements with consistent appearance, states, and accessibility features.
- * @order 10
- */
 
-/* ===================================================================
-   Forms
-   Form controls, inputs, and interactive form elements
-   =================================================================== */
-
-form {
-  margin-block: var(--spacing-m);
-  margin-inline: auto;
-  max-width: var(--content-width-m);
+form{
+  margin-block:var(--spacing-m);
+  margin-inline:auto;
+  max-width:var(--content-width-m);
 }
 
-fieldset {
-  border: var(--border-width-thin) solid var(--border-color-default);
-  border-radius: var(--border-radius-s);
-  padding: var(--spacing-m);
-  margin-block: var(--spacing-l);
-  min-width: 0; /* Fix fieldset width issues */
+
+fieldset{
+  border:var(--border-width-thin) solid var(--border-color-default);
+  border-radius:var(--border-radius-s);
+  padding:var(--spacing-m);
+  margin-block:var(--spacing-l);
+  min-width:0;
 }
 
-:where(div, fieldset):has(> label) {
-  display: grid;
-  gap: var(--spacing-xs); /* Using your token is better than a magic number */
+
+:where(div, fieldset):has(> label){
+  display:grid;
+  gap:var(--spacing-xs);
 }
 
-legend {
-  box-sizing: border-box;
-  color: inherit;
-  display: table;
-  max-width: 100%;
-  padding-inline: var(--spacing-s);
-  white-space: normal;
-  font-weight: var(--font-weight-semibold);
-  font-family: var(--font-family-sans) , "Groundwork Sans", system-ui, sans-serif;
-  font-size: var(--font-size-l)
+
+legend{
+  box-sizing:border-box;
+  color:inherit;
+  display:table;
+  max-width:100%;
+  padding-inline:var(--spacing-s);
+  white-space:normal;
+  font-weight:var(--font-weight-semibold);
+  font-family:var(--font-family-sans), "Groundwork Sans", system-ui, sans-serif;
+  font-size:var(--font-size-l);
 }
 
-label {
-  display: inline-block;
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-family-sans) , "Groundwork Sans", system-ui, sans-serif;
-  margin-block: var(--spacing-m) var(--spacing-s);
-  cursor: pointer;
+
+label{
+  display:inline-block;
+  font-weight:var(--font-weight-medium);
+  font-family:var(--font-family-sans), "Groundwork Sans", system-ui, sans-serif;
+  margin-block:var(--spacing-m) var(--spacing-s);
+  cursor:pointer;
 }
 
-/* Base form control styles */
 
 button,
 input,
 optgroup,
 select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-  line-height: var(--line-height-normal);
-  margin: 0;
-  color: var(--color-text-base);
+textarea{
+  font-family:inherit;
+  font-size:100%;
+  line-height:var(--line-height-normal);
+  margin:0;
+  color:var(--color-text);
 }
 
-button,
+
 input,
 select,
-textarea {
-  background-color: var(--background-color-body);
-  border: var(--border-width-thin) solid var(--border-color-default);
-  border-radius: var(--border-radius-s);
-  padding: var(--spacing-s) var(--spacing-m);
-  transition: var(--transition-colors);
+textarea{
+  background-color:var(--color-surface);
+  border:var(--border-width-thin) solid var(--border-color-default);
+  border-radius:var(--border-radius-s);
+  padding:var(--spacing-s) var(--spacing-m);
+  transition:var(--transition-colors);
 }
+
 
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-color: var(--color-primary);
+textarea:focus-visible{
+  outline:2px solid var(--color-primary);
+  outline-offset:2px;
+  border-color:var(--color-primary);
 }
+
 
 button:disabled,
 input:disabled,
 select:disabled,
-textarea:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background-color: var(--background-color-disabled);
+textarea:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
+  background-color:var(--color-disabled);
 }
+
 
 button,
-input {
-  overflow: visible;
+input{
+  overflow:visible;
 }
+
 
 button,
-select {
-  text-transform: none;
+select{
+  text-transform:none;
 }
 
-/* Button styles */
 
 button,
 [type="button"],
 [type="reset"],
-[type="submit"] {
-  -webkit-appearance: auto;
-     -moz-appearance: auto;
-          appearance: auto;
-  appearance: auto;
-  cursor: pointer;
-  font-weight: var(--font-weight-medium);
-  background-color: var(--color-primary);
-  color: var(--color-text-base-inverse);
-  border: none;
-  padding: var(--spacing-s) var(--spacing-l);
-  border-radius: var(--border-radius-s);
-  transition: var(--transition-transform), var(--transition-colors);
-  margin-block: var(--spacing-xs);
-  margin-inline: var(--spacing-xs);
+[type="submit"]{
+  -webkit-appearance:auto;
+     -moz-appearance:auto;
+          appearance:auto;
+  cursor:pointer;
+  font-weight:var(--font-weight-medium);
+  background-color:var(--color-primary);
+  color:var(--color-primary-text);
+  border:none;
+  padding:var(--spacing-s) var(--spacing-l);
+  border-radius:var(--border-radius-s);
+  transition:var(--transition-transform), var(--transition-colors);
+  margin-block:var(--spacing-xs);
+  margin-inline:var(--spacing-xs);
 }
+
 
 button:hover:not(:disabled),
 [type="button"]:hover:not(:disabled),
 [type="reset"]:hover:not(:disabled),
-[type="submit"]:hover:not(:disabled) {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--box-shadow-elevated);
+[type="submit"]:hover:not(:disabled){
+  background-color:var(--color-primary-700);
+  color:var(--color-primary-700-text);
+  transform:translateY(-1px);
+  box-shadow:var(--box-shadow-elevated);
 }
+
 
 button:active:not(:disabled),
 [type="button"]:active:not(:disabled),
 [type="reset"]:active:not(:disabled),
-[type="submit"]:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: var(--box-shadow-subtle);
+[type="submit"]:active:not(:disabled){
+  transform:translateY(0);
+  box-shadow:var(--box-shadow-subtle);
 }
 
-/* Remove inner padding and border in Firefox */
 
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
+[type="submit"]::-moz-focus-inner{
+  border-style:none;
+  padding:0;
 }
 
-/* Restore focus styles in Firefox */
 
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
+[type="submit"]:-moz-focusring{
+  outline:1px dotted ButtonText;
 }
 
-/* Text inputs */
+
+header button,
+header [type="button"],
+header [type="reset"],
+header [type="submit"]{
+  background-color:var(--color-primary-200);
+  color:var(--color-primary-800);
+  border:none;
+}
+
+
+header button:hover:not(:disabled),
+header [type="button"]:hover:not(:disabled),
+header [type="reset"]:hover:not(:disabled),
+header [type="submit"]:hover:not(:disabled){
+  background-color:var(--color-primary-300);
+  color:var(--color-primary-900);
+}
+
 
 input[type="text"],
 input[type="email"],
@@ -1242,240 +1353,236 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"],
-input[type="week"] {
-  width: 100%;
+input[type="week"]{
+  width:100%;
+  color:var(--color-text) !important;
 }
+
 
 input[type="date"],
 input[type="month"],
 input[type="week"],
-input[type="datetime-local"] {
-  /*  1. HIDE THE DEFAULT BROWSER ICON */
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-
-  /* 2. ADD YOUR OWN CUSTOM ICON AS A BACKGROUND IMAGE */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h2z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--spacing-s) center;
+input[type="datetime-local"]{
+     -webkit-appearance:none;
+        -moz-appearance:none;
+             appearance:none;
+  background-image:var(--icon-calendar, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h2z'/%3E%3C/svg%3E"));
+  background-repeat:no-repeat;
+  background-position:right var(--spacing-s) center;
+  color:var(--color-text);
 }
 
-/*  3. HIDE THE ACTUAL WEBKIT INDICATOR */
 
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="month"]::-webkit-calendar-picker-indicator,
 input[type="week"]::-webkit-calendar-picker-indicator,
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  display: none;
+input[type="datetime-local"]::-webkit-calendar-picker-indicator{
+  display:none !important;
 }
 
-input::-moz-placeholder, textarea::-moz-placeholder {
-  color: var(--color-text-base-disabled);
-  opacity: 1;
+
+input::-moz-placeholder, textarea::-moz-placeholder{
+  color:var(--color-text-disabled);
+  opacity:1;
 }
+
 
 input::placeholder,
-textarea::placeholder {
-  color: var(--color-text-base-disabled);
-  opacity: 1;
+textarea::placeholder{
+  color:var(--color-text-disabled);
+  opacity:1;
 }
 
-textarea {
-  overflow: auto;
-  resize: vertical;
-  min-height: calc(var(--spacing-l) * 10);
-  width: 100%;
+
+textarea{
+  overflow:auto;
+  resize:vertical;
+  min-height:calc(var(--spacing-l) * 10);
+  width:100%;
 }
 
-select {
-  cursor: pointer;
-  width: 100%;
+
+select{
+  cursor:pointer;
+  width:100%;
 }
 
-select:not([multiple]) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--spacing-s) center;
-  background-size: 12px;
-  padding-right: calc(var(--spacing-l) + 12px);
+
+select:not([multiple]){
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+  background-image:var(--icon-chevron, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='currentColor' d='M6 8L0 0h12z'/%3E%3C/svg%3E"));
+  background-repeat:no-repeat;
+  background-position:right var(--spacing-s) center;
+  background-size:12px;
+  padding-right:calc(var(--spacing-l) + 12px);
+  color:var(--color-text);
 }
 
-optgroup {
-  font-weight: var(--font-weight-semibold);
+
+optgroup{
+  font-weight:var(--font-weight-semibold);
 }
 
-/* Checkboxes and radios */
 
 [type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-  cursor: pointer;
-  accent-color: var(--color-primary);
-  width: 1.25em;
-  height: 1.25em;
-  margin-inline-end: var(--spacing-xs);
-  margin-block-end: calc(var(--spacing-xs) / 2);
-  vertical-align: middle;
+[type="radio"]{
+  box-sizing:border-box;
+  padding:0;
+  cursor:pointer;
+  accent-color:var(--color-primary);
+  width:1.25em;
+  height:1.25em;
+  margin-inline-end:var(--spacing-xs);
+  margin-block-end:calc(var(--spacing-xs) / 2);
+  vertical-align:middle;
 }
+
 
 label:has(input[type="radio"]) + label:has(input[type="radio"]),
-label:has(input[type="checkbox"]) + label:has(input[type="checkbox"]) {
-  margin-inline-start: 1em;
+label:has(input[type="checkbox"]) + label:has(input[type="checkbox"]){
+  margin-inline-start:1em;
 }
 
-/* File inputs */
 
-[type="file"] {
-  cursor: pointer;
-  width: 100%;
+[type="file"]{
+  cursor:pointer;
+  width:100%;
 }
 
-[type="file"]::file-selector-button {
-  font: inherit;
-  font-weight: var(--font-weight-medium);
-  padding: var(--spacing-xs) var(--spacing-m);
-  margin-inline-end: var(--spacing-s);
-  background-color: var(--background-color-surface);
-  border: var(--border-width-thin) solid var(--border-color-default);
-  border-radius: var(--border-radius-s);
-  cursor: pointer;
-  transition: var(--transition-colors);
+
+[type="file"]::file-selector-button{
+  font:inherit;
+  font-weight:var(--font-weight-medium);
+  padding:var(--spacing-xs) var(--spacing-m);
+  margin-inline-end:var(--spacing-s);
+  background-color:var(--color-surface);
+  border:var(--border-width-thin) solid var(--border-color-default);
+  border-radius:var(--border-radius-s);
+  cursor:pointer;
+  transition:var(--transition-colors);
 }
 
-[type="file"]::file-selector-button:hover {
-  background-color: var(--background-color-surface-hover);
+
+[type="file"]::file-selector-button:hover{
+  background-color:var(--color-surface-hover);
 }
 
-/* Range inputs */
 
-[type="range"] {
-  width: 100%;
-  cursor: pointer;
-  accent-color: var(--color-primary);
+[type="range"]{
+  width:100%;
+  cursor:pointer;
+  accent-color:var(--color-primary);
 }
 
-/* Color inputs */
 
-[type="color"] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  width: var(--font-size-xxxl); 
-  height: var(--font-size-xxl);
-  padding: 0;
-  border: none;
-  border-radius: var(--border-radius-full); /* Makes it a circle */
-  background-color: transparent; /* The browser fills this with the color */
-  cursor: pointer;
-  vertical-align: middle; /* Aligns it nicely with text */
+[type="color"]{
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+  width:var(--font-size-xxxl);
+  height:var(--font-size-xxl);
+  padding:0;
+  border:none;
+  border-radius:var(--border-radius-full);
+  background-color:transparent;
+  cursor:pointer;
+  vertical-align:middle;
 }
 
-/* Styles the actual color swatch inside the element */
 
-[type="color"]::-webkit-color-swatch {
-  border-radius: var(--border-radius-full);
-  border: none;
+[type="color"]::-webkit-color-swatch{
+  border-radius:var(--border-radius-full);
+  border:var(--border-width-thin) solid var(--border-color-default);
 }
 
-[type="color"]::-moz-color-swatch {
-  border-radius: var(--border-radius-full);
-  border: none;
+
+[type="color"]::-moz-color-swatch{
+  border-radius:var(--border-radius-full);
+  border:var(--border-width-thin) solid var(--border-color-default);
 }
 
-/* Number input spinners */
 
 [type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto;
+[type="number"]::-webkit-outer-spin-button{
+  height:auto;
 }
 
-/* Search inputs */
 
-[type="search"] {
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield;
-  outline-offset: -2px;
+[type="search"]{
+  -webkit-appearance:textfield;
+     -moz-appearance:textfield;
+          appearance:textfield;
+  outline-offset:-2px;
 }
+
 
 [type="search"]::-webkit-search-decoration,
-[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-          appearance: none;
+[type="search"]::-webkit-search-cancel-button{
+  -webkit-appearance:none;
+          appearance:none;
 }
 
-/* File upload button */
 
-::-webkit-file-upload-button {
-  -webkit-appearance: auto;
-          appearance: auto;
-  appearance: auto;
-  font: inherit;
+::-webkit-file-upload-button{
+  -webkit-appearance:auto;
+          appearance:auto;
+  font:inherit;
 }
 
-/* Progress and meter */
 
-progress {
-  vertical-align: baseline;
-  width: 100%;
-  height: var(--spacing-s);
-  border-radius: var(--border-radius-full);
-  overflow: hidden;
+progress{
+  vertical-align:baseline;
+  width:100%;
+  height:var(--spacing-s);
+  border-radius:var(--border-radius-full);
+  overflow:hidden;
+  border:var(--border-width-thin) solid var(--border-color-default);
+  background-color:var(--color-surface-light);
 }
 
-progress::-webkit-progress-bar {
-  background-color: var(--background-color-surface-light);
+
+progress::-webkit-progress-bar{
+  background-color:var(--color-surface-light);
 }
 
-progress::-webkit-progress-value {
-  background-color: var(--color-primary);
+
+progress::-webkit-progress-value{
+  background-color:var(--color-accent);
 }
 
-progress::-moz-progress-bar {
-  background-color: var(--color-primary);
+
+progress::-moz-progress-bar{
+  background-color:var(--color-accent);
 }
 
-meter {
-  width: 100%;
-  height: var(--spacing-s);
+
+meter{
+  width:100%;
+  height:var(--spacing-s);
 }
 
-/**
- * @category Base
- * @description HTML5 semantic element normalization. Ensures proper display and spacing for structural elements like main, article, section, nav, aside, header, and footer.
- * @order 12
- */
 
-/* ===================================================================
-   Semantic HTML5 Elements
-   Structural and semantic HTML5 elements
-   =================================================================== */
-
-main {
-  min-height: 50vh;
-  width: 100%;
-  margin-inline: auto;
-
-  /* Set the default horizontal padding */
-  padding-inline: var(--spacing-m);
-
-  /* Create the fluid container width */
-  max-width: clamp(
-    320px,                                  /* The hard minimum width */
-    calc(100% - (2 * var(--spacing-m))),    /* The fluid, preferred width */
-    var(--container-max-width)              /* The hard maximum width */
+main{
+  min-height:50vh;
+  width:100%;
+  margin-inline:auto;
+  padding-inline:var(--spacing-m);
+  max-width:clamp(
+    320px,
+    calc(100% - (2 * var(--spacing-m))),
+    var(--container-max-width)
   );
 }
 
-/* Specific override for larger screens remains the same */
 
-@media (width >= 1200px) {
-  main {
-    padding-inline: var(--spacing-l);
+@media (width >= 1200px){
+  main{
+    padding-inline:var(--spacing-l);
   }
 }
+
 
 article,
 aside,
@@ -1484,457 +1591,370 @@ header,
 nav,
 section,
 figcaption,
-figure {
-  display: block;
+figure{
+  display:block;
 }
 
-header {
-  margin-block-end: var(--spacing-l);
+
+footer{
+  color:var(--color-text);
 }
 
-footer {
-  margin-block-start: var(--spacing-l);
+
+footer a{
+  color:var(--color-text);
+  text-decoration-thickness:2px;
 }
 
-nav {
-  margin-block: var(--spacing-m);
+
+footer a:hover{
+  color:var(--color-accent);
 }
 
-article {
-  margin-block: var(--spacing-xl);
+
+nav{
+  margin-block:var(--spacing-m);
 }
 
-section {
-  margin-block: var(--spacing-l);
+
+article{
+  margin-block:var(--spacing-xl);
 }
 
-aside {
-  padding: var(--spacing-m);
-  margin-block: var(--spacing-m);
-  border-inline-start: var(--border-width-thick) solid var(--color-primary);
-  background-color: var(--background-color-surface-light);
+
+section{
+  margin-block:var(--spacing-l);
 }
 
-/**
- * @category Base
- * @description Interactive HTML5 element normalization. Styles details/summary disclosure widgets, dialog modals, and other interactive elements with proper states and animations.
- * @order 11
- */
 
-/* ===================================================================
-   Interactive Elements
-   Details, summary, dialog, and other interactive HTML5 elements
-   =================================================================== */
-
-details {
-  display: block;
-  border: var(--border-width-thin) solid var(--border-color-default);
-  border-radius: var(--border-radius-s);
-  padding: var(--spacing-s);
-  margin-block: var(--spacing-m);
+aside{
+  padding:var(--spacing-m);
+  margin-block:var(--spacing-m);
+  border-inline-start:var(--border-width-thick) solid var(--color-primary);
+  background-color:var(--color-surface-dark);
+  border-radius:var(--border-radius-m);
 }
 
-summary {
-  display: list-item;
-  cursor: pointer;
-  font-family: var(--font-family-sans), "Groundwork Sans", system-ui, sans-serif;
-  font-weight: var(--font-weight-medium);
-  padding: var(--spacing-s);
-  margin: calc(var(--spacing-s) * -1);
-  border-radius: var(--border-radius-xs);
-  transition: var(--transition-colors);
+
+details{
+  display:block;
+  border:var(--border-width-thin) solid var(--border-color-default);
+  border-radius:var(--border-radius-s);
+  padding:var(--spacing-s);
+  margin-block:var(--spacing-m);
+  background-color:var(--color-surface);
 }
 
-summary:hover {
-  background-color: var(--background-color-surface-light);
+
+summary{
+  display:list-item;
+  cursor:pointer;
+  font-family:var(--font-family-sans), "Groundwork Sans", system-ui, sans-serif;
+  font-weight:var(--font-weight-medium);
+  padding:var(--spacing-s);
+  margin:calc(var(--spacing-s) * -1);
+  border-radius:var(--border-radius-xs);
+  transition:var(--transition-colors);
 }
 
-summary:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+
+summary:hover{
+  background-color:var(--color-surface-dark);
 }
 
-details summary::-webkit-details-marker {
-  display: none;
+
+summary:focus-visible{
+  outline:2px solid var(--color-primary);
+  outline-offset:2px;
 }
 
-dialog {
-  border: none;
-  border-radius: var(--border-radius-m);
-  padding: var(--spacing-l);
-  background-color: var(--background-color-body);
-  color: var(--color-text-base);
-  box-shadow: var(--box-shadow-floating);
-  max-width: min(90vw, var(--container-width-s));
+
+details summary::-webkit-details-marker{
+  display:none;
 }
 
-dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.5);
-  backdrop-filter: blur(4px);
+
+dialog{
+  border:none;
+  border-radius:var(--border-radius-m);
+  padding:var(--spacing-l);
+  background-color:var(--color-body);
+  color:var(--color-text);
+  box-shadow:var(--box-shadow-floating);
+  max-width:min(90vw, var(--content-width-s));
 }
 
-/**
- * @category Base
- * @description Text selection styling. Customizes the appearance of selected text with theme-aware colors that maintain readability and visual consistency.
- * @order 15
- */
 
-/* ===================================================================
-   Selection Styles
-   Custom text selection colors
-   =================================================================== */
-
-::-moz-selection {
-  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
-  color: var(--color-text-base);
-  text-shadow: none;
+dialog::backdrop{
+  background-color:hsl(0deg 0% 0% / 0.5);
+  backdrop-filter:blur(4px);
 }
 
-::selection {
-  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
-  color: var(--color-text-base);
-  text-shadow: none;
+
+::-moz-selection{
+  background-color:color-mix(in oklab, var(--color-primary) 30%, transparent);
+  color:var(--color-text);
+  text-shadow:none;
 }
 
-::-moz-selection {
-  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
-  color: var(--color-text-base);
-  text-shadow: none;
+
+::selection{
+  background-color:color-mix(in oklab, var(--color-primary) 30%, transparent);
+  color:var(--color-text);
+  text-shadow:none;
 }
 
-::selection {
-  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
-  color: var(--color-text-base);
-  text-shadow: none;
+
+input::-moz-selection, textarea::-moz-selection{
+  background-color:color-mix(in oklab, var(--color-primary) 40%, transparent);
 }
 
-/* Input and textarea selection */
-
-input::-moz-selection, textarea::-moz-selection {
-  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
-}
 
 input::selection,
-textarea::selection {
-  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+textarea::selection{
+  background-color:color-mix(in oklab, var(--color-primary) 40%, transparent);
 }
 
-input::-moz-selection, textarea::-moz-selection {
-  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+
+::-webkit-scrollbar{
+  width:12px;
+  height:12px;
 }
 
-input::selection,
-textarea::selection {
-  background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+
+::-webkit-scrollbar-track{
+  background:var(--color-surface);
+  border-radius:var(--border-radius-full);
+  background-clip:padding-box;
 }
 
-/**
- * @category Base
- * @description Custom scrollbar styling for modern browsers. Creates consistent, themed scrollbars across Webkit browsers and Firefox with proper colors and sizing.
- * @order 14
- */
 
-/* ===================================================================
-   Scrollbar Styles
-   Custom scrollbar styling for Webkit and Firefox
-   =================================================================== */
-
-/* Webkit browsers (Chrome, Safari, Edge) */
-
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+::-webkit-scrollbar-thumb{
+  background:var(--color-primary);
+  border-radius:var(--border-radius-full);
+  border:2px solid var(--color-surface-light);
+  -webkit-transition:background 0.2s ease;
+  transition:background 0.2s ease;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--background-color-surface-light);
-  border-radius: var(--border-radius-full);
+
+::-webkit-scrollbar-thumb:hover{
+  background:var(--color-focus-ring);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-muted);
-  border-radius: var(--border-radius-full);
-  border: 2px solid var(--background-color-surface-light);
+
+::-webkit-scrollbar-thumb:active{
+  background:hsl(var(--color-primary-h) var(--color-primary-s) 40%);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted-dark);
+
+::-webkit-scrollbar-corner{
+  background:var(--color-surface-light);
 }
 
-/* Firefox */
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-muted) var(--background-color-surface-light);
+*{
+  scrollbar-width:thin;
+  scrollbar-color:var(--color-surface-inverse) var(--color-surface-light);
 }
 
-/* Horizontal scrollbar specific */
 
-::-webkit-scrollbar:horizontal {
-  height: 12px;
+:root[data-theme="dark"]{
+  ::-webkit-scrollbar-thumb{
+    border-color:var(--color-surface-dark);
+  }
+
+  scrollbar-color:var(--color-surface-inverse) var(--color-surface-dark);
 }
 
-/* Corner where scrollbars meet */
 
-::-webkit-scrollbar-corner {
-  background: var(--background-color-surface-light);
-}
-
-/**
- * @category Base
- * @description Motion and animation preferences for accessibility. Respects user's reduced motion settings to prevent unwanted animations and transitions that could cause discomfort.
- * @order 16
- */
-
-/* ===================================================================
-   Motion Preferences
-   Respect user's motion preferences for accessibility
-   =================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce){
   *,
   *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+    scroll-behavior:auto !important;
   }
-
-  /* Disable smooth scroll */
-  html {
-    scroll-behavior: auto;
+  html{
+    scroll-behavior:auto;
   }
-
-  /* Remove transitions from commonly animated elements */
   details,
   dialog,
   button,
-  a {
-    transition: none !important;
+  a{
+    transition:none !important;
   }
 }
 
-/**
- * @category Base
- * @description Accessibility enhancements and utilities. Provides focus management, skip links, screen reader helpers, and touch-friendly interactive targets for improved usability.
- * @order 13
- */
 
-/* ===================================================================
-   Accessibility
-   Focus states, skip links, and screen reader utilities
-   =================================================================== */
-
-/* Focus visible for keyboard navigation */
-
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: var(--border-radius-xs);
+:focus-visible{
+  outline:2px solid var(--color-primary);
+  outline-offset:2px;
+  border-radius:var(--border-radius-xs);
 }
 
-/* Remove focus for mouse users */
 
-:focus:not(:focus-visible) {
-  outline: none;
+:focus:not(:focus-visible){
+  outline:none;
 }
 
-/* Skip links */
 
-.skip-link {
-  position: absolute;
-  top: var(--spacing-s);
-  left: var(--spacing-s);
-  background-color: var(--color-primary);
-  color: var(--color-text-base-inverse);
-  padding: var(--spacing-s) var(--spacing-m);
-  border-radius: var(--border-radius-s);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  z-index: var(--z-index-toast);
+.skip-link{
+  position:absolute;
+  top:var(--spacing-s);
+  left:var(--spacing-s);
+  background-color:var(--color-primary);
+  color:var(--color-text-inverse);
+  padding:var(--spacing-s) var(--spacing-m);
+  border-radius:var(--border-radius-s);
+  text-decoration:none;
+  font-weight:var(--font-weight-medium);
+  z-index:var(--z-index-toast);
 }
 
-.skip-link:not(:focus) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+
+.skip-link:not(:focus){
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  white-space:nowrap;
+  border:0;
+  clip-path:inset(50%);
 }
 
-/* Screen reader only content */
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+  border:0;
 }
 
-/* Visually hidden but maintains layout */
 
-.visually-hidden {
-  visibility: hidden;
+.visually-hidden{
+  visibility:hidden;
 }
 
-/* Ensure interactive elements are large enough for touch */
 
-@media (pointer: coarse) {
+@media (pointer: coarse){
   button,
   a,
   input[type="checkbox"],
   input[type="radio"],
   select,
-  textarea {
-    min-height: 44px;
-    min-width: 44px;
+  textarea{
+    min-height:44px;
+    min-width:44px;
   }
 }
 
-/* 6) Print */
 
-/**
- * @category Base
- * @description Print media optimization. Adjusts styles for printed documents including proper page breaks, hidden non-essential elements, and print-friendly typography and colors.
- * @order 17
- */
-
-/* ===================================================================
-   Print Styles
-   Optimized styles for printed documents
-   =================================================================== */
-
-@media print {
-  /* Reset colors for print */
-  * {
-    background: transparent !important;
-    color: #000 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
+@media print{
+  *{
+    background:transparent !important;
+    color:#000 !important;
+    box-shadow:none !important;
+    text-shadow:none !important;
   }
-
-  /* Ensure good contrast */
-  body {
-    font-size: 12pt;
-    line-height: 1.5;
-    font-family: Georgia, "Times New Roman", serif;
+  body{
+    font-size:12pt;
+    line-height:1.5;
+    font-family:Georgia, "Times New Roman", serif;
   }
-
-  /* Links */
   a,
-  a:visited {
-    text-decoration: underline;
-    color: #000;
+  a:visited{
+    text-decoration:underline;
+    color:#000;
   }
-
-  /* Show URLs after links (except for anchors) */
-  a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.9em;
-    overflow-wrap: break-word;
+  a[href^="http"]::after{
+    content:" (" attr(href) ")";
+    font-size:0.9em;
+    overflow-wrap:break-word;
   }
-
-  /* Show abbreviation definitions */
-  abbr[title]::after {
-    content: " (" attr(title) ")";
+  abbr[title]::after{
+    content:" (" attr(title) ")";
   }
-
-  /* Don't show URLs for internal links */
   a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
+  a[href^="javascript:"]::after{
+    content:"";
+  }
+  img{
+    max-width:100% !important;
+    -moz-column-break-inside:avoid;
+         break-inside:avoid;
+  }
+  h1{
+    font-size:24pt;
   }
 
-  /* Optimize images */
-  img {
-    max-width: 100% !important;
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
+  h2{
+    font-size:20pt;
+    -moz-column-break-after:avoid;
+         break-after:avoid;
   }
 
-  /* Headings */
-  h1 {
-    font-size: 24pt;
+  h3{
+    font-size:16pt;
+    -moz-column-break-after:avoid;
+         break-after:avoid;
   }
 
-  h2 {
-    font-size: 20pt;
-    -moz-column-break-after: avoid;
-         break-after: avoid;
+  h4, h5, h6{
+    font-size:14pt;
+    -moz-column-break-after:avoid;
+         break-after:avoid;
   }
-
-  h3 {
-    font-size: 16pt;
-    -moz-column-break-after: avoid;
-         break-after: avoid;
+  h1, h2, h3, h4, h5, h6{
+    -moz-column-break-after:avoid;
+         break-after:avoid;
+    -moz-column-break-inside:avoid;
+         break-inside:avoid;
   }
-
-  h4, h5, h6 {
-    font-size: 14pt;
-    -moz-column-break-after: avoid;
-         break-after: avoid;
+  p{
+    orphans:3;
+    widows:3;
   }
-
-  /* Keep headings with content */
-  h1, h2, h3, h4, h5, h6 {
-    -moz-column-break-after: avoid;
-         break-after: avoid;
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
-  }
-
-  /* Paragraphs */
-  p {
-    orphans: 3;
-    widows: 3;
-  }
-
-  /* Borders for code blocks and quotes */
   pre,
-  blockquote {
-    border: 1px solid #999;
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
-    padding: 0.5em;
+  blockquote{
+    border:1px solid #999;
+    -moz-column-break-inside:avoid;
+         break-inside:avoid;
+    padding:0.5em;
   }
 
-  pre {
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
+  pre{
+    white-space:pre-wrap;
+    overflow-wrap:break-word;
+  }
+  table{
+    border-collapse:collapse;
+    width:100%;
   }
 
-  /* Tables */
-  table {
-    border-collapse: collapse;
-    width: 100%;
+  thead{
+    display:table-header-group;
   }
 
-  thead {
-    display: table-header-group;
-  }
-
-  tr {
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
+  tr{
+    -moz-column-break-inside:avoid;
+         break-inside:avoid;
   }
 
   th,
-  td {
-    border: 1px solid #ccc;
-    padding: 0.5em;
+  td{
+    border:1px solid #ccc;
+    padding:0.5em;
   }
-
-  /* Hide non-essential elements */
   nav,
   aside,
   footer,
@@ -1951,47 +1971,39 @@ textarea::selection {
   textarea,
   [role="navigation"],
   [role="complementary"],
-  [aria-hidden="true"] {
-    display: none !important;
+  [aria-hidden="true"]{
+    display:none !important;
   }
-
-  /* Show summary for open details */
-  details[open] summary {
-    font-weight: bold;
-    margin-bottom: 0.5em;
+  details[open] summary{
+    font-weight:bold;
+    margin-bottom:0.5em;
   }
-
-  /* Lists */
   ul,
-  ol {
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
+  ol{
+    -moz-column-break-inside:avoid;
+         break-inside:avoid;
+  }
+  figure{
+    -moz-column-break-inside:avoid;
+         break-inside:avoid;
+  }
+  @page{
+    margin:2cm;
+  }
+  .page-break-before{
+    -moz-column-break-before:always;
+         break-before:always;
   }
 
-  /* Figures */
-  figure {
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
+  .page-break-after{
+    -moz-column-break-after:always;
+         break-after:always;
   }
 
-  /* Page margins */
-  @page {
-    margin: 2cm;
-  }
-
-  /* Page breaks */
-  .page-break-before {
-    -moz-column-break-before: always;
-         break-before: always;
-  }
-
-  .page-break-after {
-    -moz-column-break-after: always;
-         break-after: always;
-  }
-
-  .page-break-avoid {
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
+  .page-break-avoid{
+    -moz-column-break-inside:avoid;
+         break-inside:avoid;
   }
 }
+
+/*# sourceMappingURL=groundwork-harmony.css.map */

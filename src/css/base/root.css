@@ -17,7 +17,7 @@ html {
   /* Modern font smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
+  text-rendering: optimizeLegibility;
 
   /* Variable font defaults */
   font-optical-sizing: auto;      /* enable opsz on Serif font */

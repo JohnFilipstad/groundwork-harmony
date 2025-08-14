@@ -31,7 +31,8 @@ a:focus-visible {
 }
 
 a:visited {
-  color: color-mix(in oklab, var(--color-link) 70%, var(--color-text-base) 30%);
+  /* Use the secondary color for a clear, theme-aware visited state */
+  color: var(--color-link-visited);
 }
 
 /* Remove underline from linked images */

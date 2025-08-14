@@ -1,31 +1,25 @@
+/* ===================================================================
+   semantic.css
+   =================================================================== */
+
 /**
  * @category Base
  * @description HTML5 semantic element normalization. Ensures proper display and spacing for structural elements like main, article, section, nav, aside, header, and footer.
  * @order 12
  */
 
-/* ===================================================================
-   Semantic HTML5 Elements
-   Structural and semantic HTML5 elements
-   =================================================================== */
-
 main {
   min-height: 50vh;
   width: 100%;
   margin-inline: auto;
-
-  /* Set the default horizontal padding */
   padding-inline: var(--spacing-m);
-
-  /* Create the fluid container width */
   max-width: clamp(
-    320px,                                  /* The hard minimum width */
-    calc(100% - (2 * var(--spacing-m))),    /* The fluid, preferred width */
-    var(--container-max-width)              /* The hard maximum width */
+    320px,
+    calc(100% - (2 * var(--spacing-m))),
+    var(--container-max-width)
   );
 }
 
-/* Specific override for larger screens remains the same */
 @media (width >= 1200px) {
   main {
     padding-inline: var(--spacing-l);
@@ -43,12 +37,17 @@ figure {
   display: block;
 }
 
-header {
-  margin-block-end: var(--spacing-l);
+footer {
+  color: var(--color-text);
 }
 
-footer {
-  margin-block-start: var(--spacing-l);
+footer a {
+  color: var(--color-text);
+  text-decoration-thickness: 2px;
+}
+
+footer a:hover {
+  color: var(--color-accent); /* Use accent color for a vibrant hover */
 }
 
 nav {
@@ -67,5 +66,6 @@ aside {
   padding: var(--spacing-m);
   margin-block: var(--spacing-m);
   border-inline-start: var(--border-width-thick) solid var(--color-primary);
-  background-color: var(--background-color-surface-light);
+  background-color: var(--color-surface-dark);
+  border-radius: var(--border-radius-m);
 }

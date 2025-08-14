@@ -16,7 +16,10 @@ table {
   max-width: var(--content-width-m);
   margin-inline: auto;
   margin-block: var(--spacing-m);
-  background-color: var(--background-color-body);
+  background-color: var(--color-surface); /* Use surface for the table background */
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-m);
+  overflow: hidden; /* Ensures border-radius is respected by children */
 }
 
 caption {
@@ -24,16 +27,16 @@ caption {
   font-weight: var(--font-weight-medium);
   text-align: start;
   caption-side: bottom;
-  color: var(--color-text-base-disabled);
 }
 
 thead {
-  background-color: var(--background-color-surface);
+  background-color: var(--color-surface-light); /* Darker for better contrast */
   border-bottom: var(--border-width-m) solid var(--border-color-default);
 }
 
 tbody tr {
   border-bottom: var(--border-width-thin) solid var(--border-color-default);
+  transition: var(--transition-colors);
 }
 
 tbody tr:last-child {
@@ -41,7 +44,7 @@ tbody tr:last-child {
 }
 
 tbody tr:hover {
-  background-color: var(--background-color-surface-light);
+  background-color: var(--color-surface-hover); /* Use darker surface for a clear hover */
 }
 
 th {
@@ -52,10 +55,11 @@ th {
 
 td {
   padding: var(--spacing-s) var(--spacing-m);
+  vertical-align: top; /* Better default alignment */
 }
 
 tfoot {
-  background-color: var(--background-color-surface-light);
+  background-color: var(--color-surface-dark); /* Darker for better contrast */
   border-top: var(--border-width-m) solid var(--border-color-default);
   font-weight: var(--font-weight-medium);
 }

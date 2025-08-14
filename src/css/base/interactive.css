@@ -1,13 +1,12 @@
+/* ===================================================================
+   interactive.css
+   =================================================================== */
+
 /**
  * @category Base
  * @description Interactive HTML5 element normalization. Styles details/summary disclosure widgets, dialog modals, and other interactive elements with proper states and animations.
  * @order 11
  */
-
-/* ===================================================================
-   Interactive Elements
-   Details, summary, dialog, and other interactive HTML5 elements
-   =================================================================== */
 
 details {
   display: block;
@@ -15,6 +14,7 @@ details {
   border-radius: var(--border-radius-s);
   padding: var(--spacing-s);
   margin-block: var(--spacing-m);
+  background-color: var(--color-surface); /* Give it a distinct background */
 }
 
 summary {
@@ -23,13 +23,13 @@ summary {
   font-family: var(--font-family-sans), "Groundwork Sans", system-ui, sans-serif;
   font-weight: var(--font-weight-medium);
   padding: var(--spacing-s);
-  margin: calc(var(--spacing-s) * -1);
+  margin: calc(var(--spacing-s) * -1); /* Negative margin to fill padding */
   border-radius: var(--border-radius-xs);
   transition: var(--transition-colors);
 }
 
 summary:hover {
-  background-color: var(--background-color-surface-light);
+  background-color: var(--color-surface-dark); /* Use darker surface for hover */
 }
 
 summary:focus-visible {
@@ -41,19 +41,17 @@ details summary::-webkit-details-marker {
   display: none;
 }
 
-
-
 dialog {
   border: none;
   border-radius: var(--border-radius-m);
   padding: var(--spacing-l);
-  background-color: var(--background-color-body);
-  color: var(--color-text-base);
+  background-color: var(--color-body);
+  color: var(--color-text);
   box-shadow: var(--box-shadow-floating);
-  max-width: min(90vw, var(--container-width-s));
+  max-width: min(90vw, var(--content-width-s));
 }
 
 dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.5);
+  background-color: hsl(0deg 0% 0% / 0.5);
   backdrop-filter: blur(4px);
 }

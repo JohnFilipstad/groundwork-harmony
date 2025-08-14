@@ -13,9 +13,9 @@ blockquote {
   margin-inline: auto;
   max-width: var(--content-width-m);
   padding-inline-start: var(--spacing-l);
-  border-inline-start: var(--border-width-thick) solid var(--color-primary);
+  border-inline-start: var(--border-width-thick) solid var(--color-secondary);
   font-style: italic;
-  color: color-mix(in oklab, var(--color-text-base) 95%, transparent);
+  color: color-mix(in oklab, var(--color-text) 95%, transparent);
 }
 
 q {

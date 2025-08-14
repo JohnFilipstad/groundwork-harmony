@@ -1,167 +1,60 @@
-/* 
-  📘 Groundwork Tokens Guidelines:
-  - Never override tokens directly.
-  - Use semantic tokens (e.g., --color-primary) in components.
-  - Only update design decisions through this file.
-  - Always check text contrast with --color-text-base or --color-text-base-inverse.
+/* ========================================================================
+   🎶 GROUNDWORK HARMONY - MAIN TOKENS
+   ========================================================================
+   VERSION: FINAL-COMPLETE-V3
+   DESCRIPTION: The complete, final token file for the Groundwork Harmony
+   design system. It combines a static foundational palette with a
+   powerful dynamic theming engine and a full set of structural tokens.
 */
 
+/* ========================================================================
+   1. IMPORTS
+   - Imports the auto-generated foundational palettes and dynamic theme base.
+   ======================================================================== */
+@import url("groundwork-colors.css"); /* Static palettes (red, green, etc.) */
+@import url("groundwork-theme-base.css"); /* Dynamic HSL components (primary, etc.) */
+
 :root {
-  /* ===================================================================
-     1. CORE & BRAND COLORS
-     - The raw color palette for brand identity.
-     =================================================================== */
+  /* ========================================================================
+     2. SEMANTIC & FUNCTIONAL ALIASES
+     - Maps roles to specific colors from the imported palettes.
+     ======================================================================== */
 
-  /* Neutrals */
-  --color-white: #fff;
-  --color-black: #000;
-  --color-grey: #7d7d7d; /* Use black text #000000DE for WCAG AA */
+  /* --- Dynamic Theme Colors (User-Customizable) --- */
+  --color-primary: var(--color-primary-600);
+  --color-secondary: var(--color-secondary-600);
+  --color-accent: var(--color-accent-600);
 
-  /* Base Colors */
-  --color-red: #cb180b; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta: #c31377; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange: #fa9600; /* Use black text #000000DE for WCAG AA */
-  --color-amber: #f5b800; /* Use black text #000000DE for WCAG AA */
-  --color-yellow: #ffea29; /* Use black text #000000DE for WCAG AA */
-  --color-brown: #865e50; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green: #337539; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal: #00756a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan: #007894; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue: #0678be; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo: #594af6; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple: #8f2fe9; /* Use white text #FFFFFFDE for WCAG AA */
+  /* --- Static Functional Colors (Fixed) --- */
+  --color-success: var(--color-green-600);
+  --color-danger: var(--color-red-600);
+  --color-warning: var(--color-yellow-500);
+  --color-info: var(--color-cyan-600);
+  --color-muted: var(--color-grey-600);
 
-  /* --- Variants --- */
+  /* --- Core Text Colors (The two main options) --- */
+  --color-text-on-dark: hsl(0deg 0% 100% / 0.87);
+  --color-text-on-light: hsl(0deg 0% 10% / 0.87);
 
-  --color-red-lightest: #fbe5e3; /* Use black text #000000DE for WCAG AA */
-  --color-red-lighter: #f5b5b1; /* Use black text #000000DE for WCAG AA */
-  --color-red-light: #eb7872; /* Use black text #000000DE for WCAG AA */
-  --color-red-dark: #a7150a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-red-darker: #861208; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-red-darkest: #5c0d06; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta-lightest: #fce3f1; /* Use black text #000000DE for WCAG AA */
-  --color-magenta-lighter: #f5b4db; /* Use black text #000000DE for WCAG AA */
-  --color-magenta-light: #ea74b8; /* Use black text #000000DE for WCAG AA */
-  --color-magenta-dark: #9f1062; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta-darker: #7d0d4d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-magenta-darkest: #5b0938; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange-lightest: #fff3e0; /* Use black text #000000DE for WCAG AA */
-  --color-orange-lighter: #ffd7a3; /* Use black text #000000DE for WCAG AA */
-  --color-orange-light: #f9b94a; /* Use black text #000000DE for WCAG AA */
-  --color-orange-dark: #c87600; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange-darker: #a45f00; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-orange-darkest: #733f00; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-amber-lightest: #fff7e0; /* Use black text #000000DE for WCAG AA */
-  --color-amber-lighter: #ffe4a3; /* Use black text #000000DE for WCAG AA */
-  --color-amber-light: #ffd24d; /* Use black text #000000DE for WCAG AA */
-  --color-amber-dark: #c99400; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-amber-darker: #9e7400; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-amber-darkest: #6e5100; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-yellow-lightest: #fffbe1; /* Use black text #000000DE for WCAG AA */
-  --color-yellow-lighter: #fff2a6; /* Use black text #000000DE for WCAG AA */
-  --color-yellow-light: #ffeb4a; /* Use black text #000000DE for WCAG AA */
-  --color-yellow-dark: #d9b900; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-yellow-darker: #b49700; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-yellow-darkest: #7a6400; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-brown-lightest: #f2eae6; /* Use black text #000000DE for WCAG AA */
-  --color-brown-lighter: #d4bfb6; /* Use black text #000000DE for WCAG AA */
-  --color-brown-light: #b8907e; /* Use black text #000000DE for WCAG AA */
-  --color-brown-dark: #6a4b3f; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-brown-darker: #543a31; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-brown-darkest: #3a2921; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green-lightest: #e2f5e5; /* Use black text #000000DE for WCAG AA */
-  --color-green-lighter: #a7deb0; /* Use black text #000000DE for WCAG AA */
-  --color-green-light: #5bbe72; /* Use black text #000000DE for WCAG AA */
-  --color-green-dark: #29612e; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green-darker: #1f4d24; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-green-darkest: #153919; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal-lightest: #ddf6f4; /* Use black text #000000DE for WCAG AA */
-  --color-teal-lighter: #a3e5e0; /* Use black text #000000DE for WCAG AA */
-  --color-teal-light: #52c6bc; /* Use black text #000000DE for WCAG AA */
-  --color-teal-dark: #006058; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal-darker: #004d46; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-teal-darkest: #003933; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan-lightest: #e0f7fa; /* Use black text #000000DE for WCAG AA */
-  --color-cyan-lighter: #a3e4ec; /* Use black text #000000DE for WCAG AA */
-  --color-cyan-light: #0095a8; /* Use black text #000000DE for WCAG AA */
-  --color-cyan-dark: #005f74; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan-darker: #004859; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-cyan-darkest: #003440; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue-lightest: #d9effb; /* Use black text #000000DE for WCAG AA */
-  --color-blue-lighter: #a3d6f2; /* Use black text #000000DE for WCAG AA */
-  --color-blue-light: #49ade0; /* Use black text #000000DE for WCAG AA */
-  --color-blue-dark: #04619c; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue-darker: #034d7d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-blue-darkest: #02395d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo-lightest: #e6e5fd; /* Use black text #000000DE for WCAG AA */
-  --color-indigo-lighter: #b7b4fa; /* Use black text #000000DE for WCAG AA */
-  --color-indigo-light: #8379f8; /* Use black text #000000DE for WCAG AA */
-  --color-indigo-dark: #4437c4; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo-darker: #342a9a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-indigo-darkest: #221d6e; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple-lightest: #f0e5fc; /* Use black text #000000DE for WCAG AA */
-  --color-purple-lighter: #d0b4f8; /* Use black text #000000DE for WCAG AA */
-  --color-purple-light: #af7ef3; /* Use black text #000000DE for WCAG AA */
-  --color-purple-dark: #7323c0; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple-darker: #5a1996; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-purple-darkest: #40126d; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-grey-lightest: #f2f2f2; /* Use black text #000000DE for WCAG AA */
-  --color-grey-lighter: #d9d9d9; /* Use black text #000000DE for WCAG AA */
-  --color-grey-light: #b3b3b3; /* Use black text #000000DE for WCAG AA */
-  --color-grey-dark: #4a4a4a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-grey-darker: #3a3a3a; /* Use white text #FFFFFFDE for WCAG AA */
-  --color-grey-darkest: #2a2a2a; /* Use white text #FFFFFFDE for WCAG AA */
+  /* --- Paired Text Colors for Functional Roles --- */
+  --color-success-text: var(--color-green-600-text);
+  --color-danger-text: var(--color-red-600-text);
+  --color-warning-text: var(--color-yellow-500-text);
+  --color-info-text: var(--color-cyan-600-text);
+  --color-muted-text: var(--color-grey-600-text);
 
-  /* ===================================================================
-     2. TYPOGRAPHY
-     - Font families, modular scale, and base sizes.
-     =================================================================== */
+  /* ========================================================================
+     3. STRUCTURAL & TYPOGRAPHIC TOKENS
+     ======================================================================== */
 
-  /* --- Font Families (Semantic) --- */
-  --font-family-sans:  "Groundwork Sans", system-ui, sans-serif;
+  /* --- Font Families --- */
+  --font-family-sans: "Groundwork Sans", system-ui, sans-serif;
   --font-family-serif: "Groundwork Serif", ui-serif, serif;
   --font-family-mono: "Lucida Console", monaco, monospace;
   --font-family-base: var(--font-family-serif);
   --font-family-headings: var(--font-family-sans);
-  --font-family-site-name: var(--font-family-sans);
 
-  /* --- Font Sizing (Semantic T-shirt Scale) --- */
-  --font-size-base: 1.6rem;
-  --scale-type: var(--scale-perfect-fourth); /* Default scale ratio */
-  --font-size-m: var(--scale-base); /* 1.6rem - base */
-  --font-size-s: calc(var(--font-size-m) / var(--scale-type)); /* 1.2rem */
-  --font-size-xs: calc(var(--font-size-s) / var(--scale-type)); /* 0.9rem */
-  --font-size-l: calc(var(--font-size-m) * var(--scale-type)); /* 2.1rem */
-  --font-size-xl: calc(var(--font-size-l) * var(--scale-type)); /* 2.8rem */
-  --font-size-xxl: calc(var(--font-size-xl) * var(--scale-type)); /* 3.8rem */
-  --font-size-xxxl: calc(var(--font-size-xxl) * var(--scale-type)); /* 5rem */
-
-  /* --- Font Weights (Semantic) --- */
-  --font-weight-thin: 100;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extra-bold: 800;
-  --font-weight-black: 900;
-
-  /* --- Line Heights (Semantic) --- */
-  --line-height-none: 1;
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.625;
-  --line-height-loose: 2;
-
-  /* --- Letter Spacing (Semantic T-shirt Scale) --- */
-  --letter-spacing-xs: -0.1em;
-  --letter-spacing-s: -0.05em;
-  --letter-spacing-m: 0;
-  --letter-spacing-l: 0.05em;
-  --letter-spacing-xl: 0.1em;
-
-  /* --- Modular Scale Ratios (for reference) --- */
-  --scale-base: 1.6rem;
+  /* --- Modular Scale Ratios for Font Sizes (User can choose the scale tye) --- */
   --scale-minor-second: 1.067;
   --scale-major-second: 1.125;
   --scale-minor-third: 1.2;
@@ -175,266 +68,351 @@
   --scale-major-seventh: 1.875;
   --scale-octave: 2;
 
-  /* ===================================================================
-     3. SPACING & SIZING
-     - Consistent spacing units for margins, padding, and gaps.
-     =================================================================== */
+  /* --- Modular Scale implementation in font-sizes (1rem = 10px) --- */
+  --font-size-scale-base: 1.6rem;
+  --scale-type: var(--scale-perfect-fourth); /* 1.333 */
+  --font-size-m: var(--font-size-scale-base);
+  --font-size-s: calc(var(--font-size-m) / var(--scale-type));
+  --font-size-xs: calc(var(--font-size-s) / var(--scale-type));
+  --font-size-l: calc(var(--font-size-m) * var(--scale-type));
+  --font-size-xl: calc(var(--font-size-l) * var(--scale-type));
+  --font-size-xxl: calc(var(--font-size-xl) * var(--scale-type));
+  --font-size-xxxl: calc(var(--font-size-xxl) * var(--scale-type));
 
-  /* --- Spacing (Semantic T-shirt Scale) --- */
+  /* --- Font Weights --- */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* --- Letter Spacing --- */
+  --letter-spacing-xs: -0.05em;
+  --letter-spacing-s: -0.025em;
+  --letter-spacing-m: 0;
+  --letter-spacing-l: 0.025em;
+  --letter-spacing-xl: 0.05em;
+  --letter-spacing-xxl: 0.075em;
+  --letter-spacing-xxxl: 0.1em;
+
+  /* --- Line Heights --- */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+
+  /* --- Spacing --- */
   --spacing-0: 0;
   --spacing-xs: 0.4rem;
   --spacing-s: 0.8rem;
-  --spacing-m: 1.6rem; /* base */
+  --spacing-m: 1.6rem;
   --spacing-l: 2.4rem;
   --spacing-xl: 3.2rem;
-  --spacing-xxl: 4rem;
+  --spacing-xxl: 4.8rem;
   --spacing-xxxl: 6.4rem;
-  --spacing-auto: auto;
 
-  /* --- Icon Sizing (Semantic T-shirt Scale) --- */
-  --icon-size-xs: 1.2rem;
+  /* --- Icon Sizing --- */
   --icon-size-s: 1.6rem;
   --icon-size-m: 2.4rem;
   --icon-size-l: 3.2rem;
-  --icon-size-xl: 4.8rem;
-  --icon-size-xxl: 6.4rem;
-  --icon-size-xxxl: 9.6rem;
 
-  /* ===================================================================
-     4. LAYOUT
-     - Container widths, grid, and z-index scale.
-     =================================================================== */
-
-  /* --- Breakpoints (Reference Only) --- */
-
-  /* Used for JS, SDC props, documentation, and StyleDiscovery labels. */
-
-  /* ⚠️ Cannot be used directly in @media queries. */
-  --breakpoint-bpm: 768px; /* Breakpoint Medium — tablets and up */
-  --breakpoint-bpl: 1024px; /* Breakpoint Large — desktops and up */
-  --breakpoint-bpxl: 1280px; /* Breakpoint Extra Large — large desktops and up */
-
-  /* --- Grid (Semantic) --- */
-  --grid-columns: 12;
-  --grid-gutter: var(--spacing-m);
-  --grid-gutter-s: var(--spacing-s);
-  --grid-gutter-m: var(--spacing-m);
-  --grid-gutter-l: var(--spacing-l);
-
-  /* --- Container Widths (Semantic T-shirt Scale) --- */
-  --container-max-width: 1320px;
-
-  /* For self-contained components like modals, cards, etc. */
-  --content-width-s: 56rem;
-  --content-width-m: 80rem;
-  --content-width-l: 102.4rem;
-
-  /* --- Z-Index Scale (Already semantic) --- */
-  --z-index-behind: -1;
-  --z-index-normal: 0;
-  --z-index-base: 1;
-  --z-index-elevated: 10;
-  --z-index-dropdown: 1000;
-  --z-index-sticky: 1020;
-  --z-index-popover: 1060;
-  --z-index-tooltip: 1070;
-  --z-index-modal: 1080;
-  --z-index-toast: 10000;
-
-  /* ===================================================================
-     5. BORDERS & RADII
-     - Border radii and widths for rounding corners.
-     =================================================================== */
-
-  /* --- Border Radius (Semantic T-shirt Scale) --- */
-  --border-radius-0: 0;
+  /* --- Borders & Radii --- */
   --border-radius-xs: 0.2rem;
   --border-radius-s: 0.4rem;
-  --border-radius-m: 0.8rem; /* base */
+  --border-radius-m: 0.8rem;
   --border-radius-l: 1.2rem;
-  --border-radius-xl: 1.6rem;
-  --border-radius-xxl: 2.4rem;
-  --border-radius-xxxl: 3.2rem;
   --border-radius-full: 9999px;
-
-  /* --- Border Widths (Semantic) --- */
-  --border-width-0: 0;
   --border-width-thin: 1px;
   --border-width-m: 2px;
   --border-width-thick: 4px;
-  --border-width-extra-thick: 8px;
 
-  /* ===================================================================
-     6. SHADOWS
-     - Box shadows for elevation and depth.
-     =================================================================== */
+  /* --- Layout & Content Width --- */
+  --content-width-s: 64rem;
+  --content-width-m: 80rem;
+  --container-max-width: 132rem;
+  --z-index-dropdown: 1000;
+  --z-index-modal: 1080;
+  --z-index-toast: 1100;
 
-  /* --- Box Shadows (Semantic T-shirt Scale) --- */
-  --box-shadow-none: none;
-  --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.1);
-  --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.1), 0 1px 3px rgb(0 0 0 / 0.06);
-  --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.12), 0 2px 4px rgb(0 0 0 / 0.08); /* base */
-  --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.15), 0 6px 12px rgb(0 0 0 / 0.12);
-  --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(0 0 0 / 0.15);
-  --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.22), 0 18px 36px rgb(0 0 0 / 0.18);
-  --box-shadow-inner: inset 0 1px 2px rgb(from var(--color-black) r g b / 0.06);
+  /* --- Transitions --- */
+  --transition-duration-normal: 250ms;
+  --transition-timing-ease: ease;
+  --transition-normal: all var(--transition-duration-normal)
+    var(--transition-timing-ease);
+  --transition-transform: transform var(--transition-duration-normal)
+    var(--transition-timing-ease);
+  --transition-colors:
+    color var(--transition-duration-normal) var(--transition-timing-ease),
+    background-color var(--transition-duration-normal)
+      var(--transition-timing-ease),
+    border-color var(--transition-duration-normal) var(--transition-timing-ease);
 
-  /* --- Semantic Shadow Purposes --- */
-  --box-shadow-focus: 0 0 0 3px rgb(from var(--color-primary) r g b / 0.5);
+  /* --- Dynamic Shadow & Focus Colors --- */
+  --color-focus-ring: hsl(var(--color-primary-h) var(--color-primary-s) 50%);
+
+  /* --- Semantic Shadows --- */
   --box-shadow-subtle: var(--box-shadow-xs);
   --box-shadow-elevated: var(--box-shadow-m);
   --box-shadow-floating: var(--box-shadow-l);
 
-  /* ===================================================================
-     7. TRANSITIONS & ANIMATIONS
-     - Durations and timing functions for motion.
-     =================================================================== */
+  /* ========================================================================
+     4. LIGHT THEME (DEFAULT)
+     ======================================================================== */
 
-  /* --- Transition Durations (Semantic) --- */
-  --transition-duration-instant: 0s;
-  --transition-duration-fast: 150ms;
-  --transition-duration-normal: 250ms;
-  --transition-duration-slow: 400ms;
-  --transition-duration-slower: 600ms;
+  /* --- Core Colors --- */
+  --color-body: hsl(0deg 0% 98%); /* Near-white (vs. dark's 8%) */
+  --color-text: var(--color-text-on-light); /* hsl(0deg 0% 0% / 0.87) */
+  --color-text-inverse: var(
+    --color-text-on-dark
+  ); /* hsl(0deg 0% 100% / 0.87) */
 
-  /* --- Transition Timing Functions (Semantic) --- */
-  --transition-timing-linear: linear;
-  --transition-timing-ease: ease;
-  --transition-timing-ease-in: ease-in;
-  --transition-timing-ease-out: ease-out;
-  --transition-timing-ease-in-out: ease-in-out;
-  --transition-timing-custom: cubic-bezier(0.4, 0, 0.2, 1);
+  --color-text-disabled: hsl(
+    0deg 0% 0% / 0.38
+  ); /* Soft gray (vs. dark's 60%) */
 
-  /* --- Complete Transitions (Semantic) --- */
-  --transition-fast: all var(--transition-duration-fast) var(--transition-timing-ease);
-  --transition-normal: all var(--transition-duration-normal) var(--transition-timing-ease);
-  --transition-slow: all var(--transition-duration-slow) var(--transition-timing-ease);
+  --border-color-default: hsl(0deg 0% 80%); /* Light gray (vs. dark's 25%) */
+  --color-disabled: hsl(0deg 0% 90%); /* Very light fill (vs. dark's 20%) */
 
-  /* --- Property-Specific Transitions (Semantic) --- */
-  --transition-colors:
-    color var(--transition-duration-normal) var(--transition-timing-ease),
-    background-color var(--transition-duration-normal) var(--transition-timing-ease),
-    border-color var(--transition-duration-normal) var(--transition-timing-ease);
-  --transition-transform: transform var(--transition-duration-normal) var(--transition-timing-ease);
-  --transition-opacity: opacity var(--transition-duration-normal) var(--transition-timing-ease);
+  /* --- Surfaces --- */
+  --color-surface-base: hsl(0deg 0% 100%); /* Pure white (vs. dark's 12%) */
+  --color-surface: var(--color-surface-base);
+  --color-surface-light: hsl(
+    0deg 0% 98%
+  ); /* Slightly off-white (vs. dark's 18%) */
 
-  /* ===================================================================
-     8. COLOR SYSTEM (CSS Property Semantic)
-     =================================================================== */
+  --color-surface-dark: hsl(0deg 0% 95%); /* Light gray (vs. dark's 10%) */
+  --color-surface-hover: hsl(0deg 0% 92%); /* Subtle hover (vs. dark's 20%) */
+  --color-surface-inverse: hsl(0deg 0% 12%); /* Matches dark's base (12%) */
 
-  /* --- Base Semantic Colors --- */
-  --color-primary: var(--color-purple);
-  --color-secondary: var(--color-indigo);
-  --color-accent: var(--color-amber);
-  --color-info: var(--color-blue);
-  --color-notice: var(--color-teal);
-  --color-success: var(--color-green);
-  --color-danger: var(--color-red);
-  --color-warning: var(--color-orange);
-  --color-muted: var(--color-grey);
+  /* --- Dynamic Links --- */
+  --color-link: var(--color-primary-600); /* Standard link color */
+  --color-link-hover: var(--color-primary-700); /* Slightly darker hover */
+  --color-link-visited: var(--color-secondary-500); /* Muted visited state */
 
-  /* --- Light Semantic Colors --- */
-  --color-primary-light: color-mix(in oklab, var(--color-primary) 75%, var(--color-white) 25%);
-  --color-secondary-light: color-mix(in oklab, var(--color-secondary) 75%, var(--color-white) 25%);
-  --color-accent-light: color-mix(in oklab, var(--color-accent) 75%, var(--color-white) 25%);
-  --color-info-light: var(--color-blue-light);
-  --color-notice-light: var(--color-teal-light);
-  --color-success-light: var(--color-green-light);
-  --color-danger-light: var(--color-red-light);
-  --color-warning-light: var(--color-orange-light);
-  --color-muted-light: var(--color-grey-light);
+  /* --- Shadows --- */
+  --color-shadow-base: hsl(var(--color-primary-h) 20% 40%);
+  --box-shadow-xs: 0 1px 2px hsl(var(--color-shadow-base) / 0.08);
+  --box-shadow-s:
+    0 1px 3px hsl(var(--color-shadow-base) / 0.12),
+    0 1px 2px hsl(var(--color-shadow-base) / 0.08);
+  --box-shadow-m:
+    0 4px 6px hsl(var(--color-shadow-base) / 0.1),
+    0 2px 4px hsl(var(--color-shadow-base) / 0.08);
+  --box-shadow-l:
+    0 10px 15px hsl(var(--color-shadow-base) / 0.1),
+    0 4px 6px hsl(var(--color-shadow-base) / 0.09);
+  --box-shadow-xl:
+    0 20px 25px hsl(var(--color-shadow-base) / 0.12),
+    0 8px 10px hsl(var(--color-shadow-base) / 0.1);
+  --box-shadow-focus: 0 0 0 3px hsl(var(--color-primary-h) 80% 60% / 0.4); /* Bright focus ring */
 
-  /* --- Dark Semantic Colors --- */
-  --color-primary-dark: color-mix(in oklab, var(--color-primary) 75%, var(--color-black) 25%);
-  --color-secondary-dark: color-mix(in oklab, var(--color-secondary) 75%, var(--color-black) 25%);
-  --color-accent-dark: color-mix(in oklab, var(--color-accent) 75%, var(--color-black) 25%);
-  --color-info-dark: var(--color-blue-dark);
-  --color-notice-dark: var(--color-teal-dark);
-  --color-success-dark: var(--color-green-dark);
-  --color-danger-dark: var(--color-red-dark);
-  --color-warning-dark: var(--color-orange-dark);
-  --color-muted-dark: var(--color-grey-dark);
+  /* --- Dynamic Tints --- */
+  --color-surface-primary-tint: color-mix(
+    in oklch,
+    var(--color-primary) 15%,
+    var(--color-body)
+  );
+  --color-surface-secondary-tint: color-mix(
+    in oklch,
+    var(--color-secondary) 15%,
+    var(--color-body)
+  );
+  --color-surface-accent-tint: color-mix(
+    in oklch,
+    var(--color-accent) 15%,
+    var(--color-body)
+  );
 
-  /* Text Colors depending on background */
-  --color-primary-text: var(--color-text-base-on-dark);
-  --color-secondary-text: var(--color-text-base-on-dark);
-  --color-accent-text: var(--color-text-base-on-dark);
-  --color-text-base-on-dark: rgb(255 255 255 / 0.87);
-  --color-text-base-on-light: rgb(0 0 0 / 0.87);
-  --background-color-header: var(--color-primary);
-  --background-color-footer: var(--color-secondary)
-
-/* ===================================================================
-   9. THEME DEFINITIONS
-   - Defines theme-specific variables for light and dark modes.
-   =================================================================== */
-
-  /* --- LIGHT THEME (DEFAULT) --- */;
-  --background-color-body: #fff;
-  --background-color-surface-dark: #b1b1b1;
-  --background-color-surface: #cbcbcb;
-  --background-color-surface-light: #e5e5e5;
-  --background-color-surface-hover: #969696;
-  --background-color-surface-inverse: #232323;
-  --background-color-disabled: rgb(0 0 0 / 0.12);
-  --color-text-base: rgb(0 0 0 / 0.87);
-  --color-text-base-inverse: rgb(255 255 255 / 0.87);
-  --color-text-base-disabled: rgb(0 0 0 / 0.38);
-  --color-link: var(--color-notice-dark);
-  --color-link-hover: var(--color-success-dark);
-  --border-color-default: rgb(0 0 0 / 0.12);
-  --border-color-focus: rgb(from var(--color-primary) r g b / 0.5);
+  /* --- State Tints --- */
+  --color-surface-danger-tint: color-mix(
+    in oklch,
+    var(--color-danger) 15%,
+    var(--color-body)
+  );
+  --color-surface-success-tint: color-mix(
+    in oklch,
+    var(--color-success) 15%,
+    var(--color-body)
+  );
+  --color-surface-info-tint: color-mix(
+    in oklch,
+    var(--color-info) 15%,
+    var(--color-body)
+  );
+  --color-surface-warning-tint: color-mix(
+    in oklch,
+    var(--color-warning) 15%,
+    var(--color-body)
+  );
 }
 
-/* --- DARK THEME (OS Preference or data-theme="dark") --- */
+/* ========================================================================
+   5. DARK THEME
+   - Contains two separate rules to correctly handle OS preference
+     and a manual toggle.
+   ======================================================================== */
+
+/* --- Rule 1: Applies when the user's OS is set to dark --- */
 @media (prefers-color-scheme: dark) {
-  /* noinspection DuplicatedCode */
   :root:not([data-theme="light"]) {
-    --background-color-body: #121212;
-    --background-color-surface-dark: #1e1e1e;
-    --background-color-surface: #232323;
-    --background-color-surface-light: #2c2c2c;
-    --background-color-surface-hover: #272727;
-    --background-color-surface-inverse: #cbcbcb;
-    --background-color-disabled: rgb(255 255 255 / 0.12);
-    --color-text-base: rgb(255 255 255 / 0.87);
-    --color-text-base-inverse: rgb(0 0 0 / 0.87);
-    --color-text-base-disabled: rgb(255 255 255 / 0.38);
-    --color-link: var(--color-accent-light);
-    --color-link-hover: var(--color-success-light);
-    --border-color-default: rgb(255 255 255 / 0.25);
-    --border-color-focus: rgb(from var(--color-primary-light) r g b / 0.7);
-    --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.45), 0 1px 1px rgb(255 255 255 / 0.1);
-    --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.38), 0 1px 3px rgb(255 255 255 / 0.08);
-    --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.33), 0 2px 4px rgb(255 255 255 / 0.1);
-    --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.28), 0 6px 12px rgb(255 255 255 / 0.08);
-    --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(255 255 255 / 0.06);
-    --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.15), 0 18px 36px rgb(255 255 255 / 0.06);
-    --box-shadow-inner: inset 0 1px 2px rgb(255 255 255 / 0.06);
+    /* --- Core Colors --- */
+    --color-body: hsl(0deg 0% 8%);
+    --color-text: var(--color-text-on-dark); /* hsl(0deg 0% 100% / 0.87) */
+    --color-text-inverse: var(
+      --color-text-on-light
+    ); /* hsl(0deg 0% 0% / 0.87) */
+
+    --color-text-disabled: hsl(0deg 0% 100% / 0.38);
+    --border-color-default: hsl(0deg 0% 25%);
+    --color-disabled: hsl(0deg 0% 20%);
+
+    /* --- Surfaces --- */
+    --color-surface-base: hsl(0deg 0% 12%);
+    --color-surface: var(--color-surface-base);
+    --color-surface-light: hsl(0deg 0% 18%);
+    --color-surface-dark: hsl(0deg 0% 10%);
+    --color-surface-hover: hsl(0deg 0% 20%);
+    --color-surface-inverse: hsl(0deg 0% 95%);
+
+    /* --- Dynamic Links --- */
+    --color-link: var(--color-primary-300); /* Lighter for visibility */
+    --color-link-hover: var(--color-primary-300); /* Brighter hover */
+    --color-link-visited: var(--color-secondary-300); /* Slightly darker */
+
+    /* --- Shadows --- */
+    --color-shadow-base: hsl(var(--color-primary-h) 20% 5%);
+    --box-shadow-xs: 0 1px 2px hsl(var(--color-shadow-base) / 0.3);
+    --box-shadow-s:
+      0 1px 3px hsl(var(--color-shadow-base) / 0.3),
+      0 1px 2px hsl(var(--color-shadow-base) / 0.2);
+    --box-shadow-m:
+      0 4px 6px hsl(var(--color-shadow-base) / 0.25),
+      0 2px 4px hsl(var(--color-shadow-base) / 0.2);
+    --box-shadow-l:
+      0 10px 15px hsl(var(--color-shadow-base) / 0.25),
+      0 4px 6px hsl(var(--color-shadow-base) / 0.22);
+    --box-shadow-xl:
+      0 20px 25px hsl(var(--color-shadow-base) / 0.25),
+      0 8px 10px hsl(var(--color-shadow-base) / 0.22);
+    --box-shadow-focus: 0 0 0 3px hsl(var(--color-primary-h) 60% 50% / 0.6); /* Glow effect */
+
+    /* --- Dynamic Tints --- */
+    --color-surface-primary-tint: color-mix(
+      in oklch,
+      var(--color-primary) 10%,
+      var(--color-body)
+    );
+    --color-surface-secondary-tint: color-mix(
+      in oklch,
+      var(--color-secondary) 10%,
+      var(--color-body)
+    );
+    --color-surface-accent-tint: color-mix(
+      in oklch,
+      var(--color-accent) 10%,
+      var(--color-body)
+    );
+
+    /* --- State Tints --- */
+    --color-surface-danger-tint: color-mix(
+      in oklch,
+      var(--color-danger) 10%,
+      var(--color-body)
+    );
+    --color-surface-success-tint: color-mix(
+      in oklch,
+      var(--color-success) 10%,
+      var(--color-body)
+    );
+    --color-surface-info-tint: color-mix(
+      in oklch,
+      var(--color-info) 10%,
+      var(--color-body)
+    );
+    --color-surface-warning-tint: color-mix(
+      in oklch,
+      var(--color-warning) 10%,
+      var(--color-body)
+    );
   }
 }
 
-/* noinspection DuplicatedCode */
+/* --- Rule 2: Applies when a user manually toggles dark mode --- */
 :root[data-theme="dark"] {
-  --background-color-body: #121212;
-  --background-color-surface-dark: #1e1e1e;
-  --background-color-surface: #232323;
-  --background-color-surface-light: #2c2c2c;
-  --background-color-surface-hover: #272727;
-  --background-color-surface-inverse: #cbcbcb;
-  --background-color-disabled: rgb(255 255 255 / 0.12);
-  --color-text-base: rgb(255 255 255 / 0.87);
-  --color-text-base-inverse: rgb(0 0 0 / 0.87);
-  --color-text-base-disabled: rgb(255 255 255 / 0.38);
-  --color-link: var(--color-notice-light);
-  --color-link-hover: var(--color-success-light);
-  --border-color-default: rgb(255 255 255 / 0.25);
-  --border-color-focus: rgb(from var(--color-primary-light) r g b / 0.7);
-  --box-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.45), 0 1px 1px rgb(255 255 255 / 0.1);
-  --box-shadow-s: 0 4px 6px rgb(0 0 0 / 0.38), 0 1px 3px rgb(255 255 255 / 0.08);
-  --box-shadow-m: 0 8px 12px rgb(0 0 0 / 0.33), 0 2px 4px rgb(255 255 255 / 0.1);
-  --box-shadow-l: 0 16px 24px rgb(0 0 0 / 0.28), 0 6px 12px rgb(255 255 255 / 0.08);
-  --box-shadow-xl: 0 32px 48px rgb(0 0 0 / 0.18), 0 12px 24px rgb(255 255 255 / 0.06);
-  --box-shadow-xxl: 0 48px 64px rgb(0 0 0 / 0.15), 0 18px 36px rgb(255 255 255 / 0.06);
-  --box-shadow-inner: inset 0 1px 2px rgb(255 255 255 / 0.06);
+  /* --- Core Colors --- */
+  --color-body: hsl(0deg 0% 8%);
+  --color-text: var(--color-text-on-dark); /* hsl(0deg 0% 100% / 0.87) */
+  --color-text-inverse: var(--color-text-on-light); /* hsl(0deg 0% 0% / 0.87) */
+  --color-text-disabled: hsl(0deg 0% 100% / 0.38);
+  --border-color-default: hsl(0deg 0% 25%);
+  --color-disabled: hsl(0deg 0% 20%);
+
+  /* --- Surfaces --- */
+  --color-surface-base: hsl(0deg 0% 12%);
+  --color-surface: var(--color-surface-base);
+  --color-surface-light: hsl(0deg 0% 18%);
+  --color-surface-dark: hsl(0deg 0% 10%);
+  --color-surface-hover: hsl(0deg 0% 20%);
+  --color-surface-inverse: hsl(0deg 0% 95%);
+
+  /* --- Dynamic Links --- */
+  --color-link: var(--color-primary-300); /* Lighter for visibility */
+  --color-link-hover: var(--color-primary-300); /* Brighter hover */
+  --color-link-visited: var(--color-secondary-300); /* Slightly darker */
+
+  /* --- Shadows --- */
+  --color-shadow-base: hsl(var(--color-primary-h) 20% 5%);
+  --box-shadow-xs: 0 1px 2px hsl(var(--color-shadow-base) / 0.3);
+  --box-shadow-s:
+    0 1px 3px hsl(var(--color-shadow-base) / 0.3),
+    0 1px 2px hsl(var(--color-shadow-base) / 0.2);
+  --box-shadow-m:
+    0 4px 6px hsl(var(--color-shadow-base) / 0.25),
+    0 2px 4px hsl(var(--color-shadow-base) / 0.2);
+  --box-shadow-l:
+    0 10px 15px hsl(var(--color-shadow-base) / 0.25),
+    0 4px 6px hsl(var(--color-shadow-base) / 0.22);
+  --box-shadow-xl:
+    0 20px 25px hsl(var(--color-shadow-base) / 0.25),
+    0 8px 10px hsl(var(--color-shadow-base) / 0.22);
+  --box-shadow-focus: 0 0 0 3px hsl(var(--color-primary-h) 60% 50% / 0.6); /* Glow effect */
+
+  /* --- Dynamic Tints --- */
+  --color-surface-primary-tint: color-mix(
+    in oklch,
+    var(--color-primary) 10%,
+    var(--color-body)
+  );
+  --color-surface-secondary-tint: color-mix(
+    in oklch,
+    var(--color-secondary) 10%,
+    var(--color-body)
+  );
+  --color-surface-accent-tint: color-mix(
+    in oklch,
+    var(--color-accent) 10%,
+    var(--color-body)
+  );
+
+  /* --- State Tints --- */
+  --color-surface-danger-tint: color-mix(
+    in oklch,
+    var(--color-danger) 10%,
+    var(--color-body)
+  );
+  --color-surface-success-tint: color-mix(
+    in oklch,
+    var(--color-success) 10%,
+    var(--color-body)
+  );
+  --color-surface-info-tint: color-mix(
+    in oklch,
+    var(--color-info) 10%,
+    var(--color-body)
+  );
+  --color-surface-warning-tint: color-mix(
+    in oklch,
+    var(--color-warning) 10%,
+    var(--color-body)
+  );
 }
