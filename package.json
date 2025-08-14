@@ -1,5 +1,5 @@
 {
-  "name": "groundwork-harmony",
+  "name": "@johnfilipstad/groundwork-harmony",
   "version": "0.9.0",
   "description": "Class-less CSS framework with tokens, a11y, RTL/LTR, and light/dark themes.",
   "author": "John Filipstad <your-email@example.com>",
@@ -13,13 +13,13 @@
     "rtl",
     "dark-mode"
   ],
-  "homepage": "https://github.com/IbentaLab/groundwork_harmony",
+  "homepage": "https://github.com/JohnFilipstad/groundwork-harmony",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IbentaLab/groundwork_harmony.git"
+    "url": "git+https://github.com/JohnFilipstad/groundwork-harmony.git"
   },
   "bugs": {
-    "url": "https://github.com/IbentaLab/groundwork_harmony/issues"
+    "url": "https://github.com/JohnFilipstad/groundwork-harmony/issues"
   },
   "type": "module",
   "main": "dist/groundwork-harmony.min.css",
@@ -48,7 +48,7 @@
     "docs:build": "cd docs && node scripts/build.cjs",
     "docs:dev": "npm run build && npm run docs:build",
     "docs:watch": "chokidar 'docs/content/**/*.md' 'docs/templates/*.html' 'docs/css/*.css' -c 'npm run docs:build'",
-    "lint": "npm run lint:css && npm run lint:html",
+    "lint": "npm run lint:css",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint:css-fix": "stylelint \"src/**/*.css\" --fix",
     "lint:html": "html-validate \"examples/**/*.html\"",

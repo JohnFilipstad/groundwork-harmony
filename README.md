@@ -33,24 +33,24 @@ Think of it as `normalize.css` in high gear, blending innovation with reliabilit
 ### 1. **Install via npm**
 
 ```bash
-npm install groundwork-harmony
+npm install @johnfilipstad/groundwork-harmony
 ```
 
 and copy from `node_modules/groundwork-harmony/dist/` into your own public assets.
 
 **CDN (auto-served from npm)**
 
-* **unpkg (latest):** [https://unpkg.com/groundwork-harmony/dist/groundwork-harmony.min.css](https://unpkg.com/groundwork-harmony/dist/groundwork-harmony.min.css)
-* **unpkg (pinned):** [https://unpkg.com/groundwork-harmony@0.1.0/dist/groundwork-harmony.min.css](https://unpkg.com/groundwork-harmony@0.1.0/dist/groundwork-harmony.min.css)
-* **jsDelivr (latest):** [https://cdn.jsdelivr.net/npm/groundwork-harmony/dist/groundwork-harmony.min.css](https://cdn.jsdelivr.net/npm/groundwork-harmony/dist/groundwork-harmony.min.css)
-* **jsDelivr (pinned):** [https://cdn.jsdelivr.net/npm/groundwork-harmony@0.1.0/dist/groundwork-harmony.min.css](https://cdn.jsdelivr.net/npm/groundwork-harmony@0.1.0/dist/groundwork-harmony.min.css)
-  
+* **unpkg (latest):** [https://unpkg.com/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css](https://unpkg.com/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css)
+* **unpkg (pinned):** [https://unpkg.com/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css](https://unpkg.com/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css)
+* **jsDelivr (latest):** [https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css](https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css)
+* **jsDelivr (pinned):** [https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css](https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css)
+
 **Fonts via CDN**
 
 Fonts are **not bundled** into the main CDN CSS file. If you need Groundwork Harmony’s custom fonts when using a CDN, you must include the `fonts.css` file separately and ensure the `.woff2` font files are in the same CDN directory structure:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/groundwork-harmony/dist/fonts/fonts.css">
+<link rel="stylesheet" href="https://unpkg.com/@johnfilipstad/groundwork-harmony/dist/fonts/fonts.css">
 ```
 
 The custom fonts — **Groundwork Sans**, **Groundwork Serif**, and **Groundwork Mono** — are referenced in the default CSS variables:
@@ -163,7 +163,7 @@ Override any variable to match your vision:
 * **Ridiculously fast prototyping:** Drop in the CSS and your site looks polished, instantly.
 * **Zero lock-in:** Harmony styles semantic elements. Use it as your foundation, or pair with your own components and utilities.
 * **Future-proof:** Built on modern CSS, ready for tomorrow's browsers.
-* **Open source & community-driven:** Have an idea or need a fix? [Send me a message!](https://github.com/IbentaLab/groundwork_harmony)
+* **Open source & community-driven:** Have an idea or need a fix? [Send me a message!](https://github.com/JohnFilipstad/groundwork-harmony)
 * **Single Source of Truth:** Centralized design tokens ensure your project's aesthetic is always consistent and a joy to maintain.
 
 ---
