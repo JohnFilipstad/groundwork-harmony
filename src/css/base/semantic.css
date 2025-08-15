@@ -65,7 +65,6 @@ section {
 aside {
   padding: var(--spacing-m);
   margin-block: var(--spacing-m);
-  border-inline-start: var(--border-width-thick) solid var(--color-primary);
   background-color: var(--color-surface-dark);
   border-radius: var(--border-radius-m);
 }

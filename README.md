@@ -6,11 +6,11 @@
 
 ## 🎤 Why Settle for Noise? Orchestrate with Harmony.
 
-Welcome to **Groundwork Harmony** — the CSS base designed for creators who want their web projects to look striking, modern, and ***semantically sound*** right out of the box.
+Welcome to **Groundwork Harmony** – the CSS base designed for creators who want their web projects to look striking, modern, and ***semantically sound*** right out of the box.
 Why drown your markup in utility classes when you can let your HTML sing with **meaningful, accessible structure**?
 
-Groundwork Harmony is more than a stylesheet — it's a philosophy. Your HTML should be music: clean, harmonious, and effortless to scale. By embracing ***semantic elements as the foundation***, Harmony supercharges them with modern, accessible defaults — no extra classes required.
-Think of it as `normalize.css` in high gear, blending innovation with reliability so you can focus on content, not configuration — and keep your markup readable, meaningful, and future-proof.
+Groundwork Harmony is more than a stylesheet – it's a philosophy. Your HTML should be music: clean, harmonious, and effortless to scale. By embracing ***semantic elements as the foundation***, Harmony supercharges them with modern, accessible defaults – no extra classes required.
+Think of it as `normalize.css` in high gear, blending innovation with reliability so you can focus on content, not configuration – and keep your markup readable, meaningful, and future-proof.
 
 ---
 
@@ -21,142 +21,206 @@ Think of it as `normalize.css` in high gear, blending innovation with reliabilit
 * **♿ Accessibility Baked In:**  Focus states, skip links, screen reader helpers, and reduced motion support—out-of-the-box inclusivity.
 * **🎨 Effortless Customization:**  Change a few CSS variables and watch your entire interface take on a new mood. Your brand, your style, zero hassle.
 * **⚖️ Single Source of Truth for Tokens:**  All of your design tokens for colors, fonts, and spacing are defined in a central location, ensuring consistency and making global changes a breeze.
-* **📏 Modular Scales for Everything:**  Typographic rhythm, spacing, grids, and more—all defined in scalable, responsive variables.
+* **📐 Modular Scales for Everything:**  Typographic rhythm, spacing, grids, and more—all defined in scalable, responsive variables.
 * **🧠 Modern CSS Magic:**  Powered by `:has()`, `color-mix()`, `text-wrap`, `dvh`, and more. Built for today and the future.
-* **🌐 LTR & RTL Support:**  Logical properties and adaptive layouts ensure your content shines in every language, for every audience.
-* **⚡ Lightweight & Fast:**  The CSS file is just **~43.8 KB** — small enough for rapid loads, big enough to deliver full accessibility and customization features.
+* **🌍 LTR & RTL Support:**  Logical properties and adaptive layouts ensure your content shines in every language, for every audience.
+* **⚡ Lightweight & Fast:**  The CSS file is just **~43.8 KB** – small enough for rapid loads, big enough to deliver full accessibility and customization features.
 
 ---
 
-## 💡 Get Started in 3 Steps
+## 📦 Install
 
-### 1. **Install via npm**
+**npm**
 
 ```bash
-npm install @johnfilipstad/groundwork-harmony
+npm i @johnfilipstad/groundwork-harmony
 ```
 
-and copy from `node_modules/groundwork-harmony/dist/` into your own public assets.
+**Use in HTML**
 
-**CDN (auto-served from npm)**
-
-* **unpkg (latest):** [https://unpkg.com/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css](https://unpkg.com/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css)
-* **unpkg (pinned):** [https://unpkg.com/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css](https://unpkg.com/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css)
-* **jsDelivr (latest):** [https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css](https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css)
-* **jsDelivr (pinned):** [https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css](https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony@0.9.0/dist/groundwork-harmony.min.css)
-
-**Fonts via CDN**
-
-Fonts are **not bundled** into the main CDN CSS file. If you need Groundwork Harmony’s custom fonts when using a CDN, you must include the `fonts.css` file separately and ensure the `.woff2` font files are in the same CDN directory structure:
+Use from node_modules
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@johnfilipstad/groundwork-harmony/dist/fonts/fonts.css">
+<link rel="stylesheet" href="/node_modules/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css">
+```
+or copy to your css folder
+
+```html
+<link rel="stylesheet" href="css/groundwork-harmony.min.css">
 ```
 
-The custom fonts — **Groundwork Sans**, **Groundwork Serif**, and **Groundwork Mono** — are referenced in the default CSS variables:
+**CDN (example)**
 
-```css
-:root {
-  --font-family-sans: "Groundwork Sans", system-ui, sans-serif;
-  --font-family-serif: "Groundwork Serif", ui-serif, serif;
-  --font-family-mono: "Groundwork Mono", ui-monospace, monospace;
-}
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css">
 ```
 
-**How to include after `npm install`**
+**Static Site Generators (Gatsby, Next.js, Hugo)** – same as above, include in your global CSS file or import in your layout component.
 
-The inclusion method depends on the project type:
-
-* **Static HTML** — copy from `node_modules/groundwork-harmony/dist/` into `public/` and link via `<link>`.
-* **Bundlers (Vite, Webpack, Parcel)** — import directly in your JS/TS entry point:
+**Bundlers (Vite, Webpack, Parcel)** – import directly in your JS/TS entry point:
 
   ```js
   import 'groundwork-harmony/dist/groundwork-harmony.min.css';
-  import 'groundwork-harmony/dist/fonts/fonts.css';
   ```
-* **Frameworks (React, Vue, Svelte)** — same as bundler approach, or include in a global CSS file.
-* **Drupal/WordPress** — enqueue/register the CSS and fonts in the theme or plugin setup.
 
+**Frameworks (React, Vue, Svelte)** – same as bundler approach, or include in a global CSS file.
 
-**Direct file (from the repo)**
+**Drupal/WordPress** – enqueue/register the CSS and fonts in the theme or plugin setup.
 
-* /dist/groundwork-harmony.min.css
-* /dist/fonts/fonts.css
-* /dist/fonts/*
+---
 
-### 2. **Include in Your Project**
+## 🔤 Fonts (bundled in `dist/`)
+
+Harmony ships fonts in `dist/fonts/`. To use them:
+
+1. **Copy the folder** to your project (or reference it directly from `node_modules`).
+2. **Include `fonts.css`** before Harmony so the font-faces are available when the base styles apply.
+
+**Example (copied assets)**
 
 ```html
-<link rel="stylesheet" href="groundwork-harmony.min.css">
-<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/groundwork-harmony.min.css">
 ```
-See Fonts section below for more details.
 
-### 3. **Write Semantic HTML**
+**Example (from node\_modules)**
 
 ```html
-<main>
-  <h1>Groundwork Harmony Awaits</h1>
-  <p>No classes. No hassle. Just beautiful web experiences.</p>
-  <button>Play Now</button>
-</main>
+<link rel="stylesheet" href="/node_modules/@johnfilipstad/groundwork-harmony/dist/fonts/fonts.css">
+<link rel="stylesheet" href="/node_modules/@johnfilipstad/groundwork-harmony/dist/groundwork-harmony.min.css">
+```
+
+Use the provided family stacks in your own CSS via variables (Harmony sets sensible defaults).
+
+---
+
+## ⚡ Quick Start (semantic HTML)
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <link rel="stylesheet" href="/css/groundwork-harmony.min.css" />
+    <title>Hello, Harmony</title>
+  </head>
+  <body>
+    <header>
+      <h1>Groundwork Harmony</h1>
+      <p>A class-less CSS base that lets semantic HTML sing.</p>
+    </header>
+
+    <main>
+      <h2>Section heading</h2>
+      <p>Buttons, forms, tables, typography—styled out of the box.</p>
+      <button type="button">Action</button>
+    </main>
+
+    <footer><small>MIT License</small></footer>
+  </body>
+</html>
 ```
 
 ---
 
-## 📚 Fonts
+## 🌓 Dark Mode
 
-Groundwork Harmony ships with fonts located in the `dist/fonts/` directory. These are **not** bundled into the minified `groundwork-harmony.min.css` file.
+Harmony supports **`[data-theme="dark" | "light"]` on `<html>`** and respects the user's OS setting via `prefers-color-scheme`.
+If you don't set an attribute, Harmony will match the OS. To provide a user toggle, use this minimal snippet.
 
-To use them, either:
-
-1. Include the fonts stylesheet directly:
+**Add a toggle button (optional)**
 
 ```html
-<link rel="stylesheet" href="fonts/fonts.css">
+<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
 ```
 
-2. and copy the `dist/fonts/` folder into your project and update the `url()` paths in `fonts.css` if needed.
-
-Custom fonts include **Groundwork Sans**, **Groundwork Serif**, and **Groundwork Mono**, referenced in the default CSS variables:
+**Copy -paste the CSS**
 
 ```css
-:root {
-  --font-family-sans: "Groundwork Sans", system-ui, sans-serif;
-  --font-family-serif: "Groundwork Serif", ui-serif, serif;
-  --font-family-mono: "Groundwork Mono", ui-monospace, monospace;
-}
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+    }
 ```
 
----
+**Copy-paste toggle script**
 
-## 🎛️ Make It Yours (Customization)
+```html
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute("data-theme") || "light";
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  html.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
 
-Override any variable to match your vision:
+  // Update button text
+  const button = document.querySelector(".theme-toggle");
+  if (button) {
+    button.textContent = newTheme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+  }
 
-```css
-:root {
-  --color-primary: #009cde;
+  console.log("Theme switched to:", newTheme);
 }
+
+// Load saved theme on page load
+window.addEventListener("DOMContentLoaded", function () {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+
+  // Set initial button text
+  const button = document.querySelector(".theme-toggle");
+  if (button) {
+    button.textContent =
+      savedTheme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+  }
+
+  console.log("Theme loaded:", savedTheme);
+});
+</script>
 ```
 
----
+**Notes**
 
-## 🌒 Dark Mode—In Perfect Pitch
-
-* Respects OS-level `prefers-color-scheme`.
-* Manual override: `<html data-theme="dark"> ... </html>`
+* Keep theming token-driven: reference tokens (e.g., `var(--color-...)`) rather than hardcoding colors.
+* Harmony sets up sensible defaults; your token layer can brand both themes consistently.
 
 ---
 
-## 🌍 Accessibility & Global Reach
+## 🌍 RTL / LTR
+
+* Uses **logical properties** and `:dir()` to adapt spacing and alignment.
+* Works automatically when you set `dir="rtl"` on `<html>` or a subtree.
+* Avoid left/right overrides in app CSS; prefer logical shorthands.
+
+---
+
+## ♿ Accessibility
 
 * Keyboard-friendly navigation and focus
-* Screen reader-only helpers
-* RTL/LTR adaptive by default
-* Honors `prefers-reduced-motion`
+* Visible, high-contrast focus indicators.
+* Comfortable line lengths and vertical rhythm.
+* Motion-reduced states respect `prefers-reduced-motion`.
+* Hit-targets and defaults aim for **WCAG 2.2 AA**.
 
 ---
+
+## 🏗️ Groundwork Design Stack (overview)
+
+The **Groundwork Design Stack** is a layered system that turns tokens into a coherent, accessible UI—fast. A single source of truth for design tokens powers a class-less base (Harmony), fluid layout intelligence (Flow), pragmatic utilities (Atoms), and ready-to-use UI (Components). The result is consistent theming, fewer overrides, and a smooth path from semantic HTML to production-ready interfaces.
+
+**Layers**
+
+1. **Groundwork Harmony (Layer 1)** – the **class-less base**: element defaults, typography, forms, tables, a11y, RTL/LTR, dark/light.
+2. **Groundwork Flow (Layer 2)** – **layout intelligence**: fluid spacing, content-aware containers, and proportional scales (fewer media queries).
+3. **Groundwork Atoms (Layer 3)** – **utilities** derived from tokens for rare, opt-in adjustments (kept minimal to preserve class-less DX).
+4. **Groundwork Components (Layer 4)** – **UI building blocks** that inherit tokens and Harmony's defaults for consistent, accessible patterns.
+
+> Harmony is intentionally minimal; add Flow, Atoms, and Components as your project grows.
 
 ## 🏆 Why Developers & Designers Love Harmony
 
@@ -168,13 +232,19 @@ Override any variable to match your vision:
 
 ---
 
-## 📖 Learn More
+## 📖 Documentation Status
+Complete documentation including variable reference and usage guides is coming soon. 
+For now, explore the CSS variables in `dist/groundwork-harmony.css` - they're self-documenting with clear naming.
 
-* Full variable reference
-* Theming & advanced usage
-* Accessibility details
+## 🤝 Community
+Early adopters welcome! Share feedback at [GitHub Issues](https://github.com/JohnFilipstad/groundwork-harmony/issues).
 
-See the [docs (coming soon)](/#) for the complete story.
+---
+
+## 🛠️ Contributing 
+
+Issues and PRs welcome. Please follow accessibility, RTL, and token guidelines.
+Run local builds with PostCSS (import, autoprefixer, cssnano).
 
 ---
 
@@ -182,4 +252,4 @@ See the [docs (coming soon)](/#) for the complete story.
 
 Let your HTML sing and your UI stay in tune—with **Groundwork Harmony**, the modern class-less CSS base for creators who want more melody, less mess.
 
-**Ready to orchestrate your next project?** Install Groundwork Harmony and let your website find its voice.
+**Ready to orchestrate your next project?** Install Groundwork Harmony and let your website find your voice.

@@ -54,7 +54,7 @@
   --font-family-base: var(--font-family-serif);
   --font-family-headings: var(--font-family-sans);
 
-  /* --- Modular Scale Ratios for Font Sizes (User can choose the scale tye) --- */
+  /* --- Modular Scale Ratios for Font Sizes (User can choose the scale type) --- */
   --scale-minor-second: 1.067;
   --scale-major-second: 1.125;
   --scale-minor-third: 1.2;

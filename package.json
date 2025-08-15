@@ -2,7 +2,7 @@
   "name": "@johnfilipstad/groundwork-harmony",
   "version": "0.9.0",
   "description": "Class-less CSS framework with tokens, a11y, RTL/LTR, and light/dark themes.",
-  "author": "John Filipstad <your-email@example.com>",
+  "author": "John Filipstad <john@filipstad.dev>",
   "license": "MIT",
   "keywords": [
     "css",
@@ -45,9 +45,6 @@
     "build:css:all": "npm run build:css && npm run build:css:prod",
     "build:assets": "cpy \"src/fonts/**\" dist/fonts --parents",
     "color:generate": "node scripts/generate-colors.cjs",
-    "docs:build": "cd docs && node scripts/build.cjs",
-    "docs:dev": "npm run build && npm run docs:build",
-    "docs:watch": "chokidar 'docs/content/**/*.md' 'docs/templates/*.html' 'docs/css/*.css' -c 'npm run docs:build'",
     "lint": "npm run lint:css",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint:css-fix": "stylelint \"src/**/*.css\" --fix",

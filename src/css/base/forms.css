@@ -258,8 +258,8 @@ optgroup {
   vertical-align: middle;
 }
 
-label:has(input[type="radio"]) + label:has(input[type="radio"]),
-label:has(input[type="checkbox"]) + label:has(input[type="checkbox"]) {
+label:has(input[type="radio"]),
+label:has(input[type="checkbox"]) {
   margin-inline-start: 1em;
 }
 

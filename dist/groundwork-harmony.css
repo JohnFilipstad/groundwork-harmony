@@ -801,6 +801,10 @@ p{
   margin-block:var(--spacing-m);
   line-height:var(--line-height-relaxed);
   text-wrap:pretty;
+}
+
+
+article p{
   max-width:100ch;
 }
 
@@ -1440,8 +1444,8 @@ optgroup{
 }
 
 
-label:has(input[type="radio"]) + label:has(input[type="radio"]),
-label:has(input[type="checkbox"]) + label:has(input[type="checkbox"]){
+label:has(input[type="radio"]),
+label:has(input[type="checkbox"]){
   margin-inline-start:1em;
 }
 
@@ -1630,7 +1634,6 @@ section{
 aside{
   padding:var(--spacing-m);
   margin-block:var(--spacing-m);
-  border-inline-start:var(--border-width-thick) solid var(--color-primary);
   background-color:var(--color-surface-dark);
   border-radius:var(--border-radius-m);
 }

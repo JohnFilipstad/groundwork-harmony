@@ -59,7 +59,9 @@ p {
   margin-block: var(--spacing-m);
   line-height: var(--line-height-relaxed);
   text-wrap: pretty;
+}
 
+article p {
   /* Limit line length for readability */
   max-width: 100ch;
 }
