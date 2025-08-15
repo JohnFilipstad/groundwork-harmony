@@ -961,6 +961,21 @@ a:has(img){
 }
 
 
+nav a{
+  display:inline-block;
+  min-block-size:2.4rem;
+  padding-inline:0.8rem;
+}
+
+
+@media (any-pointer: coarse){
+  nav a{
+    min-block-size:4.4rem;
+    padding-inline:1.2rem;
+  }
+}
+
+
 blockquote{
   margin-inline:auto;
   max-width:var(--content-width-m);

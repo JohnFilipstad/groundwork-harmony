@@ -39,3 +39,19 @@ a:visited {
 a:has(img) {
   text-decoration: none;
 }
+
+/* Navigation link target sizing (WCAG 2.5.8)
+   Minimal, non-layout change: just grow the clickable box. */
+nav a {
+  display: inline-block;       /* ensure min-block-size applies */
+  min-block-size: 2.4rem;      /* ≥24px */
+  padding-inline: 0.8rem;      /* ~8px inline padding for width */
+}
+
+/* Touch comfort: larger targets on coarse pointers */
+@media (any-pointer: coarse) {
+  nav a {
+    min-block-size: 4.4rem;    /* ≥44px */
+    padding-inline: 1.2rem;    /* ~12px */
+  }
+}
