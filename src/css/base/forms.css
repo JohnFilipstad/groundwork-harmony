@@ -71,6 +71,7 @@ textarea {
   border-radius: var(--border-radius-s);
   padding: var(--spacing-s) var(--spacing-m);
   transition: var(--transition-colors);
+  min-height: 24px;
 }
 
 button:focus-visible,
@@ -89,6 +90,7 @@ textarea:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   background-color: var(--color-disabled);
+  color: var(--color-text-disabled);
 }
 
 button,
@@ -117,6 +119,8 @@ button,
   transition: var(--transition-transform), var(--transition-colors);
   margin-block: var(--spacing-xs);
   margin-inline: var(--spacing-xs);
+  min-height: 24px;
+  min-width: 24px;
 }
 
 button:hover:not(:disabled),
@@ -251,8 +255,10 @@ optgroup {
   padding: 0;
   cursor: pointer;
   accent-color: var(--color-primary);
-  width: 1.25em;
-  height: 1.25em;
+  width: 1.5em;
+  height: 1.5em;
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-end: var(--spacing-xs);
   margin-block-end: calc(var(--spacing-xs) / 2);
   vertical-align: middle;
@@ -285,11 +291,25 @@ label:has(input[type="checkbox"]) {
   background-color: var(--color-surface-hover);
 }
 
-/* Range inputs */
+/* Range inputs - Fix thumb alignment while keeping native styling */
 [type="range"] {
   width: 100%;
   cursor: pointer;
-  accent-color: var(--color-primary);
+  accent-color: var(--color-accent);
+  
+  /* Remove any padding/margin that prevents full range */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure the range input uses its full container width */
+[type="range"]::-webkit-slider-container {
+  width: 100%;
+}
+
+[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
 }
 
 /* Color inputs */

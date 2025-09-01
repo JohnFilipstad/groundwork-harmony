@@ -15,6 +15,7 @@ blockquote {
   padding-inline-start: var(--spacing-l);
   border-inline-start: var(--border-width-thick) solid var(--color-secondary);
   font-style: italic;
+  text-wrap: balance;
   color: color-mix(in oklab, var(--color-text) 95%, transparent);
 }
 

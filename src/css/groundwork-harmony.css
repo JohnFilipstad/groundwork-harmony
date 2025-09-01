@@ -21,11 +21,6 @@ Version: v.${packageJson.version}
 (c) 2025 John Filipstad
 */
 
-
-/* 0) Design tokens (single source of truth) */
-@import url("tokens/groundwork-tokens.css");
-
-
 /* 1) Global environment + hints */
 @import url("base/root.css");
 @import url("base/reset.css");

@@ -13,7 +13,7 @@ const pages = [
 ];
 
 const fileUrl = (p) =>
-  `file://${path.resolve(process.cwd(), "examples", p).replace(/\\/g, "/")}`;
+  `file://${path.resolve(process.cwd(), "test-specimens", p).replace(/\\/g, "/")}`;
 
 /**
  * Run Axe with WCAG 2.0/2.1/2.2 AA tags and fail on serious/critical.
@@ -46,10 +46,10 @@ async function runA11y(page, url) {
   expect(problems, "Serious/critical a11y violations found").toHaveLength(0);
 }
 
-test.describe("A11y: examples/* (WCAG 2.2 AA)", () => {
+test.describe("A11y: test-specimens/* (WCAG 2.2 AA)", () => {
   for (const pageName of pages) {
     test(`${pageName} has no serious/critical violations`, async ({ page }) => {
-      const fullPath = path.resolve("examples", pageName);
+      const fullPath = path.resolve("test-specimens", pageName);
       expect(
         fs.existsSync(fullPath),
         `Missing file: ${fullPath}`

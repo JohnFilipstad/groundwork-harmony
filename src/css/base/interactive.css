@@ -49,6 +49,7 @@ dialog {
   color: var(--color-text);
   box-shadow: var(--box-shadow-floating);
   max-width: min(90vw, var(--content-width-s));
+  margin: auto;
 }
 
 dialog::backdrop {

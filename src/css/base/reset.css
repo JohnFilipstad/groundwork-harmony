@@ -27,7 +27,7 @@
 body {
   margin: 0;
   font-family:
-    var(--font-family-base), "Groundwork Serif", ui-serif, serif;
+    var(--font-family), "Groundwork Serif", ui-serif, serif;
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);

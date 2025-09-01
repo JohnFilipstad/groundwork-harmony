@@ -1,6 +1,6 @@
 {
   "name": "@johnfilipstad/groundwork-harmony",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Class-less CSS framework with tokens, a11y, RTL/LTR, and light/dark themes.",
   "author": "John Filipstad <john@filipstad.dev>",
   "license": "MIT",
@@ -37,6 +37,9 @@
   "engines": {
     "node": ">=20"
   },
+  "peerDependencies": {
+    "@johnfilipstad/groundwork-tokens": "^2.0.0"
+  },
   "scripts": {
     "build:full": "npm run clean && npm run build:css:all && npm run build:assets",
     "build": "npm run clean && npm run build:css:all && npm run build:assets",
@@ -44,12 +47,14 @@
     "build:css:prod": "cross-env NODE_ENV=production postcss src/css/groundwork-harmony.css -o dist/groundwork-harmony.min.css --map",
     "build:css:all": "npm run build:css && npm run build:css:prod",
     "build:assets": "cpy \"src/fonts/**\" dist/fonts --parents",
-    "color:generate": "node scripts/generate-colors.cjs",
+    "changelog:generate": "node scripts/changelog-staged.cjs --prepend",
+    "code:changes:staged": "node scripts/export-code-changes.cjs --scope=staged",
+    "code:changes:since-tag": "node scripts/export-code-changes.cjs --scope=since-tag",
+    "release": "node scripts/release.cjs",
     "lint": "npm run lint:css",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint:css-fix": "stylelint \"src/**/*.css\" --fix",
-    "lint:html": "html-validate \"examples/**/*.html\"",
-    "lint:tokens": "node scripts/validate-css-vars.cjs",
+    "lint:html": "html-validate \"test-specimens/**/*.html\" \"demos/**/*.html\"",
     "clean": "rimraf dist",
     "test": "npm run lint && npm run test:a11y",
     "test:a11y": "playwright test -c playwright.config.mjs",
@@ -84,7 +89,7 @@
     "**/*.css": [
       "stylelint --fix"
     ],
-    "examples/**/*.html": [
+    "test-specimens/**/*.html": [
       "html-validate --config .htmlvalidate.json"
     ],
     "**/*.{md,yml,yaml,json}": [

@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-xl);
-  margin-block: var(--spacing-m) var(--spacing-s);
+  margin-block: var(--spacing-l) var(--spacing-m);
 
   /* Prevent orphans and widows */
   orphans: 3;
@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: var(--font-size-xxxl);
-  margin-block: var(--spacing-l) var(--spacing-m);
+  margin-block: var(--spacing-xl) var(--spacing-l);
 }
 
 h2 {
@@ -61,9 +61,12 @@ p {
   text-wrap: pretty;
 }
 
+/* 
+  WCAG 2.1 Success Criterion 1.4.8: Recommends that a block of text should have
+  a line length of 80 characters or fewer.
+*/
 article p {
-  /* Limit line length for readability */
-  max-width: 100ch;
+  max-width: 80ch;
 }
 
 /* Horizontal rule */
@@ -83,7 +86,7 @@ strong {
   font-weight: var(--font-weight-bold);
 }
 
-em {
+em, i {
   font-style: italic;
 }
 

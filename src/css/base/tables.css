@@ -26,11 +26,12 @@ caption {
   padding-block: var(--spacing-s);
   font-weight: var(--font-weight-medium);
   text-align: start;
+  text-wrap: balance;
   caption-side: bottom;
 }
 
 thead {
-  background-color: var(--color-surface-light); /* Darker for better contrast */
+  background-color: var(--color-surface-primary-tint); /* Darker for better contrast */
   border-bottom: var(--border-width-m) solid var(--border-color-default);
 }
 

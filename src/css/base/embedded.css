@@ -11,16 +11,18 @@
 
 /* Make media elements responsive by default */
 picture, video, canvas, svg, iframe, embed, object {
-  display: block;
   max-width: 100%;
   height: auto;
+}
+
+picture, video, canvas, iframe, embed, object {
+  display: block;
 }
 
 img {
   border-style: none;
   max-width: 100%;
   height: auto;
-  margin-inline: var(--spacing-m) var(--spacing-xs);
 
   /* Use modern, standard values for image rendering */
   image-rendering: crisp-edges;
@@ -33,6 +35,7 @@ img[loading="lazy"] {
 
 svg {
   /* Allow SVG to scale properly */
+  display: inline-block;
   fill: currentColor;
   vertical-align: middle;
 }
@@ -40,6 +43,8 @@ svg {
 svg:not([fill]) {
   fill: currentColor;
 }
+
+
 
 audio {
   width: 100%;
@@ -62,7 +67,6 @@ iframe {
 }
 
 figure {
-  margin-inline: auto;
   max-width: var(--content-width-m);
   margin-block: var(--spacing-l);
 }
@@ -70,5 +74,5 @@ figure {
 figcaption {
   margin-block-start: var(--spacing-s);
   font-size: var(--font-size-s);
-  text-align: center;
+  text-wrap: balance;
 }

@@ -27,7 +27,7 @@ const bannerDev = `
   Why drown your markup in utility classes when you can let your HTML sing with
   semantic elegance?
 
-  Groundwork Harmony is more than a stylesheet—it’s a philosophy.
+  Groundwork Harmony is more than a stylesheet—it's a philosophy.
   I believe your code should be music: clean, harmonious, and effortless to scale.
   Groundwork Harmony supercharges HTML elements with modern, accessible defaults.
   Think of it as normalize.css in high gear, blending innovation with reliability

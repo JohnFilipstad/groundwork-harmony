@@ -17,6 +17,8 @@ a {
   text-underline-offset: 0.2em;
   transition: var(--transition-colors);
   cursor: pointer;
+  min-height: 24px;
+  display: inline-block;
 }
 
 a:hover {
@@ -30,22 +32,43 @@ a:focus-visible {
   border-radius: var(--border-radius-xs);
 }
 
-a:visited {
-  /* Use the secondary color for a clear, theme-aware visited state */
-  color: var(--color-link-visited);
-}
-
 /* Remove underline from linked images */
 a:has(img) {
   text-decoration: none;
 }
 
+/* Scope: any SVG that is a direct child of a link */
+a > svg {
+  display: inline-block;
+  margin-inline-end: var(--spacing-xs);
+
+  /* Size icons relative to text for effortless scaling */
+  inline-size: 1em;
+  block-size: 1em;
+
+  /* Make the icon inherit the link color (best practice) */
+  fill: currentColor;
+  stroke: currentColor;
+
+  /* Align optically with text */
+  vertical-align: -0.125em;
+}
+
+/* Hover & focus-visible states — meets WCAG focus indication */
+a:is(:hover, :focus-visible) { text-decoration: underline; }
+
+/* Add spacing when icon sits before/after text */
+a > svg:first-child:not(:only-child) { margin-inline-end: .5ch; }
+a > svg:last-child:not(:only-child)  { margin-inline-start: .5ch; }
+
+
 /* Navigation link target sizing (WCAG 2.5.8)
    Minimal, non-layout change: just grow the clickable box. */
 nav a {
-  display: inline-block;       /* ensure min-block-size applies */
+  display: inline-flex;       /* ensure min-block-size applies */
   min-block-size: 2.4rem;      /* ≥24px */
   padding-inline: 0.8rem;      /* ~8px inline padding for width */
+  align-items: center;
 }
 
 /* Touch comfort: larger targets on coarse pointers */

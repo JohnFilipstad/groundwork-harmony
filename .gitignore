@@ -12,6 +12,7 @@ yarn-error.log*
 .idea/
 .vscode/
 .DS_Store
+.claudeignore
 Thumbs.db
 
 # Build outputs
@@ -26,3 +27,6 @@ coverage/
 
 # Build artifacts
 /_admin/
+
+# Generated change dumps for summarization
+CODE_CHANGES_*.md
